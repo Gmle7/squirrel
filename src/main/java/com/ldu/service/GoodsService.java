@@ -12,31 +12,31 @@ public interface GoodsService {
      * @param goods
      * @param duration 允许上架时长
      */
-    public int addGood(Goods goods , Integer duration);
+    int addGood(Goods goods , Integer duration);
 
     /**
      * 通过主键获取商品
      * @param goodsId
      * @return
      */
-    public Goods getGoodsByPrimaryKey(Integer goodsId);
+    Goods getGoodsByPrimaryKey(Integer goodsId);
 
     /**
      * 更新商品信息
      * @param goods
      */
-    public void updateGoodsByPrimaryKeyWithBLOBs(int goodsId ,Goods goods);
+    void updateGoodsByPrimaryKeyWithBLOBs(int goodsId ,Goods goods);
 
     /**
      * 通过主键删除商品
      * @param id
      */
-    public void deleteGoodsByPrimaryKey(Integer id);
+    void deleteGoodsByPrimaryKey(Integer id);
 
     /**
      * 获取所有商品信息
      */
-    public List<Goods> getAllGoods();
+    List<Goods> getAllGoods();
 
     List<Goods> searchGoods(String name, String describle);
 
@@ -44,7 +44,7 @@ public interface GoodsService {
     /**
      * 通过商品分类获取商品信息
      */
-    public List<Goods> getGoodsByCatelog(Integer id,String name,String describle);
+    List<Goods> getGoodsByCatelog(Integer id,String name,String describle);
 
     /**
      * 根据分类id,并进行时间排序,获取前limit个结果
@@ -52,13 +52,13 @@ public interface GoodsService {
      * @param limit
      * @return
      */
-    public List<Goods> getGoodsByCatelogOrderByDate(Integer catelogId,Integer limit);
+    List<Goods> getGoodsByCatelogOrderByDate(Integer catelogId,Integer limit);
 
     /**
      * 根据用户的id，查询出该用户的所有闲置
      * @param user_id
      * @return
      */
-    public List<Goods> getGoodsByUserId(Integer user_id);
+    List<Goods> getGoodsByUserId(Integer user_id);
 
 }
