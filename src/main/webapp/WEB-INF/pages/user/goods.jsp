@@ -44,7 +44,7 @@
                     <img src="">
                 </div>
                 <span class="name">${cur_user.username}</span>
-                <span class="school">鲁东大学</span>
+                <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
                 <span class="fa fa-share-alt">"快去分享一下"</span>
             </div>

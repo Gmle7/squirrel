@@ -43,7 +43,7 @@
                     <img src="<%=basePath%>img/findfun.png">
                 </div>
                 <span class="name">${cur_user.username}</span>
-                <span class="school">鲁东大学</span>
+                <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
             </div>
             <div class="home_nav">

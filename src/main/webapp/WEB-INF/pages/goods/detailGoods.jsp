@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>鲁大二手工坊</title>
+    <title>湘信院二手工坊</title>
     <link rel="stylesheet" href="<%=basePath%>css/index.css" />
     <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
@@ -55,7 +55,7 @@
     <nav class="white nav1">
         <div class="nav-wrapper">
             <a href="<%=basePath%>goods/homeGoods" class="logo">
-                <em class="em1">鲁大</em>
+                <em class="em1">湘信院</em>
                 <em class="em2">二手工坊</em>
                 <em class="em3">ldu.market</em>
             </a>
@@ -247,7 +247,7 @@
             <p class="bargain">可讲价</p>
             <p>
                 <i class="iconfont"></i>
-                <em class="item-location">鲁东大学</em>
+                <em class="item-location">湖南信息学院</em>
             </p>
         </div>
         <div class="publisher-info-title">
@@ -301,7 +301,7 @@
     <p class="section">${goodsExtend.goods.describle}</p>
     <p class="section"></p>
     <p class="section">
-        联系我的时候，请说明是在鲁大Squirrel校园二手工坊上看见的哦~
+        联系我的时候，请说明是在湘信院Squirrel校园二手工坊上看见的哦~
     </p>
 </div>
 <div class="row detail-area">
