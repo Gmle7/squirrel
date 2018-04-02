@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>湘信院二手工坊</title>
+    <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="<%=basePath%>css/index.css" />
     <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
@@ -56,7 +56,7 @@
         <div class="nav-wrapper">
             <a href="<%=basePath%>goods/homeGoods" class="logo">
                 <em class="em1">湘信院</em>
-                <em class="em2">二手工坊</em>
+                <em class="em2">闲置空间</em>
                 <em class="em3">ldu.market</em>
             </a>
             <div class="nav-wrapper search-bar">
@@ -301,7 +301,7 @@
     <p class="section">${goodsExtend.goods.describle}</p>
     <p class="section"></p>
     <p class="section">
-        联系我的时候，请说明是在湘信院Squirrel校园二手工坊上看见的哦~
+        联系我的时候，请说明是在湘信院Squirrel校园闲置空间上看见的哦~
     </p>
 </div>
 <div class="row detail-area">

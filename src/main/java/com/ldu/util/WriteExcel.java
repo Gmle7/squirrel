@@ -9,9 +9,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lenovo on 2017/7/7.
- */
 public class WriteExcel {
 
     //导出表的列名

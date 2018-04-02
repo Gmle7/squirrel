@@ -41,8 +41,6 @@
             </a>
         </div>
         <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
             描述：左侧个人中心栏
         -->
         <div id="user_nav">
@@ -98,8 +96,6 @@
             </div>
         </div>
         <!--
-	            作者：hlk_1135@outlook.com
-	            时间：2017-05-10
 	            描述：发布物品
         -->
         <div id="user_content">
@@ -166,8 +162,6 @@
                 </form:form>
             </div>
             <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
                 描述：最右侧，可能认识的人
             -->
             <div class="recommend">

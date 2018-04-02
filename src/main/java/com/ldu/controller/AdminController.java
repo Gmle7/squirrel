@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.util.List;
 
-/**
- * Created by lenovo on 2017/5/9.
- */
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {

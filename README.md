@@ -25,7 +25,7 @@
 
 **项目源码：**[https://github.com/hlk-1135/squirrel](https://github.com/hlk-1135/squirrel)
 
-**注：前端页面仿站复旦大学二手交易平台：**[复旦大学二手工坊](http://www.fudan.market/)
+**注：前端页面仿站复旦大学二手交易平台：**[复旦大学闲置空间](http://www.fudan.market/)
 
 ----------
 ####**日志更新：**

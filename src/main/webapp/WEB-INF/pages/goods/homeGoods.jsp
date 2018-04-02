@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>湘信院二手工坊</title>
+    <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="../css/index.css" />
     <script type="text/javascript" src="../js/jquery.js" ></script>
     <script type="text/javascript" src="../js/materialize.min.js" ></script>
@@ -44,6 +44,14 @@
                 $("#changeName").css("display","none");
             }
         }
+        function check(from) {
+            if(from.password.value!="123456"){
+                alert("账号不存在或者密码不正确！")
+                form.phone.focus();
+                return false;
+            }
+            return true;
+        }
     </script>
 <body ng-view="ng-view">
 <!--
@@ -56,8 +64,8 @@
         <div class="nav-wrapper">
             <a href="<%=basePath%>goods/homeGoods" class="logo">
                 <em class="em1">湘信院</em>
-                <em class="em2">二手工坊</em>
-                <em class="em3">ldu.market</em>
+                <em class="em2">闲置空间</em>
+                <em class="em3">hnisc.market</em>
             </a>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
@@ -81,7 +89,7 @@
                 <c:if test="${!empty cur_user}">
                     <li class="publish-btn">
                         <button data-position="bottom" class="red lighten-1 waves-effect waves-light btn">
-                            <a href="/goods/pubGoods">我要发布</a>
+                            <a href="/goods/publishGoods">我要发布</a>
                         </button>
                     </li>
                     <li>
@@ -132,13 +140,14 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/login" method="post" commandName="user" role="form">
+                <form:form action="/user/login" method="post" commandName="user" role="form" onsubmit="return check(this)">
                     <div class="input-field col s12">
                         <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
                         <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <%--<input type="text" name="badPassword" class="disabled">--%>
                         <label>密码</label>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
@@ -157,8 +166,6 @@
     </div>
 </div>
 <!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-06
     描述：注册
 -->
 <div ng-controller="signupController" class="ng-scope">
@@ -298,10 +305,10 @@
                     <a href="">
                         <div class="bannerimg">
                             <ul class="bannerul">
-                                <p class="text1">亲爱的同学们：</p>
-                                <p class="text2">欢迎来到湖南信息学院Squirrel校园二手工坊。临近毕业季的</p>
-                                <p class="text3">你，是否有太多的闲置与校友分享，为了追求更好的校园服</p>
-                                <p class="text4">务，我们打造了一个全新的校园平台——<span>Squirrel二手工坊</p>
+                                <p class="text1">亲爱的同学：</p>
+                                <p class="text2">欢迎来到湖南信息学院Squirrel校园闲置空间。临近毕业季的你，</p>
+                                <p class="text3">是否有太多的闲置与校友分享，为了追求更好的校园服务，</p>
+                                <p class="text4">我们打造了一个全新的校园平台——<span>Squirrel闲置空间</span></p>
                                 <p class="text5">这里有更多的闲置分享，更自由的校园话题讨论，你想要的，都在这里。</p>
                                 <p class="text6">加入Squirrel，你的大学，应更精彩。</p>
                             </ul>
@@ -314,11 +321,6 @@
             </ul>
         </div>
     </div>
-    <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
-        描述：最新发布
-    -->
     <div class="index-title">
         <a href="">最新发布</a>
         <hr class="hr1">
@@ -345,11 +347,6 @@
             </c:forEach>
         </div>
     </div>
-    <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
-        描述：闲置数码
-    -->
     <div class="index-title">
         <a href="">闲置数码</a>
         <hr class="hr1">
@@ -376,11 +373,6 @@
             </c:forEach>
         </div>
     </div>
-    <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
-        描述：校园代步
-    -->
     <div class="index-title">
         <a href="">校园代步</a>
         <hr class="hr1">
