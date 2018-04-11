@@ -3,7 +3,7 @@ package com.ldu.pojo;
 public class Image {
     private Integer id;
 
-    private Integer goodsId;
+    private String goodsId;
 
     private String imgUrl;
 
@@ -15,12 +15,12 @@ public class Image {
         this.id = id;
     }
 
-    public Integer getGoodsId() {
+    public String getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId == null ? null : goodsId.trim();
     }
 
     public String getImgUrl() {

@@ -61,4 +61,11 @@ public interface GoodsService {
      */
     List<Goods> getGoodsByUserId(Integer user_id);
 
+    /**
+     *
+     * @param catlogId
+     * @return
+     */
+    List<Goods> getGoodsListByCatlogId(Integer catlogId);
+
 }

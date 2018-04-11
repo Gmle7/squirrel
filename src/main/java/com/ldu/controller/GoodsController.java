@@ -48,12 +48,15 @@ public class GoodsController {
     @RequestMapping(value = "/homeGoods")
     public ModelAndView homeGoods() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
+        long startTime = System.currentTimeMillis(); // 获取开始时间
         //商品种类数量
         int catelogSize = 7;
         //每个种类显示商品数量
         int goodsSize = 6;
         for (int i = 1; i <= catelogSize; i++) {
-            List<Goods> goodsList = null;
+            List<Goods> goodsList = goodsService.getGoodsListByCatlogId(i);
+
+            /*List<Goods> goodsList = null;
             List<GoodsExtend> goodsAndImage = null;
             goodsList = goodsService.getGoodsByCatelogOrderByDate(i, goodsSize);
             goodsAndImage = new ArrayList<GoodsExtend>();
@@ -61,14 +64,19 @@ public class GoodsController {
                 //将用户信息和image信息封装到GoodsExtend类中，传给前台
                 GoodsExtend goodsExtend = new GoodsExtend();
                 Goods goods = goodsList.get(j);
-                List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+                long startTime = System.currentTimeMillis(); // 获取开始时间
+                Image image = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+                long endTime = System.currentTimeMillis(); // 获取结束时间
+                System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
                 goodsExtend.setGoods(goods);
-                goodsExtend.setImages(images);
+                goodsExtend.setImages(image);
                 goodsAndImage.add(j, goodsExtend);
-            }
+            }*/
             String key = "catelog" + "Goods" + i;
-            modelAndView.addObject(key, goodsAndImage);
+            modelAndView.addObject(key, goodsList);
         }
+        long endTime = System.currentTimeMillis(); // 获取结束时间
+        System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
         modelAndView.setViewName("goods/homeGoods");
         return modelAndView;
     }
@@ -80,7 +88,7 @@ public class GoodsController {
         for(int i = 0;i<goodsList.size();i++) {
             GoodsExtend goodsExtend = new GoodsExtend();
             Goods goods = goodsList.get(i);
-            List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+            Image imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
             goodsExtend.setGoods(goods);
             goodsExtend.setImages(imageList);
             goodsExtendList.add(i,goodsExtend);
@@ -108,7 +116,7 @@ public class GoodsController {
         for(int i = 0;i<goodsList.size();i++) {
             GoodsExtend goodsExtend = new GoodsExtend();
             Goods goods = goodsList.get(i);
-            List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+            Image imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
             goodsExtend.setGoods(goods);
             goodsExtend.setImages(imageList);
             goodsExtendList.add(i,goodsExtend);
@@ -133,7 +141,7 @@ public class GoodsController {
         User seller = userService.selectByPrimaryKey(goods.getUserId());
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
         GoodsExtend goodsExtend = new GoodsExtend();
-        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
+        Image imageList = imageService.getImagesByGoodsPrimaryKey(id);
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);
         ModelAndView modelAndView = new ModelAndView();
@@ -155,7 +163,7 @@ public class GoodsController {
     public ModelAndView editGoods(@PathVariable("id") Integer id) throws Exception {
 
         Goods goods = goodsService.getGoodsByPrimaryKey(id);
-        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
+        Image imageList = imageService.getImagesByGoodsPrimaryKey(id);
         GoodsExtend goodsExtend = new GoodsExtend();
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);
@@ -249,7 +257,7 @@ public class GoodsController {
         int i = goodsService.addGood(goods,10);//在goods表中插入物品
         //返回插入的该物品的id
         int goodsId = goods.getId();
-        ima.setGoodsId(goodsId);
+        ima.setGoodsId(goodsId + "");
         imageService.insert(ima);//在image表中插入商品图片
         //发布商品后，catlog的number+1，user表的goods_num+1，更新session的值
         int number = cur_user.getGoodsNum();

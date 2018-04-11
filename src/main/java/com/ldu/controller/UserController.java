@@ -2,6 +2,7 @@ package com.ldu.controller;
 
 import com.ldu.pojo.Goods;
 import com.ldu.pojo.GoodsExtend;
+import com.ldu.pojo.Image;
 import com.ldu.pojo.User;
 import com.ldu.service.GoodsService;
 import com.ldu.service.ImageService;
@@ -10,15 +11,11 @@ import com.ldu.util.MD5;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import com.ldu.pojo.Image;
 import com.ldu.service.UserService;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,7 +178,7 @@ public class UserController {
             //将用户信息和image信息封装到GoodsExtend类中，传给前台
             GoodsExtend goodsExtend = new GoodsExtend();
             Goods goods = goodsList.get(i);
-            List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+            Image images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
             goodsExtend.setGoods(goods);
             goodsExtend.setImages(images);
             goodsAndImage.add(i, goodsExtend);

@@ -418,17 +418,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods1}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -444,17 +444,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods1}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -470,17 +470,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods2}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -496,17 +496,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods3}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -522,17 +522,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods4}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -548,17 +548,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods5}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.[0].id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.[0].imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -574,17 +574,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods6}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.[0].id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.[0].imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -600,17 +600,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods7}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.images[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>

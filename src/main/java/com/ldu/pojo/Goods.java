@@ -23,6 +23,16 @@ public class Goods {
 
     private String describle;
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    private String imgUrl;
+
     public Integer getId() {
         return id;
     }

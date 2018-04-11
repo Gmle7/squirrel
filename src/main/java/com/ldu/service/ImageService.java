@@ -1,7 +1,5 @@
 package com.ldu.service;
 
-import java.util.List;
-
 import com.ldu.pojo.Image;
 
 public interface ImageService {
@@ -11,7 +9,7 @@ public interface ImageService {
      * @param goodsId
      * @return
      */
-    List<Image> getImagesByGoodsPrimaryKey(Integer goodsId);
+    Image getImagesByGoodsPrimaryKey(Integer goodsId);
 
     /**
      * 通过商品Id删除商品

@@ -15,6 +15,7 @@
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.ldu.pojo.Goods" extends="BaseResultMap" >
     <result column="describle" property="describle" jdbcType="LONGVARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, catelog_id, user_id, name, price, real_price, start_time, polish_time, end_time, commet_num
@@ -215,4 +216,10 @@
       describle = #{describle,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getGoodsListByCatlogId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select goods.*,img_url
+    from goods LEFT JOIN image on image.goods_id= goods.id
+    where goods.catelog_id = #{catlog_id,jdbcType=INTEGER} limit 6
+    <include refid="Factor"></include>
+  </select>
 </mapper>

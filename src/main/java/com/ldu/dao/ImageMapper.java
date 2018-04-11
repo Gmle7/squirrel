@@ -1,13 +1,9 @@
 package com.ldu.dao;
 
-import java.util.List;
-
 import com.ldu.pojo.Image;
 
 public interface ImageMapper {
     int deleteByPrimaryKey(Integer id);
-
-    int deleteImagesByGoodsPrimaryKey(Integer goodsId);
 
     int insert(Image record);
 
@@ -21,5 +17,7 @@ public interface ImageMapper {
 
     int updateByPrimaryKey(Image record);
 
-    List<Image> selectByGoodsPrimaryKey(Integer goodsId);
+    int deleteImagesByGoodsPrimaryKey(String goodsId);
+
+    Image selectByGoodsPrimaryKey(String goodsId);
 }
