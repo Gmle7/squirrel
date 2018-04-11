@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../js/index.bundle.js" ></script>
     <link rel="stylesheet" href="../css/materialize-icon.css" />
     <link rel="stylesheet" href="../css/user.css" />
-    <script>
+    <script type="text/javascript">
         function showLogin() {
             if($("#signup-show").css("display")=='block'){
                 $("#signup-show").css("display","none");
@@ -44,21 +44,124 @@
                 $("#changeName").css("display","none");
             }
         }
-        function check(from) {
-            if(from.password.value!="123456"){
-                alert("账号不存在或者密码不正确！")
-                form.phone.focus();
-                return false;
+        function check(form) {
+            var user={
+                phone:form.phone.value,
+                password:form.password.value
             }
-            return true;
+            //创建异步对象
+            $.ajax({
+                // 请求发送方式
+                type: 'post',
+                // 验证文件
+                url: '/user/checkPwd',
+                // 用户输入的帐号密码
+                data : JSON.stringify(user),
+                dataType : 'json',
+                contentType : 'application/json;charset=UTF-8',
+                /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
+                // 异步，不写默认为True
+                async: true,
+                //请求成功后的回调
+                success: function(data){
+                    if (data){
+                        /*alert('登录成功')*/
+                        $("#user1").submit();
+                    }else{
+                        /*alert('帐号或密码错误');*/
+                        $("#badPwd").html("账号或密码错误！");
+                    }
+                },
+                error: function(){
+                    alert('服务端异常');
+                }
+
+            })
         }
+        function checkSameUser(form){
+            var user={
+                phone:form.phone.value,
+                password:form.password.value,
+                userName:form.userName.value
+            }
+            //创建异步对象
+            $.ajax({
+                // 请求发送方式
+                type: 'post',
+                // 验证文件
+                url: '/user/checkSameUser',
+                // 用户输入的帐号密码
+                data : JSON.stringify(user),
+                dataType : 'json',
+                contentType : 'application/json;charset=UTF-8',
+                // 异步，不写默认为True
+                async: true,
+                //请求成功后的回调
+                success: function(data){
+                    console.log(data);
+                    if (data){
+                        submitSignUp(form);
+                    }else{
+                        $("#badUser").html("该手机号无效或已被注册！");
+                    }
+                },
+                error: function(){
+                    alert('服务端异常');
+                }
+
+            })
+        };
+        function submitSignUp(form) {
+            var user={
+                phone:form.phone.value,
+                password:form.password.value
+            }
+            //创建异步对象
+            $.ajax({
+                // 请求发送方式
+                type: 'post',
+                // 验证文件
+                url: '/user/addUser',
+                // 用户输入的帐号密码
+                data : JSON.stringify(user),
+                dataType : 'json',
+                contentType : 'application/json;charset=UTF-8',
+                // 异步，不写默认为True
+                async: true,
+                //请求成功后的回调
+                success: function(data){
+                    if (data){
+                        $("#badUser").html("注册成功，请前往登录页登录！");
+                    }else{
+                        $("#badUser").html("系统错误，请联系管理员！");
+                    }
+                },
+                error: function(){
+                    alert('服务端异常');
+                }
+            })
+        }
+        $(function () {
+            $("#password").focus(function () {
+                /*$("#badPwd").hide();*/
+                /*$("#badPwd").css("display","none");*/
+                $("#badPwd").html("");
+            })
+            $("#phone2").focus(function () {
+                /*$("#badPwd").hide();*/
+                /*$("#badPwd").css("display","none");*/
+                $("#badUser").html("");
+            })
+            /*$("input[type=password]").blur(function () {
+                if ($(this).val()=="") {
+                    $(this).hide();
+                    $("input[type=text]").show();
+                }
+            })*/
+        });
     </script>
 <body ng-view="ng-view">
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：顶部
--->
+<!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="white nav1">
         <div class="nav-wrapper">
@@ -128,11 +231,7 @@
         </div>
     </nav>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：登录
--->
+<!--描述：登录-->
 <div ng-controller="loginController" class="ng-scope">
     <div id="login-show" class="login stark-components">
         <div class="publish-box z-depth-4">
@@ -140,18 +239,18 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/login" method="post" commandName="user" role="form" onsubmit="return check(this)">
+                <form:form action="/user/login" method="post" id="user1" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" id="phone" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
-                        <%--<input type="text" name="badPassword" class="disabled">--%>
+                        <input type="password" id="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
                         <label>密码</label>
+                        <a id="badPwd" style="color: red"></a>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
-                    <button type="submit" class="waves-effect waves-light btn login-btn red lighten-1">
+                    <button type="button" class="waves-effect waves-light btn login-btn red lighten-1" onclick="return check(this.form)">
                         <i class="iconfont left"></i>
                         <em>登录</em>
                     </button>
@@ -165,9 +264,7 @@
         </div>
     </div>
 </div>
-<!--
-    描述：注册
--->
+<!--描述：注册-->
 <div ng-controller="signupController" class="ng-scope">
     <div id="signup-show" class="signup stark-components">
         <div class="publish-box z-depth-4">
@@ -175,21 +272,24 @@
                 <a onclick="showSignup()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/addUser" method="post" commandName="user" role="form">
+                <form:form action="/user/addUser" method="post" id="user2" role="form"  onsubmit="return submitSignUp(this)">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>昵称</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" id="phone2"required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
                         <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
                         <label>密码</label>
                     </div>
+                    <div>
+                        <a id="badUser" style="color: red"></a>
+                    </div>
                     <div ng-show="checkTelIsShow" class="col s12">
-                        <button type="submit" class="waves-effect waves-light btn verify-btn red lighten-1">
+                        <button type="button" class="waves-effect waves-light btn verify-btn red lighten-1" onclick="return checkSameUser(this.form)">
                             <i class="iconfont left"></i>
                             <em>点击注册</em>
                         </button>
@@ -227,11 +327,7 @@
         </div>
     </div>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：左侧导航条
--->
+<!--描述：左侧导航条-->
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
     <li ng-class="{true: 'active'}[isAll]">
         <a href="/goods/catelog/1" class="index">
@@ -287,17 +383,9 @@
         <p>©2017 LDUACM工作室</p>
     </div>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：右侧显示部分
--->
+<!--描述：右侧显示部分-->
 <div class="main-content">
-    <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
-        描述：右侧banner（图片）部分
-    -->
+    <!-- 描述：右侧banner（图片）部分-->
     <div class="slider-wapper">
         <div class="slider" style="height: 440px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <ul class="slides" style="height: 400px;">
