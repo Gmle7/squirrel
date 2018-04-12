@@ -124,7 +124,7 @@ INSERT INTO `goods` VALUES ('48', '4', '1', '图书', '25.70', '36.50', '2017-05
 DROP TABLE IF EXISTS `image`;
 CREATE TABLE `image` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '图片主键',
-  `goods_id` int(11) NOT NULL COMMENT '商品外键',
+  `goods_id` varchar(11) NOT NULL COMMENT '商品外键',
   `img_url` text NOT NULL COMMENT '图片链接',
   PRIMARY KEY (`id`),
   KEY `goods_id` (`goods_id`)

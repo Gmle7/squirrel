@@ -301,7 +301,7 @@
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.imgUrl}" />
+                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
                         </div>
                         <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">

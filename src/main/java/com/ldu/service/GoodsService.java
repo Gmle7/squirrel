@@ -1,10 +1,8 @@
 package com.ldu.service;
 
-import java.util.List;
-
-import com.ldu.pojo.Catelog;
 import com.ldu.pojo.Goods;
-import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GoodsService {
     /**
@@ -62,7 +60,7 @@ public interface GoodsService {
     List<Goods> getGoodsByUserId(Integer user_id);
 
     /**
-     *
+     * 根据种类id，查询出所有闲置，带一张图片
      * @param catlogId
      * @return
      */

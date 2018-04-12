@@ -18,9 +18,9 @@ public class ImageServiceImpl implements ImageService {
     public int insert(Image record) {
         return imageMapper.insert(record);
     }
-    public Image getImagesByGoodsPrimaryKey(Integer goodsId) {
-        Image image = imageMapper.selectByGoodsPrimaryKey(goodsId +"");
-        return image;
+    public List<Image> getImagesByGoodsPrimaryKey(Integer goodsId) {
+        List<Image> images = imageMapper.selectByGoodsPrimaryKey(goodsId +"");
+        return images;
     }
     public int deleteImagesByGoodsPrimaryKey(Integer goodsId) {
         return imageMapper.deleteImagesByGoodsPrimaryKey(goodsId +"");

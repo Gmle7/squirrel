@@ -32,7 +32,7 @@
     values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=VARCHAR}, #{imgUrl,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <select id="selectByGoodsPrimaryKey" resultType="com.ldu.pojo.Image" parameterType="java.lang.String">
+  <select id="selectByGoodsPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
     select * from image where goods_id = #{goodsId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteImagesByGoodsPrimaryKey" parameterType="java.lang.String">

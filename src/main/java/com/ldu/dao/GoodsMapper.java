@@ -60,7 +60,7 @@ public interface GoodsMapper {
      * 查询所有的商品
      * @return
      */
-    public List<Goods> selectAllGoods();
+    List<Goods> selectAllGoods();
 
     List<Goods> searchGoods(@Param("name") String name,@Param("describle") String describle);
 

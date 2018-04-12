@@ -82,8 +82,9 @@
             var user={
                 phone:form.phone.value,
                 password:form.password.value,
-                userName:form.userName.value
+                username:form.username.value
             }
+            console.log(user);
             //创建异步对象
             $.ajax({
                 // 请求发送方式
@@ -114,7 +115,8 @@
         function submitSignUp(form) {
             var user={
                 phone:form.phone.value,
-                password:form.password.value
+                password:form.password.value,
+                username:form.username.value
             }
             //创建异步对象
             $.ajax({
@@ -311,7 +313,7 @@
                 <div class="col s12 title">
                     <h1>修改用户名</h1>
                 </div>
-                <form:form action="/user/changeName" method="post" commandName="user" role="form">
+                <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>修改用户名</label>
@@ -548,9 +550,9 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods5}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.[0].id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
                         <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">
@@ -574,9 +576,9 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods6}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.[0].id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
-                            <img src="../upload/${item.[0].imgUrl}" />
+                            <img src="../upload/${item.imgUrl}" />
                         </div>
                         <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
                         <div class="card-content item-name">

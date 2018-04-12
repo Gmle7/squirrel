@@ -1,20 +1,12 @@
 package com.ldu.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
-import java.io.File;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.ldu.pojo.*;
 import com.ldu.service.CatelogService;
+import com.ldu.service.GoodsService;
 import com.ldu.service.ImageService;
 import com.ldu.service.UserService;
 import com.ldu.util.DateUtil;
-import com.sun.tracing.dtrace.Attributes;
-import org.apache.poi.util.SystemOutLogger;
+import com.ldu.util.GoodsExtendAndImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ldu.service.GoodsService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/goods")
@@ -38,6 +34,7 @@ public class GoodsController {
     private CatelogService catelogService;
     @Autowired
     private UserService userService;
+    private GoodsExtendAndImage goodsExtendAndImage;
 
     /**
      * 首页显示商品，每一类商品查询6件，根据最新上架排序 key的命名为catelogGoods1、catelogGoods2....
@@ -84,15 +81,8 @@ public class GoodsController {
     @RequestMapping(value = "/search")
     public ModelAndView searchGoods(@RequestParam(value = "str",required = false) String str)throws Exception {
         List<Goods> goodsList = goodsService.searchGoods(str,str);
-        List<GoodsExtend> goodsExtendList = new ArrayList<GoodsExtend>();
-        for(int i = 0;i<goodsList.size();i++) {
-            GoodsExtend goodsExtend = new GoodsExtend();
-            Goods goods = goodsList.get(i);
-            Image imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
-            goodsExtend.setGoods(goods);
-            goodsExtend.setImages(imageList);
-            goodsExtendList.add(i,goodsExtend);
-        }
+        List<GoodsExtend> goodsExtendList = new ArrayList<>();
+        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("goodsExtendList", goodsExtendList);
         modelAndView.addObject("search",str);
@@ -112,15 +102,8 @@ public class GoodsController {
                                      @RequestParam(value = "str",required = false) String str) throws Exception {
         List<Goods> goodsList = goodsService.getGoodsByCatelog(id,str,str);
         Catelog catelog = catelogService.selectByPrimaryKey(id);
-        List<GoodsExtend> goodsExtendList = new ArrayList<GoodsExtend>();
-        for(int i = 0;i<goodsList.size();i++) {
-            GoodsExtend goodsExtend = new GoodsExtend();
-            Goods goods = goodsList.get(i);
-            Image imageList = imageService.getImagesByGoodsPrimaryKey(goods.getId());
-            goodsExtend.setGoods(goods);
-            goodsExtend.setImages(imageList);
-            goodsExtendList.add(i,goodsExtend);
-        }
+        List<GoodsExtend> goodsExtendList = new ArrayList<>();
+        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("goodsExtendList", goodsExtendList);
         modelAndView.addObject("catelog", catelog);
@@ -141,7 +124,7 @@ public class GoodsController {
         User seller = userService.selectByPrimaryKey(goods.getUserId());
         Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
         GoodsExtend goodsExtend = new GoodsExtend();
-        Image imageList = imageService.getImagesByGoodsPrimaryKey(id);
+        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);
         ModelAndView modelAndView = new ModelAndView();
@@ -163,7 +146,7 @@ public class GoodsController {
     public ModelAndView editGoods(@PathVariable("id") Integer id) throws Exception {
 
         Goods goods = goodsService.getGoodsByPrimaryKey(id);
-        Image imageList = imageService.getImagesByGoodsPrimaryKey(id);
+        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
         GoodsExtend goodsExtend = new GoodsExtend();
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);

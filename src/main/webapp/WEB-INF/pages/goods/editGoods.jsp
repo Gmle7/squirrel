@@ -150,7 +150,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-10">
                                             <img src="<%=basePath%>upload/${goodsExtend.goods.imgUrl}"/>
-                                            <input type="hidden" name="imgUrl" value="${goodsExtend.goods.imgUrl}">
+                                            <input type="hidden" name="imgUrl" value="${goodsExtend.images[0].imgUrl}">
                                             <input type="hidden" name="id" value="${goodsExtend.goods.id}">
                                             <input type="hidden" name="startTime" value="${goodsExtend.goods.startTime}">
                                             <input type="hidden" name="endTime" value="${goodsExtend.goods.endTime}">

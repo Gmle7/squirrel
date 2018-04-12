@@ -2,16 +2,19 @@ package com.ldu.controller;
 
 import com.ldu.pojo.Goods;
 import com.ldu.pojo.GoodsExtend;
-import com.ldu.pojo.Image;
 import com.ldu.pojo.User;
 import com.ldu.service.GoodsService;
 import com.ldu.service.ImageService;
+import com.ldu.service.UserService;
 import com.ldu.util.DateUtil;
+import com.ldu.util.GoodsExtendAndImage;
 import com.ldu.util.MD5;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import com.ldu.service.UserService;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -28,8 +31,10 @@ public class UserController {
     private UserService userService;
     @Resource
     private GoodsService goodsService;
+    /*@Resource
+    private ImageService imageService;*/
     @Resource
-    private ImageService imageService;
+    private GoodsExtendAndImage goodsExtendAndImage;
 
     /**
      * 用户注册
@@ -73,12 +78,15 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login")
-    public ModelAndView loginValidate(HttpServletRequest request) {
+    public ModelAndView loginValidate(HttpServletRequest request, User user) {
+        User cur_user = userService.getUserByPhone(user.getPhone());
         String url = request.getHeader("Referer");
+        request.getSession().setAttribute("cur_user", cur_user);
         return new ModelAndView("redirect:" + url);
+
     }
 
-    @RequestMapping(value = "/checkPwd",method = RequestMethod.POST)
+    @RequestMapping(value = "/checkPwd", method = RequestMethod.POST)
     @ResponseBody
     public boolean checkPwd(@RequestBody User user) {
         User cur_user = userService.getUserByPhone(user.getPhone());
@@ -173,19 +181,21 @@ public class UserController {
         User cur_user = (User) request.getSession().getAttribute("cur_user");
         Integer userId = cur_user.getId();
         List<Goods> goodsList = goodsService.getGoodsByUserId(userId);
-        List<GoodsExtend> goodsAndImage = new ArrayList<GoodsExtend>();
-        for (int i = 0; i < goodsList.size(); i++) {
+        List<GoodsExtend> goodsExtendList = new ArrayList<>();
+        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
+        /*for (int i = 0; i < goodsList.size(); i++) {
             //将用户信息和image信息封装到GoodsExtend类中，传给前台
             GoodsExtend goodsExtend = new GoodsExtend();
             Goods goods = goodsList.get(i);
-            Image images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+            List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
             goodsExtend.setGoods(goods);
             goodsExtend.setImages(images);
-            goodsAndImage.add(i, goodsExtend);
-        }
+            goodsExtendList.add(i, goodsExtend);
+        }*/
         ModelAndView mv = new ModelAndView();
-        mv.addObject("goodsAndImage", goodsAndImage);
+        mv.addObject("goodsAndImage", goodsExtendList);
         mv.setViewName("/user/goods");
         return mv;
     }
+
 }

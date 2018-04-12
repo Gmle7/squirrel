@@ -230,7 +230,7 @@
     <div class="col s6">
         <div class="slider" style="height: 440px;">
             <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>upload/${goodsExtend.goods.imgUrl}" />
+                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}" />
             </ul>
             <ul class="indicators">
                 <li class="indicator-item"></li>
