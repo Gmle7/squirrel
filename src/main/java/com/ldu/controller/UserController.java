@@ -183,15 +183,6 @@ public class UserController {
         List<Goods> goodsList = goodsService.getGoodsByUserId(userId);
         List<GoodsExtend> goodsExtendList = new ArrayList<>();
         goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
-        /*for (int i = 0; i < goodsList.size(); i++) {
-            //将用户信息和image信息封装到GoodsExtend类中，传给前台
-            GoodsExtend goodsExtend = new GoodsExtend();
-            Goods goods = goodsList.get(i);
-            List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
-            goodsExtend.setGoods(goods);
-            goodsExtend.setImages(images);
-            goodsExtendList.add(i, goodsExtend);
-        }*/
         ModelAndView mv = new ModelAndView();
         mv.addObject("goodsAndImage", goodsExtendList);
         mv.setViewName("/user/goods");

@@ -34,6 +34,7 @@ public class GoodsController {
     private CatelogService catelogService;
     @Autowired
     private UserService userService;
+    @Autowired
     private GoodsExtendAndImage goodsExtendAndImage;
 
     /**

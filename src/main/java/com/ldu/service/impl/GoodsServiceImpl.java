@@ -73,7 +73,6 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsList;
     }
 
-    @Override
     public List<Goods> getGoodsListByCatlogId(Integer catlogId) {
         List<Goods> goodsList = goodsMapper.getGoodsListByCatlogId(catlogId);
         return goodsList;

@@ -5,12 +5,14 @@ import com.ldu.pojo.GoodsExtend;
 import com.ldu.pojo.Image;
 import com.ldu.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by T005 on 2018/4/12.
  */
+@Component
 public class GoodsExtendAndImage {
     @Autowired
     ImageService imageService;
