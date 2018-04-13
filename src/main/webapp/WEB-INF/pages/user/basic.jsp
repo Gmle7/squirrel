@@ -93,7 +93,7 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="/user/updateInfo" method="post" commandName="user" role="form">
+                <form:form action="/user/updateInfo" method="post" id="user4" role="form">
                     <h1>完善与修改个人信息</h1><hr />
                     <div class="changeinfo">
                         <span>昵称：</span>

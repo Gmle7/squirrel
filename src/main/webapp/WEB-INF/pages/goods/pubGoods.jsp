@@ -127,6 +127,8 @@
                             <option value="5">美妆衣物</option>
                             <option value="6">运动棋牌</option>
                             <option value="7">票券小物</option>
+                            <option value="7">宠物相关</option>
+                            <option value="7">房屋出租</option>
                         </select>
                     </div>
                     <div class="changeinfo" id="dir">

@@ -56,12 +56,12 @@
             <a href="<%=basePath%>goods/homeGoods" class="logo">
                 <em class="em1">湘信院</em>
                 <em class="em2">闲置空间</em>
-                <em class="em3">ldu.market</em>
+                <em class="em3">hnisc.market</em>
             </a>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="">
                     <div class="input-field">
-                        <input id="search" name="str" value="<c:out value="${search}"></c:out>" placeholder="搜点什么吧233..." style="height: 40px;"
+                        <input id="search" name="str" value="<c:out value="${search}"></c:out>" placeholder="宝贝太多，试着在本菜单下搜点什么吧233..." style="height: 40px;"
                                class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label for="search" class="active">
                             <i ng-click="search()" class="iconfont"></i>
@@ -72,8 +72,8 @@
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
-                        <button ng-click="showLogin()" data-position="bottom" data-delay="50"
-                                data-tooltip="需要先登录哦！" class="red lighten-1 waves-effect waves-light btn" data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a"	>
+                        <button ng-click="showLogin()" data-position="bottom" data-delay="50" data-trigger="hover click"
+                                data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn" data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a"	>
                             我要发布</button>
                     </li>
                 </c:if>
@@ -131,7 +131,7 @@
                 <a onclick="showLogin()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/login" method="post" commandName="user" role="form">
+                <form:form action="/user/login" method="post" id="user1" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>手机</label>
@@ -167,7 +167,7 @@
                 <a onclick="showSignup()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/addUser" method="post" commandName="user" role="form">
+                <form:form action="/user/addUser" method="post" id="user2" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>昵称</label>
@@ -203,7 +203,7 @@
                 <div class="col s12 title">
                     <h1>修改用户名</h1>
                 </div>
-                <form:form action="/user/changeName" method="post" commandName="user" role="form">
+                <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
                         <label>修改用户名</label>
@@ -273,10 +273,22 @@
             <em>票券小物</em>
         </a>
     </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="<%=basePath%>goods/catelog/8" class="smallthing">
+            <img src="<%=basePath%>/img/pet.png"/>
+            <em>宠物相关</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="<%=basePath%>goods/catelog/9" class="smallthing">
+            <img src="<%=basePath%>/img/house.png"/>
+            <em>房屋出租</em>
+        </a>
+    </li>
     <div class="info">
         <a href="" target="_blank">关于我们</a><em>-</em>
         <a href="">联系我们</a>
-        <p>©2017 LDUACM工作室</p>
+        <p>©2018 110XB工作室</p>
     </div>
 </div>
 <!--
@@ -299,17 +311,17 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${goodsExtendList}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
                         <div class="card-image">
                             <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${goods}"></c:out></p>
+                            <p><c:out value="${item.goods.name}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.startTime}"></c:out></p>
+                            <p><c:out value="${item.goods.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>

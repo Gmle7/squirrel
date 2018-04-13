@@ -16,6 +16,9 @@
     <script type="text/javascript" src="../js/index.bundle.js" ></script>
     <link rel="stylesheet" href="../css/materialize-icon.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function showLogin() {
             if($("#signup-show").css("display")=='block'){
@@ -161,6 +164,13 @@
                 }
             })*/
         });
+        $(function (){
+            setTimeout(function () {
+                $("#welcome").css("display","none");
+                $("#myCarousel").css("display","block");
+                $('#myCarousel').carousel();
+            },13500)
+        });
     </script>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -186,8 +196,8 @@
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
-                        <button ng-click="showLogin()" data-position="bottom" data-delay="50"
-                                data-tooltip="需要先登录哦！" class="red lighten-1 waves-effect waves-light btn" data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a"	>
+                        <button ng-click="showLogin()" data-position="bottom" data-delay="0"
+                                data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn" data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a"	>
                             我要发布</button>
                     </li>
                 </c:if>
@@ -379,28 +389,71 @@
             <em>票券小物</em>
         </a>
     </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="/goods/catelog/8" class="smallthing">
+            <img src="../img/pet.png"/>
+            <em>宠物相关</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="/goods/catelog/9" class="smallthing">
+            <img src="../img/house.png"/>
+            <em>房屋出租</em>
+        </a>
+    </li>
     <div class="info">
         <a href="" target="_blank">关于我们</a><em>-</em>
         <a href="">联系我们</a>
-        <p>©2017 LDUACM工作室</p>
+        <p>©2018 110XB工作室</p>
     </div>
 </div>
 <!--描述：右侧显示部分-->
 <div class="main-content">
     <!-- 描述：右侧banner（图片）部分-->
     <div class="slider-wapper">
-        <div class="slider" style="height: 440px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        <!-- 轮播图 -->
+        <div id="myCarousel" class="carousel slide" style="display: none">
+            <!-- 轮播（Carousel）指标 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="../img/findfun.png" alt="First slide1">
+                </div>
+                <div class="item">
+                    <img src="../img/findfun.png" alt="Second slide2">
+                </div>
+                <div class="item">
+                    <img src="../img/findfun.png" alt="Third slide3">
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- 进入主页校园广告 -->
+        <div id="welcome" class="slider" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <ul class="slides" style="height: 400px;">
                 <li class="active" style="opacity: 1;">
-                    <a href="">
+                    <a href="/goods/catelog/2">
                         <div class="bannerimg">
                             <ul class="bannerul">
                                 <p class="text1">亲爱的同学：</p>
-                                <p class="text2">欢迎来到湖南信息学院Squirrel校园闲置空间。临近毕业季的你，</p>
-                                <p class="text3">是否有太多的闲置与校友分享，为了追求更好的校园服务，</p>
-                                <p class="text4">我们打造了一个全新的校园平台——<span>Squirrel闲置空间</span></p>
-                                <p class="text5">这里有更多的闲置分享，更自由的校园话题讨论，你想要的，都在这里。</p>
-                                <p class="text6">加入Squirrel，你的大学，应更精彩。</p>
+                                <p class="text2">欢迎来到湖南信息学院Squirrel校园闲置空间。临近毕业季</p>
+                                <p class="text3">的你，是否有太多的闲置与校友分享，为了追求更好的校园服</p>
+                                <p class="text4">务，我们打造了一个全新的校园平台——<span>Squirrel闲置空间</span></p>
+                                <p class="text5">更丰富的闲置分享，更自由的校园话题讨论，你想要的，都在这里！</p>
+                                <p class="text6">加入Squirrel，你的大学，应更精彩!!!</p>
                             </ul>
                             <div class="logoimg">
                                 <img src="../img/p_logo.jpg" />
@@ -601,6 +654,58 @@
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${catelogGoods7}">
+                <div class="card col">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                        <div class="card-image">
+                            <img src="../upload/${item.imgUrl}" />
+                        </div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-name">
+                            <p><c:out value="${item.name}"></c:out></p>
+                        </div>
+                        <div class="card-content item-location">
+                            <p>湖南信息学院</p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
+                        </div>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="index-title">
+        <a href="">宠物相关</a>
+        <hr class="hr1">
+        <hr class="hr2">
+    </div>
+    <div class="waterfoo stark-components row">
+        <div class="item-wrapper normal">
+            <c:forEach var="item" items="${catelogGoods8}">
+                <div class="card col">
+                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                        <div class="card-image">
+                            <img src="../upload/${item.imgUrl}" />
+                        </div>
+                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-name">
+                            <p><c:out value="${item.name}"></c:out></p>
+                        </div>
+                        <div class="card-content item-location">
+                            <p>湖南信息学院</p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
+                        </div>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="index-title">
+        <a href="">房屋出租</a>
+        <hr class="hr1">
+        <hr class="hr2">
+    </div>
+    <div class="waterfoo stark-components row">
+        <div class="item-wrapper normal">
+            <c:forEach var="item" items="${catelogGoods9}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">

@@ -176,7 +176,7 @@
     height: 400px;
 }
 .bannerimg .bannerul {
-    width: 530px;
+    /*width: 530px;*/
     line-height: 30px;
     margin: 20px 0 0 0;
     float: left;
@@ -184,7 +184,7 @@
     font-size: 20px;
 }
 .text2 {
-    float: left;
+    /*float: left;*/
     margin-left: 40px;
 }
 .text4 span {
@@ -192,7 +192,7 @@
 }
 .text6 {
     font-weight: bold;
-    float: left;
+    /*float: left;*/
     margin-left: 40px;
 }
 .logoimg {

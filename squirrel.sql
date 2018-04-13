@@ -37,6 +37,8 @@ INSERT INTO `catelog` VALUES ('4', '图书教材', '9', '1');
 INSERT INTO `catelog` VALUES ('5', '美妆衣物', '6', '1');
 INSERT INTO `catelog` VALUES ('6', '运动棋牌', '2', '1');
 INSERT INTO `catelog` VALUES ('7', '票券小物', '2', '1');
+INSERT INTO `catelog` VALUES ('8', '宠物相关', '0', '1');
+INSERT INTO `catelog` VALUES ('9', '房屋出租', '0', '1');
 
 -- ----------------------------
 -- Table structure for `comments`
