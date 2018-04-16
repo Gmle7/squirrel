@@ -11,7 +11,7 @@
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="../css/index.css"/>
-    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/user.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
     <script type="text/javascript" src="../js/index.bundle.js"></script>
     <link rel="stylesheet" href="../css/materialize-icon.css"/>
@@ -20,156 +20,7 @@
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        function showLogin() {
-            if ($("#signup-show").css("display") == 'block') {
-                $("#signup-show").css("display", "none");
-            }
-            if ($("#login-show").css("display") == 'none') {
-                $("#login-show").css("display", "block");
-            } else {
-                $("#login-show").css("display", "none");
-            }
-        }
-
-        function showSignup() {
-            if ($("#login-show").css("display") == 'block') {
-                $("#login-show").css("display", "none");
-            }
-            if ($("#signup-show").css("display") == 'none') {
-                $("#signup-show").css("display", "block");
-            } else {
-                $("#signup-show").css("display", "none");
-            }
-        }
-
-        function ChangeName() {
-            if ($("#changeName").css("display") == 'none') {
-                $("#changeName").css("display", "block");
-            } else {
-                $("#changeName").css("display", "none");
-            }
-        }
-
-        function check(form) {
-            var user = {
-                phone: form.phone.value,
-                password: form.password.value
-            }
-            //创建异步对象
-            $.ajax({
-                // 请求发送方式
-                type: 'post',
-                // 验证文件
-                url: '/user/checkPwd',
-                // 用户输入的帐号密码
-                data: JSON.stringify(user),
-                dataType: 'json',
-                contentType: 'application/json;charset=UTF-8',
-                /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
-                // 异步，不写默认为True
-                async: true,
-                //请求成功后的回调
-                success: function (data) {
-                    if (data) {
-                        /*alert('登录成功')*/
-                        $("#user1").submit();
-                    } else {
-                        /*alert('帐号或密码错误');*/
-                        $("#badPwd").html("账号或密码错误！");
-                    }
-                },
-                error: function () {
-                    alert('服务端异常');
-                }
-
-            })
-        }
-
-        function checkSameUser(form) {
-            var user = {
-                phone: form.phone.value,
-                password: form.password.value,
-                username: form.username.value
-            }
-            console.log(user);
-            //创建异步对象
-            $.ajax({
-                // 请求发送方式
-                type: 'post',
-                // 验证文件
-                url: '/user/checkSameUser',
-                // 用户输入的帐号密码
-                data: JSON.stringify(user),
-                dataType: 'json',
-                contentType: 'application/json;charset=UTF-8',
-                // 异步，不写默认为True
-                async: true,
-                //请求成功后的回调
-                success: function (data) {
-                    console.log(data);
-                    if (data) {
-                        submitSignUp(form);
-                    } else {
-                        $("#badUser").html("该手机号无效或已被注册！");
-                    }
-                },
-                error: function () {
-                    alert('服务端异常');
-                }
-
-            })
-        };
-
-        function submitSignUp(form) {
-            var user = {
-                phone: form.phone.value,
-                password: form.password.value,
-                username: form.username.value
-            }
-            //创建异步对象
-            $.ajax({
-                // 请求发送方式
-                type: 'post',
-                // 验证文件
-                url: '/user/addUser',
-                // 用户输入的帐号密码
-                data: JSON.stringify(user),
-                dataType: 'json',
-                contentType: 'application/json;charset=UTF-8',
-                // 异步，不写默认为True
-                async: true,
-                //请求成功后的回调
-                success: function (data) {
-                    if (data) {
-                        $("#badUser").html("注册成功，请前往登录页登录！");
-                    } else {
-                        $("#badUser").html("系统错误，请联系管理员！");
-                    }
-                },
-                error: function () {
-                    alert('服务端异常');
-                }
-            })
-        }
-
-        $(function () {
-            $("#password").focus(function () {
-                /*$("#badPwd").hide();*/
-                /*$("#badPwd").css("display","none");*/
-                $("#badPwd").html("");
-            })
-            $("#phone2").focus(function () {
-                /*$("#badPwd").hide();*/
-                /*$("#badPwd").css("display","none");*/
-                $("#badUser").html("");
-            })
-            /*$("input[type=password]").blur(function () {
-                if ($(this).val()=="") {
-                    $(this).hide();
-                    $("input[type=text]").show();
-                }
-            })*/
-        });
+        //主页轮播图13.5s后隐藏换成
         $(function () {
             setTimeout(function () {
                 $("#welcome").css("display", "none");
@@ -178,29 +29,8 @@
             }, 13500)
         });
     </script>
+</head>
 <body ng-view="ng-view">
-<%--<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">菜鸟教程</a>
-        </div>
-        <div class="nav-wrapper search-bar">
-            <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
-                <div class="input-field">
-                    <input id="search" name="str" placeholder="寻找宝贝..." style="height: 40px;"
-                           class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
-                    <label for="search" class="active">
-                        <i ng-click="search()" class="iconfont"></i>
-                    </label>
-                </div>
-            </form>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a onclick="showLogin()"><span class="glyphicon glyphicon-log-in"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-            <li><a onclick="showSignup()"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-        </ul>
-    </div>
-</nav>--%>
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
@@ -223,9 +53,9 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <c:if test="${empty cur_user}">
-                    <li><a onclick="showLogin()" style="font-size: small;height:64px;padding-top: 22px"><span
+                    <li><a onclick="showLogin()"><span
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-                    <li><a onclick="showSignup()" style="font-size: small;height:64px;padding-top: 22px"><span
+                    <li><a onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
@@ -236,7 +66,7 @@
                         <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
                                 data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
                                 data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
-                            发布闲置
+                            <a>发布闲置</a>
                         </button>
                     </li>
                 </c:if>
@@ -255,7 +85,7 @@
                     <li class="notification">
                         <i ng-click="showNotificationBox()" class="iconfont"></i>
                         <div ng-show="notification.tagIsShow"
-                             class="notification-amount red lighten-1 ng-binding ng-hide">0
+                             class="notification-amount red lighten-1 ng-binding ng-hide">
                         </div>
                     </li>
                     <li class="changemore">
@@ -446,19 +276,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">最新发布</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods1}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods1}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -472,19 +307,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">闲置数码</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods1}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods1}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -498,19 +338,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">校园代步</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods2}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods2}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -524,19 +369,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">电器日用</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods3}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods3}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -550,19 +400,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">图书教材</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods4}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods4}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -576,19 +431,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">美妆衣物</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods5}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods5}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -602,19 +462,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">运动棋牌</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods6}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods6}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -628,19 +493,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">票券小物</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods7}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods7}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -654,19 +524,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">宠物相关</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods8}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods8}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>
@@ -680,19 +555,24 @@
         </div>
     </div>
     <div class="index-title">
+        <hr class="hr2">
         <a href="">房屋出租</a>
         <hr class="hr1">
-        <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
+            <c:if test="${empty catelogGoods9}">
+                <div class="no_share">
+                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
+                </div>
+            </c:if>
             <c:forEach var="item" items="${catelogGoods9}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.id}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.name}"></c:out></p>
                         </div>

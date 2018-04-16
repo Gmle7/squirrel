@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--数据库驱动jar -->
-    <classPathEntry location="C:\Users\chenchao\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar" />
+    <classPathEntry location="C:\Users\T005\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar" />
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--去除注释  -->
@@ -15,7 +15,7 @@
 
         <!--数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/squirrel"
+                        connectionURL="jdbc:mysql://193.112.137.238:3306/squirrel"
                         userId="root"
                         password="cccc8857214572">
         </jdbcConnection>
@@ -24,16 +24,16 @@
         </javaTypeResolver>
 
         <!--生成实体类） -->
-        <javaModelGenerator targetPackage="com.ldu.pojo" targetProject="D:\IdeaProject\squirrel\src\main\java">
+        <javaModelGenerator targetPackage="com.ldu.pojo" targetProject="E:\myIdeaProject\squirrel\src\main\java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!--生成SQLMAP文件 -->
-        <sqlMapGenerator targetPackage="mapper"  targetProject="D:\IdeaProject\squirrel\src\main\resources">
+        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\myIdeaProject\squirrel\src\main\resources">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!--生成xml映射文件-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ldu.dao"  targetProject="D:\IdeaProject\squirrel\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ldu.dao"  targetProject="E:\myIdeaProject\squirrel\src\main\java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->

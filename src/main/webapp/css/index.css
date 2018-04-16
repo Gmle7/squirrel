@@ -6367,7 +6367,7 @@ nav ul a span.badge {
 
 .container {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1366px;
     width: 90%
 }
 
@@ -6406,8 +6406,8 @@ nav ul a span.badge {
 }
 
 .row {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-bottom: 20px
 }
 
@@ -6610,7 +6610,8 @@ nav ul a span.badge {
 
 .row .col.s12 {
     width: 100%;
-    margin-left: 0
+    margin-left: 0;
+    text-align: center;
 }
 
 .row .col.offset-s12 {
@@ -7142,17 +7143,18 @@ nav ul li.active, nav ul li:hover {
 }
 
 nav ul a {
-    font-size: 1rem;
+    /*font-size: 1rem;*/
     display: block;
     padding: 0 15px
 }
 
 nav .input-field input {
     height: 100%;
-    font-size: 1.8rem;
+    font-size: 1rem;
     border: none;
     padding-left: 3rem;
-    color: black
+    color: black;
+    border-radius: 2em
 }
 
 nav .input-field input:focus, nav .input-field input[type=date]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=text]:valid, nav .input-field input[type=url]:valid {
@@ -10442,7 +10444,7 @@ div.login.stark-components .publish-box {
 }
 
 div.login.stark-components .publish-box > .row {
-    padding-bottom: 50px
+    padding-bottom: 30px
 }
 
 div.login.stark-components .publish-box .title {
@@ -10505,7 +10507,7 @@ div.signup.stark-components .publish-box {
 }
 
 div.signup.stark-components .publish-box > .row {
-    padding-bottom: 60px
+    padding-bottom: 10px
 }
 
 div.signup.stark-components .publish-box .title {
@@ -10519,10 +10521,11 @@ div.signup.stark-components .publish-box div.s6 {
 }
 
 div.signup.stark-components .publish-box .verify-btn {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    margin-left: -75px
+    /*position: absolute;*/
+    /*bottom: 50px;*/
+    /*left: 50%;*/
+    /*margin-left: -75px*/
+    display: inline-block;
 }
 
 div.signup.stark-components .publish-box .signup-btn {
@@ -10539,7 +10542,7 @@ div.signup.stark-components .publish-box .publish-btn:hover {
 div.signup.stark-components .publish-box .login-area {
     text-align: center;
     position: relative;
-    top: 60px
+    top: 10px
 }
 
 div.verify-mail.stark-components {
@@ -10740,7 +10743,8 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 .header.stark-components a {
     text-decoration: none;
     cursor: pointer;
-    color: #000
+    color: #000;
+    font-size:16px;
 }
 
 .header.stark-components .logo {
@@ -10760,9 +10764,10 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .header.stark-components .publish-btn .btn {
-    margin-top: 12px;
+    margin-right: 20px;
     font-size: 16px;
-    display: block
+    padding: 0px;
+    /*display: block*/
 }
 
 .header.stark-components .category li {
@@ -10785,6 +10790,7 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .header.stark-components .nav1 {
+    background: #4e555b;
     z-index: 1
 }
 
@@ -10811,7 +10817,9 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .header.stark-components .nav1 .notification i {
-    text-align: center
+    text-align: center;
+    margin: 22px;
+    font-size: 20px;
 }
 
 .header.stark-components .nav1 .notification .notification-amount {
@@ -10846,7 +10854,7 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .header.stark-components .nav1 li.publish-btn:hover {
-    background-color: #fff !important
+    background: #4e555b;
 }
 
 .header.stark-components .nav1 li.publish-btn > button:hover {
@@ -10854,13 +10862,13 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .sidebar.stark-components {
-    float: left;
     position: fixed;
     top: 100px;
-    right : 0;
+    left: 50%;
+    margin-left: 500px;
     font-size: 18px;
-    width: 190px;
-    background-color: #fff
+    width: 120px;
+    background-color: #fff;
 }
 
 .sidebar.stark-components li {
@@ -10878,7 +10886,8 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 
 .sidebar.stark-components li a {
     display: block;
-    padding: 5px 5px 5px 30px
+    /*padding: 5px 5px 5px 30px*/
+    padding-top: 10px;
 }
 
 .sidebar.stark-components li i {
@@ -10889,7 +10898,7 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 .sidebar.stark-components li em {
     position: relative;
     top: 0px;
-    left: 10px
+    /*left: 10px*/
 }
 
 .sidebar.stark-components li span.new-item {
@@ -10933,7 +10942,7 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .waterfoo.stark-components {
-    width: 900px;
+    width: 1060px;
     margin: 10px auto
 }
 
@@ -10945,11 +10954,12 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .waterfoo.stark-components .normal .card {
-    margin: 10px;
-    width: 280px;
+    margin: 5px;
+    width: 250px;
     padding: 0;
     transition: all .3s;
-    background: #f9f9f9
+    background: #f9f9f9;
+    border-radius:0.4em;
 }
 
 .waterfoo.stark-components .normal .card .item-price {
@@ -10957,6 +10967,12 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
     font-weight: 600;
     padding-bottom: 0;
     font-size: 20px
+}
+.waterfoo.stark-components .normal .card .itemRealPrice{
+    color:#666;
+    left:50%;
+    position: absolute;
+    font-size: 18px;
 }
 
 .waterfoo.stark-components .normal .card .item-name {
@@ -10985,8 +11001,8 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
 }
 
 .waterfoo.stark-components .normal .card-image {
-    height: 280px;
-    width: 280px;
+    height: 200px;
+    width: 100%;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -14323,7 +14339,7 @@ div.alert.stark-components .publish-box .close, div.notice.stark-components .pub
 }
 
 .index-title {
-    width: 960px;
+    width: 1100px;
     margin: -20px auto 0;
     font-size: 20px;
     color: #5d4037 !important;
@@ -14337,7 +14353,7 @@ div.alert.stark-components .publish-box .close, div.notice.stark-components .pub
 
 .index-title a, .index-title > p {
     color: #000 !important;
-    padding: 5px;
+    /*padding: 5px;*/
     font-weight: 600;
     display: block
 }
@@ -14346,14 +14362,18 @@ div.alert.stark-components .publish-box .close, div.notice.stark-components .pub
     border: none;
     border-top: 5px solid #0bb9f8;
     width: 110px;
-    display: inline-block
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .index-title .hr2 {
     display: inline-block;
-    width: 930px;
+    width: 1100px;
     border: none;
-    border-top: 2px solid #d9d9d9
+    border-top: 2px solid #d9d9d9;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .no-item {
@@ -14369,14 +14389,15 @@ div.alert.stark-components .publish-box .close, div.notice.stark-components .pub
 }
 
 .main-content {
-    margin-left: 200px;
-    padding-top: 26px
+    margin-left: -100px;
+    padding-top: 20px
 }
 
 .main-content .slider-wapper {
-    width: 940px;
+    width: 1060px;
     margin: 0 auto;
-    padding: 10px
+    /*padding: 10px*/
+    padding-right: 15px;
 }
 
 .main-content .slider-wapper h3 {

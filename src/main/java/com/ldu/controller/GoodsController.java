@@ -48,9 +48,9 @@ public class GoodsController {
         ModelAndView modelAndView = new ModelAndView();
         long startTime = System.currentTimeMillis(); // 获取开始时间
         //商品种类数量
-        int catelogSize = 7;
+        int catelogSize = 9;
         //每个种类显示商品数量
-        int goodsSize = 6;
+        int goodsSize = 8;
         for (int i = 1; i <= catelogSize; i++) {
             List<Goods> goodsList = goodsService.getGoodsListByCatlogId(i);
 

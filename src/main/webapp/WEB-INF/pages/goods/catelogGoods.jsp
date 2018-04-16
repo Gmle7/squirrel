@@ -10,58 +10,27 @@
 <head>
     <meta charset="utf-8" />
     <title>湘信院闲置空间</title>
+    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/index.css" />
     <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
     <link rel="stylesheet" href="../css/materialize-icon.css" />
-    <script>
-        function showLogin() {
-            if($("#signup-show").css("display")=='block'){
-                $("#signup-show").css("display","none");
-            }
-            if($("#login-show").css("display")=='none'){
-                $("#login-show").css("display","block");
-            }else{
-                $("#login-show").css("display","none");
-            }
-        }
-        function showSignup() {
-            if($("#login-show").css("display")=='block'){
-                $("#login-show").css("display","none");
-            }
-            if($("#signup-show").css("display")=='none'){
-                $("#signup-show").css("display","block");
-            }else{
-                $("#signup-show").css("display","none");
-            }
-        }
-        function ChangeName() {
-            if($("#changeName").css("display")=='none'){
-                $("#changeName").css("display","block");
-            }else{
-                $("#changeName").css("display","none");
-            }
-        }
-    </script>
+</head>
 <body ng-view="ng-view">
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：顶部
--->
+<!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
-    <nav class="white nav1">
-        <div class="nav-wrapper">
-            <a href="<%=basePath%>goods/homeGoods" class="logo">
+    <nav class="nav1">
+        <div class=" ">
+            <%--<a href="#" class="logo">
                 <em class="em1">湘信院</em>
                 <em class="em2">闲置空间</em>
                 <em class="em3">hnisc.market</em>
-            </a>
+            </a>--%>
             <div class="nav-wrapper search-bar">
-                <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="">
+                <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
-                        <input id="search" name="str" value="<c:out value="${search}"></c:out>" placeholder="宝贝太多，试着在本菜单下搜点什么吧233..." style="height: 40px;"
+                        <input id="search" name="str" placeholder="搜索宝贝..." style="height: 40px;width: 400px"
                                class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label for="search" class="active">
                             <i ng-click="search()" class="iconfont"></i>
@@ -69,29 +38,42 @@
                     </div>
                 </form>
             </div>
+            <ul class="nav navbar-nav navbar-left">
+                <c:if test="${empty cur_user}">
+                    <li><a onclick="showLogin()"><span
+                            class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
+                    <li><a onclick="showSignup()"><span
+                            class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
+                </c:if>
+            </ul>
+
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
-                        <button ng-click="showLogin()" data-position="bottom" data-delay="50" data-trigger="hover click"
-                                data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn" data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a"	>
-                            我要发布</button>
+                        <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
+                                data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
+                                data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
+                            发布闲置
+                        </button>
                     </li>
                 </c:if>
                 <c:if test="${!empty cur_user}">
                     <li class="publish-btn">
                         <button data-position="bottom" class="red lighten-1 waves-effect waves-light btn">
-                            <a href="/goods/publishGoods">我要发布</a>
+                            <a href="/goods/publishGoods">发布闲置</a>
                         </button>
                     </li>
                     <li>
-                        <a href="/user/allGoods">我发布的商品</a>
+                        <a href="/user/allGoods">我的闲置</a>
                     </li>
                     <li>
                         <a>${cur_user.username}</a>
                     </li>
                     <li class="notification">
                         <i ng-click="showNotificationBox()" class="iconfont"></i>
-                        <div ng-show="notification.tagIsShow" class="notification-amount red lighten-1 ng-binding ng-hide">0 </div>
+                        <div ng-show="notification.tagIsShow"
+                             class="notification-amount red lighten-1 ng-binding ng-hide">0
+                        </div>
                     </li>
                     <li class="changemore">
                         <a class="changeMoreVertShow()">
@@ -100,30 +82,18 @@
                         <div class="more-vert">
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
-                                <li><a>消息</a></li>
+                                <li><a>我的消息</a></li>
                                 <li><a onclick="ChangeName()">更改用户名</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
                         </div>
                     </li>
                 </c:if>
-                <c:if test="${empty cur_user}">
-                    <li>
-                        <a onclick="showLogin()">登录</a>
-                    </li>
-                    <li>
-                        <a onclick="showSignup()">注册</a>
-                    </li>
-                </c:if>
             </ul>
         </div>
     </nav>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：登录
--->
+<!-- 描述：登录-->
 <div ng-controller="loginController" class="ng-scope">
     <div id="login-show" class="login stark-components">
         <div class="publish-box z-depth-4">
@@ -155,11 +125,7 @@
         </div>
     </div>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-06
-    描述：注册
--->
+<!--描述：注册-->
 <div ng-controller="signupController" class="ng-scope">
     <div id="signup-show" class="signup stark-components">
         <div class="publish-box z-depth-4">
@@ -219,89 +185,9 @@
         </div>
     </div>
 </div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：左侧导航条
--->
-<div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
-    <li ng-class="{true: 'active'}[isAll]">
-        <a href="<%=basePath%>goods/catelog/1" class="index">
-            <img src="<%=basePath%>img/index.png">
-            <em>最新发布</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isDigital]">
-        <a href="/goods/catelog/1" class="digital">
-            <img src="<%=basePath%>img/digital.png"  />
-            <em>闲置数码</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isRide]">
-        <a href="<%=basePath%>goods/catelog/2" class="ride">
-            <img src="<%=basePath%>img/ride.png"/>
-            <em>校园代步</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isCommodity]">
-        <a href="<%=basePath%>goods/catelog/3" class="commodity">
-            <img src="<%=basePath%>img/commodity.png"/>
-            <em>电器日用</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isBook]">
-        <a href="<%=basePath%>goods/catelog/4" class="book">
-            <img src="<%=basePath%>img/book.png"/>
-            <em>图书教材</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isMakeup]">
-        <a href="<%=basePath%>goods/catelog/5" class="makeup">
-            <img src="<%=basePath%>img/makeup.png"/>
-            <em>美妆衣物</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isSport]">
-        <a href="<%=basePath%>goods/catelog/6" class="sport">
-            <img src="<%=basePath%>img/sport.png"/>
-            <em>运动棋牌</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="<%=basePath%>goods/catelog/7" class="smallthing">
-            <img src="<%=basePath%>img/smallthing.png"/>
-            <em>票券小物</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="<%=basePath%>goods/catelog/8" class="smallthing">
-            <img src="<%=basePath%>/img/pet.png"/>
-            <em>宠物相关</em>
-        </a>
-    </li>
-    <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="<%=basePath%>goods/catelog/9" class="smallthing">
-            <img src="<%=basePath%>/img/house.png"/>
-            <em>房屋出租</em>
-        </a>
-    </li>
-    <div class="info">
-        <a href="" target="_blank">关于我们</a><em>-</em>
-        <a href="">联系我们</a>
-        <p>©2018 110XB工作室</p>
-    </div>
-</div>
-<!--
-    作者：hlk_1135@outlook.com
-    时间：2017-05-05
-    描述：右侧显示部分
--->
+<!--描述：左侧显示部分-->
 <div class="main-content">
-    <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
-        描述：最新发布
-    -->
+    <!-- 描述：最新发布-->
     <div class="index-title">
         <a href="">${catelog.name}</a>
         <hr class="hr1">
@@ -327,6 +213,74 @@
                 </div>
             </c:forEach>
         </div>
+    </div>
+</div>
+<!--描述：右侧导航条-->
+<div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
+    <li ng-class="{true: 'active'}[isAll]">
+        <a href="/goods/catelog/1" class="index">
+            <img src="<%=basePath%>img/index.png">
+            <em>最新发布</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isDigital]">
+        <a href="/goods/catelog/1" class="digital">
+            <img src="<%=basePath%>img/digital.png"/>
+            <em>闲置数码</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isRide]">
+        <a href="/goods/catelog/2" class="ride">
+            <img src="<%=basePath%>img/ride.png"/>
+            <em>校园代步</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isCommodity]">
+        <a href="/goods/catelog/3" class="commodity">
+            <img src="<%=basePath%>img/commodity.png"/>
+            <em>电器日用</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isBook]">
+        <a href="/goods/catelog/4" class="book">
+            <img src="<%=basePath%>img/book.png"/>
+            <em>图书教材</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isMakeup]">
+        <a href="/goods/catelog/5" class="makeup">
+            <img src="<%=basePath%>img/makeup.png"/>
+            <em>美妆衣物</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSport]">
+        <a href="/goods/catelog/6" class="sport">
+            <img src="<%=basePath%>img/sport.png"/>
+            <em>运动棋牌</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="/goods/catelog/7" class="smallthing">
+            <img src="<%=basePath%>img/smallthing.png"/>
+            <em>票券小物</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="/goods/catelog/8" class="smallthing">
+            <img src="<%=basePath%>img/pet.png"/>
+            <em>宠物相关</em>
+        </a>
+    </li>
+    <li ng-class="{true: 'active'}[isSmallthing]">
+        <a href="/goods/catelog/9" class="smallthing">
+            <img src="<%=basePath%>img/house.png"/>
+            <em>房屋出租</em>
+        </a>
+    </li>
+    <div class="info">
+        <a href="" target="_blank">关于我们</a><em>-</em>
+        <a href="">联系我们</a>
+        <p>©2018 110XB工作室</p>
     </div>
 </div>
 </body>
