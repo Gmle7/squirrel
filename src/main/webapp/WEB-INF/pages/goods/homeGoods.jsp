@@ -11,6 +11,7 @@
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="../css/index.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/user.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
     <script type="text/javascript" src="../js/index.bundle.js"></script>

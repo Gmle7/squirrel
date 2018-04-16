@@ -12,6 +12,7 @@ function showLogin() {
         $("#login-show").css("display", "none");
     }
 }
+
 //注册页面的显示逻辑
 function showSignup() {
     if ($("#login-show").css("display") == 'block') {
@@ -23,6 +24,7 @@ function showSignup() {
         $("#signup-show").css("display", "none");
     }
 }
+
 //更改信息页面的显示逻辑
 function ChangeName() {
     if ($("#changeName").css("display") == 'none') {
@@ -31,49 +33,68 @@ function ChangeName() {
         $("#changeName").css("display", "none");
     }
 }
+
 //验证密码
 function check(form) {
     var user = {
         phone: form.phone.value,
         password: form.password.value
     }
-    //创建异步对象
-    $.ajax({
-        // 请求发送方式
-        type: 'post',
-        // 验证文件
-        url: '/user/checkPwd',
-        // 用户输入的帐号密码
-        data: JSON.stringify(user),
-        dataType: 'json',
-        contentType: 'application/json;charset=UTF-8',
-        /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
-        // 异步，不写默认为True
-        async: true,
-        //请求成功后的回调
-        success: function (data) {
-            if (data) {
-                /*alert('登录成功')*/
-                $("#user1").submit();
-            } else {
-                /*alert('帐号或密码错误');*/
-                $("#badPwd").html("账号或密码错误！");
+    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))) {
+        $("#badPwd").html("请输入正确的手机号码！");
+        return false;
+    }
+    if (user.phone == "") {
+        $("#badPwd").html("手机号不能为空！");
+        form.username.focus();
+        return false;
+    }
+    if (user.password == "") {
+        $("#badPwd").html("密码不能为空！");
+        form.password.focus();
+        return false;
+        //创建异步对象
+        $.ajax({
+            // 请求发送方式
+            type: 'post',
+            // 验证文件
+            url: '/user/checkPwd',
+            // 用户输入的帐号密码
+            data: JSON.stringify(user),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
+            // 异步，不写默认为True
+            async: true,
+            //请求成功后的回调
+            success: function (data) {
+                if (data) {
+                    /*alert('登录成功')*/
+                    $("#user1").submit();
+                } else {
+                    /*alert('帐号或密码错误');*/
+                    $("#badPwd").html("账号或密码错误！");
+                }
+            },
+            error: function () {
+                alert('服务端异常');
             }
-        },
-        error: function () {
-            alert('服务端异常');
-        }
 
-    })
+        })
+    }
 }
-//验证注册时密码是否已经被用过
+
+//验证注册时手机号是否已经被用过
 function checkSameUser(form) {
     var user = {
         phone: form.phone.value,
         password: form.password.value,
         username: form.username.value
     }
-    console.log(user);
+    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))) {
+        $("#badUser").html("请输入正确的手机号码！");
+        return false;
+    }
     //创建异步对象
     $.ajax({
         // 请求发送方式
@@ -88,7 +109,6 @@ function checkSameUser(form) {
         async: true,
         //请求成功后的回调
         success: function (data) {
-            console.log(data);
             if (data) {
                 submitSignUp(form);
             } else {
@@ -98,9 +118,9 @@ function checkSameUser(form) {
         error: function () {
             alert('服务端异常');
         }
-
     })
-};
+}
+
 //提交登录信息，跳转页面
 function submitSignUp(form) {
     var user = {
@@ -133,22 +153,16 @@ function submitSignUp(form) {
         }
     })
 }
+
 //验证消息显示在页面上
 $(function () {
-    $("#password").focus(function () {
-        /*$("#badPwd").hide();*/
-        /*$("#badPwd").css("display","none");*/
+    $("input[name='password']").focus(function () {
         $("#badPwd").html("");
-    })
-    $("#phone2").focus(function () {
-        /*$("#badPwd").hide();*/
-        /*$("#badPwd").css("display","none");*/
         $("#badUser").html("");
     })
-    /*$("input[type=password]").blur(function () {
-     if ($(this).val()=="") {
-     $(this).hide();
-     $("input[type=text]").show();
-     }
-     })*/
-});
+    $("input[name='phone']").focus(function () {
+        $("#badPwd").html("");
+        $("#badUser").html("");
+    })
+})
+
