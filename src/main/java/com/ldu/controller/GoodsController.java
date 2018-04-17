@@ -145,7 +145,6 @@ public class GoodsController {
      */
     @RequestMapping(value = "/editGoods/{id}")
     public ModelAndView editGoods(@PathVariable("id") Integer id) throws Exception {
-
         Goods goods = goodsService.getGoodsByPrimaryKey(id);
         List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
         GoodsExtend goodsExtend = new GoodsExtend();
@@ -180,10 +179,9 @@ public class GoodsController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/offGoods")
-    public ModelAndView offGoods() throws Exception {
-
-        return null;
+    @RequestMapping(value = "/downGood/{goodId}")
+    public void downGoods(@PathVariable int goodId) throws Exception {
+        goodsService.downGood(goodId);
     }
 
     /**
@@ -232,11 +230,9 @@ public class GoodsController {
      * @throws Exception
      */
     @RequestMapping(value = "/publishGoodsSubmit")
-    public String publishGoodsSubmit(HttpServletRequest request,Image ima,Goods goods,MultipartFile image)
-            throws Exception {
+    public String publishGoodsSubmit(HttpServletRequest request,Image ima,Goods goods,MultipartFile image) throws Exception {
         //查询出当前用户cur_user对象，便于使用id
         User cur_user = (User)request.getSession().getAttribute("cur_user");
-
         goods.setUserId(cur_user.getId());
         int i = goodsService.addGood(goods,10);//在goods表中插入物品
         //返回插入的该物品的id
@@ -245,9 +241,8 @@ public class GoodsController {
         imageService.insert(ima);//在image表中插入商品图片
         //发布商品后，catlog的number+1，user表的goods_num+1，更新session的值
         int number = cur_user.getGoodsNum();
-        Integer calelog_id = goods.getCatelogId();
-        Catelog catelog = catelogService.selectByPrimaryKey(calelog_id);
-        catelogService.updateCatelogNum(calelog_id,catelog.getNumber()+1);
+        Catelog catelog = catelogService.selectByPrimaryKey(goods.getCatelogId());
+        catelogService.updateCatelogNum(goods.getCatelogId(),catelog.getNumber()+1);
         userService.updateGoodsNum(cur_user.getId(),number+1);
         cur_user.setGoodsNum(number+1);
         request.getSession().setAttribute("cur_user",cur_user);//修改session值

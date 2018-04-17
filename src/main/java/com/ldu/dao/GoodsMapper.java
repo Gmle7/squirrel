@@ -2,6 +2,7 @@ package com.ldu.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.ldu.pojo.Goods;
@@ -21,6 +22,7 @@ public interface GoodsMapper {
      */
     int insert(Goods record);
 
+    int downGood(Integer id);
     /**
      *
      * @param record
@@ -92,9 +94,15 @@ public interface GoodsMapper {
     List<Goods> getGoodsByUserId(Integer user_id);
 
     /**
-     *
+     * 根据种类ID查ID下所有商品
      * @param catlogId
      * @return
      */
     List<Goods> getGoodsListByCatlogId(Integer catlogId);
+
+    /**
+     * 查询一共有多少条商品记录
+     * @return
+     */
+    int getGoodsCount();
 }

@@ -222,4 +222,10 @@
     where goods.catelog_id = #{catlog_id,jdbcType=INTEGER} limit 8
     <include refid="Factor"></include>
   </select>
+  <select id="getGoodsCount" resultType="java.lang.Integer">
+    select count(*) from goods;
+  </select>
+  <update id="downGood" parameterType="java.lang.Integer" >
+    UPDATE goods SET `status`='已下架' where Id= #{id,jdbcType=INTEGER};
+  </update>
 </mapper>

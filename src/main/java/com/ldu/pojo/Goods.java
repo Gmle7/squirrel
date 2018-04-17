@@ -1,5 +1,7 @@
 package com.ldu.pojo;
 
+import java.sql.Date;
+
 public class Goods {
     private Integer id;
 
@@ -19,17 +21,11 @@ public class Goods {
 
     private String polishTime;
 
+    private String status;
+
     private Integer commetNum;
 
     private String describle;
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
 
     private String imgUrl;
 
@@ -81,22 +77,6 @@ public class Goods {
         this.realPrice = realPrice;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime == null ? null : startTime.trim();
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime == null ? null : endTime.trim();
-    }
-
     public Integer getCommetNum() {
         return commetNum;
     }
@@ -113,11 +93,43 @@ public class Goods {
         this.describle = describle == null ? null : describle.trim();
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
     public String getPolishTime() {
         return polishTime;
     }
 
     public void setPolishTime(String polishTime) {
         this.polishTime = polishTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

@@ -13,6 +13,12 @@ public interface GoodsService {
     int addGood(Goods goods , Integer duration);
 
     /**
+     * 下架商品
+     * @param goodId
+     */
+    void downGood(Integer goodId);
+
+    /**
      * 通过主键获取商品
      * @param goodsId
      * @return
@@ -65,5 +71,19 @@ public interface GoodsService {
      * @return
      */
     List<Goods> getGoodsListByCatlogId(Integer catlogId);
+
+    /**
+     * 查出一共有多少件商品
+     * @return
+     */
+    int getGoodsNum();
+
+    /**
+     * goods分页
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<Goods> getGoodsPage(int pageNum,int pageSize);
 
 }

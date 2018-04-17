@@ -22,5 +22,7 @@ public interface UserMapper {
 
     int updateGoodsNum(@Param("id") Integer id, @Param("goodsNum") Integer goodsNum);//更改用户的商品数量
 
-    public List<User> getUserList();
+    List<User> getUserList();
+
+    int getUserCount();
 }

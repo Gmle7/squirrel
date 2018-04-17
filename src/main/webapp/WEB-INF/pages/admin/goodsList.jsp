@@ -35,28 +35,29 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Squirrel用户信息</h2>
-			<a class="btn btn-primary" href="/admin/exportUser">导出数据为excel</a>
+			<h2>Squirrel商品信息</h2>
+			<a class="btn btn-primary" href="/admin/exportGood">导出数据为excel</a>
 			<a class="btn btn-primary" href="#" id="add">添加用户</a>
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					查看接口数据 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="/admin/userList?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
+					<li><a href="/admin/goodList?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
 				</ul>
 			</div>
 			<table id="grid-data" class="table table-condensed table-hover table-striped">
 				<thead>
 				<tr>
 					<th data-column-id="id"  data-identifier="true" data-type="numeric">序号</th>
-					<th data-column-id="phone">手机号</th>
-					<th data-column-id="username">姓名</th>
-					<th data-column-id="email">E-Mail</th>
-					<th data-column-id="createAt">开通时间</th>
-					<th data-column-id="lastLogin">最近登录</th>
-					<th data-column-id="goodsNum">商品数量</th>
-					<th data-column-id="power">用户权限</th>
+					<th data-column-id="catelogId">分类</th>
+					<th data-column-id="userId">所属用户</th>
+					<th data-column-id="name">闲置名称</th>
+					<th data-column-id="price">出售价格</th>
+					<th data-column-id="startTime">发布时间</th>
+					<th data-column-id="polishTime">擦亮数量</th>
+					<th data-column-id="endTime">下架时间</th>
+					<th data-column-id="status">状态</th>
 					<th data-column-id="commands" data-formatter="commands" data-sortable="false">操作</th>
 				</tr>
 				</thead>
@@ -74,31 +75,54 @@
                     id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
                 };
             },
-            url:"/admin/userList",
+            url:"/admin/goodList",
             formatters: {
                 "commands": function(column, row)
                 {
-                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\">编辑<span class=\"fa fa-pencil\"></span></button> " +
+                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\">下架<span class=\"fa fa-pencil\"></span></button>" +
                         "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\">删除<span class=\"fa fa-trash-o\"></span></button>";
+                },
+                "id":function(column, row){
+                    return row.id;
+                },
+                "catelogId":function(column, row){
+                    return row.catelogId;
+                },
+                "userId":function(column, row){
+                    return row.userId;
+                },
+                "name":function(column, row){
+                    return row.name;
+                },
+                "price":function(column, row){
+                    return row.price;
+                },
+                "startTime":function(column, row){
+                    return row.startTime;
+                },
+                "polishTime":function(column, row){
+                    return row.polishTime;
+                },
+                "status":function(column, row){
+                    return row.status;
                 }
             }
         }).on("loaded.rs.jquery.bootgrid", function()
-        {
+		{
             grid.find(".command-edit").on("click", function(e)
             {
-                $(".stumodal").modal();
-                $.post("/admin/getUserInfo",{userId:$(this).data("row-id")},function(str){
-                    $("#userId2").val(str.id);
-                    $("#userName2").val(str.username);
-                    $("#userPower2").val(str.power);
+                $(".downModal").modal();
+                $.post("/admin/downGood",{goodId:$(this).data("row-id")},function(){
+                    alert("下架成功");
+                    $("#grid-data").bootgrid("reload");
                 });
             }).end().find(".command-delete").on("click", function(e)
             {
-//                alert("You pressed delete on row: " + $(this).data("row-id"));
-//                $.post("/stu/delStu",{stuId:$(this).data("row-id")},function(){
-//                    alert("删除成功");
-//                    $("#grid-data").bootgrid("reload");
-//                });
+                $(".delModal").modal();
+                $.post("/admin/delGood",{goodId:$(this).data("row-id")},function(){
+                    alert("删除成功");
+                    $("#grid-data").bootgrid("reload");
+                });
             });
         });
     });
@@ -110,6 +134,57 @@
     });
 
 </script>
+<div class="modal fade" id="downModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="downModalLabel">
+					下架商品
+				</h4>
+			</div>
+			<div class="modal-body">
+				请确认是否下架改闲置物品！
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+						data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary">
+					确认
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="delModalLabel">
+					请确认是否删除改闲置物品！
+				</h4>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+						data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary">
+					确认
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div class="modal fade stumodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-sm">

@@ -169,4 +169,7 @@
     goods_num = #{goodsNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getUserCount" resultType="java.lang.Integer">
+    select count(*) from user;
+  </select>
 </mapper>

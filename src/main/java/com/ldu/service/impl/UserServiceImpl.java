@@ -53,8 +53,7 @@ public class UserServiceImpl implements UserService {
 
     //获取出用户的数量
     public int getUserNum() {
-        List<User> users = userMapper.getUserList();
-        return users.size();
+        return userMapper.getUserCount();
     }
 
     public InputStream getInputStream() throws Exception {

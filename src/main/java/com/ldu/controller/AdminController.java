@@ -1,6 +1,9 @@
 package com.ldu.controller;
 
+import com.ldu.pojo.Goods;
 import com.ldu.pojo.User;
+import com.ldu.service.GoodsService;
+import com.ldu.util.GoodsGrid;
 import com.ldu.util.UserGrid;
 import com.ldu.service.UserService;
 import org.apache.commons.io.IOUtils;
@@ -19,10 +22,17 @@ public class AdminController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private GoodsService goodsService;
 
-    @RequestMapping(value = "/userList",method = RequestMethod.GET)
+    @RequestMapping(value = "/userListPage",method = RequestMethod.GET)
     public String userList() {
         return "/admin/userList";
+    }
+
+    @RequestMapping(value = "/goodListPage",method = RequestMethod.GET)
+    public String goodsList() {
+        return "/admin/goodsList";
     }
 
     @RequestMapping(value="/getUserInfo",produces = {"application/json;charset=UTF-8"})
@@ -32,7 +42,32 @@ public class AdminController {
         return user;
     }
 
-    @RequestMapping(value = "/users",produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/getGoodInfo",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Goods getGoodInfoById(@RequestParam("goodId") int goodId){
+        return goodsService.getGoodsByPrimaryKey(goodId);
+    }
+
+    @RequestMapping(value="/downGood",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public void downGoodById(@RequestParam("goodId") int goodId){
+        goodsService.downGood(goodId);
+    }
+
+    @RequestMapping(value="/delGood",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public void delGoodById(@RequestParam("goodId") int goodId){
+        goodsService.deleteGoodsByPrimaryKey(goodId);
+    }
+
+    @RequestMapping(value="/getUserByPhone",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public User getUserByPhone(@RequestParam("phone") String phone){
+        User user = userService.getUserByPhone(phone);
+        return user;
+    }
+
+    @RequestMapping(value = "/userList",produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public UserGrid getUserList(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount) {
         int total = userService.getUserNum();
@@ -43,6 +78,19 @@ public class AdminController {
         userGrid.setRows(list);
         userGrid.setTotal(total);
         return userGrid;
+    }
+
+    @RequestMapping(value = "/goodList",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public GoodsGrid getGoodList(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount) {
+        int total = goodsService.getGoodsNum();
+        List<Goods>  list = goodsService.getGoodsPage(current,rowCount);
+        GoodsGrid goodsGrid = new GoodsGrid();
+        goodsGrid.setCurrent(current);
+        goodsGrid.setRowCount(rowCount);
+        goodsGrid.setGoodsList(list);
+        goodsGrid.setTotal(total);
+        return goodsGrid;
     }
     //将用户信息导出到Excel
     @RequestMapping("/exportUser")

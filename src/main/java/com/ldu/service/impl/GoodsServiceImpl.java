@@ -1,16 +1,14 @@
 package com.ldu.service.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
+import com.github.pagehelper.PageHelper;
 import com.ldu.dao.GoodsMapper;
-import com.ldu.pojo.Catelog;
 import com.ldu.pojo.Goods;
 import com.ldu.service.GoodsService;
 import com.ldu.util.DateUtil;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 /**
  * 对商品的操作类（增删改查）
  * @ClassName 	GoodServiceImpl
@@ -23,20 +21,21 @@ public class GoodsServiceImpl implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
 
+    @Override
+    public void downGood(Integer goodId) {
+        goodsMapper.downGood(goodId);
+    }
+
     public int addGood(Goods goods , Integer duration) {
-        String startTime = DateUtil.getNowDay();
-        String endTime = DateUtil.getLastTime(startTime, duration);
-        String polishTime = startTime;
-        //添加上架时间，下架时间，擦亮时间
-        goods.setPolishTime(polishTime);
-        goods.setEndTime(endTime);
+        String startTime = DateUtil.getNowTime();
+        //添加上架时间，第一次擦亮时间和发布时间相同
         goods.setStartTime(startTime);
+        goods.setPolishTime(startTime);
         return goodsMapper.insert(goods);
     }
 
     public Goods getGoodsByPrimaryKey(Integer goodsId) {
-        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
-        return goods;
+        return goodsMapper.selectByPrimaryKey(goodsId);
     }
 
     public void deleteGoodsByPrimaryKey(Integer id) {
@@ -44,18 +43,15 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     public List<Goods> getAllGoods() {
-        List<Goods> goods = goodsMapper.selectAllGoods();
-        return goods;
+        return goodsMapper.selectAllGoods();
     }
 
     public List<Goods> searchGoods(String name, String describle) {
-        List<Goods> goods = goodsMapper.searchGoods(name,describle);
-        return  goods;
+        return  goodsMapper.searchGoods(name,describle);
     }
 
     public List<Goods> getGoodsByCatelog(Integer id,String name,String describle) {
-        List<Goods> goods = goodsMapper.selectByCatelog(id,name,describle);
-        return goods;
+        return goodsMapper.selectByCatelog(id,name,describle);
     }
 
     public void updateGoodsByPrimaryKeyWithBLOBs(int goodsId,Goods goods) {
@@ -64,18 +60,26 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     public List<Goods> getGoodsByCatelogOrderByDate(Integer catelogId,Integer limit) {
-        List<Goods> goodsList = goodsMapper.selectByCatelogOrderByDate(catelogId , limit);
-        return goodsList;
+        return goodsMapper.selectByCatelogOrderByDate(catelogId , limit);
     }
 
     public List<Goods> getGoodsByUserId(Integer user_id) {
-        List<Goods> goodsList = goodsMapper.getGoodsByUserId(user_id);
-        return goodsList;
+        return goodsMapper.getGoodsByUserId(user_id);
     }
 
     public List<Goods> getGoodsListByCatlogId(Integer catlogId) {
-        List<Goods> goodsList = goodsMapper.getGoodsListByCatlogId(catlogId);
-        return goodsList;
+        return goodsMapper.getGoodsListByCatlogId(catlogId);
+    }
+
+    @Override
+    public int getGoodsNum() {
+        return goodsMapper.getGoodsCount();
+    }
+
+    @Override
+    public List<Goods> getGoodsPage(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);//分页核心代码
+        return goodsMapper.selectAllGoods();
     }
 
 }
