@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="../css/common.css" />
 
 </head>
 <body>

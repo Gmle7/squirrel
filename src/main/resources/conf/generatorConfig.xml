@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!--生成实体类） -->
-        <javaModelGenerator targetPackage="com.ldu.pojo" targetProject="E:\myIdeaProject\squirrel\src\main\java">
+        <javaModelGenerator targetPackage="com.idle.pojo" targetProject="E:\myIdeaProject\squirrel\src\main\java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -33,12 +33,12 @@
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!--生成xml映射文件-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ldu.dao"  targetProject="E:\myIdeaProject\squirrel\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.idle.dao" targetProject="E:\myIdeaProject\squirrel\src\main\java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
         <!--<table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="catelog" domainObjectName="Catelog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableNacategoryelog" domainObjectNaCategoryelog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="goods" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <table tableName="image" domainObjectName="Image" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <!--<table tableName="comments" domainObjectName="Comments" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>

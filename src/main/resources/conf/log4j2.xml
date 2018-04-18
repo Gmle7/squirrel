@@ -33,7 +33,7 @@
         <logger name="org.springframework.web" level="debug" additivity="false">
             <appenderRef ref="Console"/>
         </logger>
-        <logger name="com.ldu.service" level="debug" additivity="false">
+        <logger name="com.idle.service" level="debug" additivity="false">
             <appender-ref ref="Console"/>
         </logger>
 

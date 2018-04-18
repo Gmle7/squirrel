@@ -53,35 +53,35 @@ function check(form) {
         $("#badPwd").html("密码不能为空！");
         form.password.focus();
         return false;
-        //创建异步对象
-        $.ajax({
-            // 请求发送方式
-            type: 'post',
-            // 验证文件
-            url: '/user/checkPwd',
-            // 用户输入的帐号密码
-            data: JSON.stringify(user),
-            dataType: 'json',
-            contentType: 'application/json;charset=UTF-8',
-            /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
-            // 异步，不写默认为True
-            async: true,
-            //请求成功后的回调
-            success: function (data) {
-                if (data) {
-                    /*alert('登录成功')*/
-                    $("#user1").submit();
-                } else {
-                    /*alert('帐号或密码错误');*/
-                    $("#badPwd").html("账号或密码错误！");
-                }
-            },
-            error: function () {
-                alert('服务端异常');
-            }
-
-        })
     }
+    //创建异步对象
+    $.ajax({
+        // 请求发送方式
+        type: 'post',
+        // 验证文件
+        url: '/user/checkPwd',
+        // 用户输入的帐号密码
+        data: JSON.stringify(user),
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        /*data: user,{'username': $("#phone").val(), 'password': $("#password").val()},*/
+        // 异步，不写默认为True
+        async: true,
+        //请求成功后的回调
+        success: function (data) {
+            if (data) {
+                /*alert('登录成功')*/
+                $("#user1").submit();
+            } else {
+                /*alert('帐号或密码错误');*/
+                $("#badPwd").html("账号或密码错误！");
+            }
+        },
+        error: function () {
+            alert('服务端异常');
+        }
+
+    })
 }
 
 //验证注册时手机号是否已经被用过

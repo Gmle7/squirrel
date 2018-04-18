@@ -16,6 +16,7 @@
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
     <link rel="stylesheet" href="../css/materialize-icon.css" />
     <script type="text/javascript" src="../js/user.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
 <body ng-view="ng-view">
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
@@ -24,7 +25,7 @@
             <%--<a href="#" class="logo">
                 <em class="em1">湘信院</em>
                 <em class="em2">闲置空间</em>
-                <em class="em3">hnisc.market</em>
+                <em class="em3">idle.market</em>
             </a>--%>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
@@ -188,7 +189,7 @@
 <div class="main-content">
     <!--描述：分类-->
     <div class="index-title">
-        <a href="">${catelog.name}</a>
+        <a href="">${category.name}</a>
         <hr class="hr1">
         <hr class="hr2">
     </div>
@@ -222,61 +223,61 @@
 <!--描述：右侧导航条-->
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
     <li ng-class="{true: 'active'}[isAll]">
-        <a href="<%=basePath%>goods/catelog/1" class="index">
+        <a href="<%=basePath%>goods/category/1" class="index">
             <img src="<%=basePath%>img/index.png">
             <em>最新发布</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isDigital]">
-        <a href="/goods/catelog/1" class="digital">
+        <a href="/goods/category/1" class="digital">
             <img src="<%=basePath%>img/digital.png"/>
             <em>闲置数码</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isRide]">
-        <a href="/goods/catelog/2" class="ride">
+        <a href="/goods/category/2" class="ride">
             <img src="<%=basePath%>img/ride.png"/>
             <em>校园代步</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isCommodity]">
-        <a href="/goods/catelog/3" class="commodity">
+        <a href="/goods/category/3" class="commodity">
             <img src="<%=basePath%>img/commodity.png"/>
             <em>电器日用</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isBook]">
-        <a href="/goods/catelog/4" class="book">
+        <a href="/goods/category/4" class="book">
             <img src="<%=basePath%>img/book.png"/>
             <em>图书教材</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isMakeup]">
-        <a href="/goods/catelog/5" class="makeup">
+        <a href="/goods/category/5" class="makeup">
             <img src="<%=basePath%>img/makeup.png"/>
             <em>美妆衣物</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSport]">
-        <a href="/goods/catelog/6" class="sport">
+        <a href="/goods/category/6" class="sport">
             <img src="<%=basePath%>img/sport.png"/>
             <em>运动棋牌</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/7" class="smallthing">
+        <a href="/goods/category/7" class="smallthing">
             <img src="<%=basePath%>img/smallthing.png"/>
             <em>票券小物</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/8" class="smallthing">
+        <a href="/goods/category/8" class="smallthing">
             <img src="<%=basePath%>img/pet.png"/>
             <em>宠物相关</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/9" class="smallthing">
+        <a href="/goods/category/9" class="smallthing">
             <img src="<%=basePath%>img/house.png"/>
             <em>房屋出租</em>
         </a>

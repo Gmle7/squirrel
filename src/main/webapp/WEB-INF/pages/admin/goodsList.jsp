@@ -9,9 +9,10 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.bootgrid.min.js"></script>
 	<script src="../js/bootstrap-datetimepicker.min.js"></script>
-	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css">
+	<link rel="stylesheet" href="../css/common.css" />
 </head>
-<body>
+<body background="/img/background.jpg">
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -49,15 +50,15 @@
 			<table id="grid-data" class="table table-condensed table-hover table-striped">
 				<thead>
 				<tr>
-					<th data-column-id="id"  data-identifier="true" data-type="numeric">序号</th>
-					<th data-column-id="catelogId">分类</th>
-					<th data-column-id="userId">所属用户</th>
-					<th data-column-id="name">闲置名称</th>
+					<th data-column-id="goodsId"  data-identifier="true" data-type="numeric">闲置编号</th>
+					<th data-column-id="goodsName">闲置名称</th>
+					<th data-column-id="categoryName">所属分类</th>
 					<th data-column-id="price">出售价格</th>
 					<th data-column-id="startTime">发布时间</th>
 					<th data-column-id="polishTime">擦亮数量</th>
 					<th data-column-id="endTime">下架时间</th>
-					<th data-column-id="status">状态</th>
+					<th data-column-id="username">所属用户</th>
+					<th data-column-id="goodsStatus">状态</th>
 					<th data-column-id="commands" data-formatter="commands" data-sortable="false">操作</th>
 				</tr>
 				</thead>
@@ -67,6 +68,7 @@
 </div>
 <script>
     $(document).ready(function(){
+        var rowId;
         var grid = $("#grid-data").bootgrid({
             ajax:true,
             post: function ()
@@ -79,57 +81,44 @@
             formatters: {
                 "commands": function(column, row)
                 {
-                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\">下架<span class=\"fa fa-pencil\"></span></button>" +
-                        "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\">删除<span class=\"fa fa-trash-o\"></span></button>";
+                    return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.goodsId + "\">下架<span class=\"fa fa-pencil\"></span></button>" +
+                        "<button type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.goodsId + "\">删除<span class=\"fa fa-trash-o\"></span></button>";
                 },
-                "id":function(column, row){
-                    return row.id;
-                },
-                "catelogId":function(column, row){
-                    return row.catelogId;
-                },
-                "userId":function(column, row){
-                    return row.userId;
-                },
-                "name":function(column, row){
-                    return row.name;
-                },
-                "price":function(column, row){
-                    return row.price;
-                },
-                "startTime":function(column, row){
-                    return row.startTime;
-                },
-                "polishTime":function(column, row){
-                    return row.polishTime;
-                },
-                "status":function(column, row){
-                    return row.status;
-                }
             }
         }).on("loaded.rs.jquery.bootgrid", function()
 		{
             grid.find(".command-edit").on("click", function(e)
             {
-                $(".downModal").modal();
-                $.post("/admin/downGood",{goodId:$(this).data("row-id")},function(){
+                $("#downModal").modal({
+                    keyboard: true
+				});
+                rowId = $(this).data("row-id");
+//                $.post("/admin/downGood",{goodId:$(this).data("row-id")},function(){
+//                    alert("下架成功");
+//                    $("#grid-data").bootgrid("reload");
+//                });
+            }).end().find(".command-delete").on("click", function(e)
+            {
+                $("#delModal").modal({
+                    keyboard: true
+                });
+                rowId = $(this).data("row-id");
+            });
+        });
+
+        $("#submit1").click(function(){
+            $.post("/admin/downGood",{goodsId:rowId},function(){
                     alert("下架成功");
                     $("#grid-data").bootgrid("reload");
                 });
-            }).end().find(".command-delete").on("click", function(e)
-            {
-                $(".delModal").modal();
-                $.post("/admin/delGood",{goodId:$(this).data("row-id")},function(){
-                    alert("删除成功");
-                    $("#grid-data").bootgrid("reload");
-                });
-            });
+            $("#downModal").modal('hide');
         });
-    });
-
-    $(document).ready(function(){
-        $("#add").click(function(){
-            $(".addmodal").modal();
+        $("#submit2").click(function(){
+            $.post("/admin/delGood",{goodsId:rowId},function(){
+                alert("删除成功");
+                $("#grid-data").bootgrid("reload");
+            });
+            $("#delModal").modal('hide');
         });
     });
 
@@ -152,7 +141,7 @@
 				<button type="button" class="btn btn-default"
 						data-dismiss="modal">取消
 				</button>
-				<button type="button" class="btn btn-primary">
+				<button type="button" class="btn btn-primary" id="submit1">
 					确认
 				</button>
 			</div>
@@ -178,7 +167,7 @@
 				<button type="button" class="btn btn-default"
 						data-dismiss="modal">取消
 				</button>
-				<button type="button" class="btn btn-primary">
+				<button type="button" class="btn btn-primary" id="submit2">
 					确认
 				</button>
 			</div>

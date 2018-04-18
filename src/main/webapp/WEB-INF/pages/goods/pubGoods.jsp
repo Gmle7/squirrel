@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/fileinput.min.css">
     <script type="text/javascript" src="../js/fileinput.min.js"></script>
     <script type="text/javascript" src="../js/zh.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
 
     <style>
         .container{padding-top:10px}

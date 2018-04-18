@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ldu.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.ldu.pojo.User" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+<mapper namespace="com.idle.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.idle.pojo.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="phone" property="phone" jdbcType="CHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="CHAR" />
-    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="create_at" property="createAt" jdbcType="VARCHAR" />
     <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
     <result column="power" property="power" jdbcType="TINYINT" />
@@ -14,13 +14,13 @@
     <result column="status" property="status" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, phone, username, password, QQ, create_at, goods_num, power, last_login, status
+    user_id, phone, username, password, email, create_at, goods_num, power, last_login, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <select id="getUserList" resultMap="BaseResultMap" parameterType="String">
     select <include refid="Base_Column_List" /> from user where 1=1
@@ -39,23 +39,23 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ldu.pojo.User" >
-    insert into user (id, phone, username, 
-      password, QQ, create_at, 
+  <insert id="insert" parameterType="com.idle.pojo.User" >
+    insert into user (user_id, phone, username,
+      password, email, create_at,
       goods_num, power, last_login, 
       status)
-    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=CHAR}, #{qq,jdbcType=VARCHAR}, #{createAt,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR},
+      #{password,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{createAt,jdbcType=VARCHAR},
       #{goodsNum,jdbcType=INTEGER}, #{power,jdbcType=TINYINT}, #{lastLogin,jdbcType=VARCHAR}, 
       #{status,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.ldu.pojo.User" >
+  <insert id="insertSelective" parameterType="com.idle.pojo.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="userId != null" >
+        user_id,
       </if>
       <if test="phone != null" >
         phone,
@@ -66,8 +66,8 @@
       <if test="password != null" >
         password,
       </if>
-      <if test="qq != null" >
-        QQ,
+      <if test="email != null" >
+        email,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -86,8 +86,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="phone != null" >
         #{phone,jdbcType=CHAR},
@@ -98,8 +98,8 @@
       <if test="password != null" >
         #{password,jdbcType=CHAR},
       </if>
-      <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=VARCHAR},
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ldu.pojo.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.idle.pojo.User" >
     update user
     <set >
       <if test="phone != null" >
@@ -130,8 +130,8 @@
       <if test="password != null" >
         password = #{password,jdbcType=CHAR},
       </if>
-      <if test="qq != null" >
-        QQ = #{qq,jdbcType=VARCHAR},
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=VARCHAR},
@@ -149,25 +149,25 @@
         status = #{status,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ldu.pojo.User" >
+  <update id="updateByPrimaryKey" parameterType="com.idle.pojo.User" >
     update user
     set phone = #{phone,jdbcType=CHAR},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=CHAR},
-      QQ = #{qq,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       create_at = #{createAt,jdbcType=VARCHAR},
       goods_num = #{goodsNum,jdbcType=INTEGER},
       power = #{power,jdbcType=TINYINT},
       last_login = #{lastLogin,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT}
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateGoodsNum" parameterType="Integer" >
     update user set
     goods_num = #{goodsNum,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <select id="getUserCount" resultType="java.lang.Integer">
     select count(*) from user;

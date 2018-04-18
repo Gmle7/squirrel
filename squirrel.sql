@@ -16,10 +16,10 @@ Date: 2017-06-07 08:39:20
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `catelog`
+-- Table structure for `category`
 -- ----------------------------
-DROP TABLE IF EXISTS `catelog`;
-CREATE TABLE `catelog` (
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(30) DEFAULT NULL COMMENT '分类名',
   `number` int(11) DEFAULT '0' COMMENT '该分类下的商品数量',
@@ -28,17 +28,17 @@ CREATE TABLE `catelog` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of catelog
+-- Records of category
 -- ----------------------------
-INSERT INTO `catelog` VALUES ('1', '闲置数码', '7', '1');
-INSERT INTO `catelog` VALUES ('2', '校园代步', '6', '1');
-INSERT INTO `catelog` VALUES ('3', '电器日用', '6', '1');
-INSERT INTO `catelog` VALUES ('4', '图书教材', '9', '1');
-INSERT INTO `catelog` VALUES ('5', '美妆衣物', '6', '1');
-INSERT INTO `catelog` VALUES ('6', '运动棋牌', '2', '1');
-INSERT INTO `catelog` VALUES ('7', '票券小物', '2', '1');
-INSERT INTO `catelog` VALUES ('8', '宠物相关', '0', '1');
-INSERT INTO `catelog` VALUES ('9', '房屋出租', '0', '1');
+INSERT INTO `category` VALUES ('1', '闲置数码', '7', '1');
+INSERT INTO `category` VALUES ('2', '校园代步', '6', '1');
+INSERT INTO `category` VALUES ('3', '电器日用', '6', '1');
+INSERT INTO `category` VALUES ('4', '图书教材', '9', '1');
+INSERT INTO `category` VALUES ('5', '美妆衣物', '6', '1');
+INSERT INTO `category` VALUES ('6', '运动棋牌', '2', '1');
+INSERT INTO `category` VALUES ('7', '票券小物', '2', '1');
+INSERT INTO `category` VALUES ('8', '宠物相关', '0', '1');
+INSERT INTO `category` VALUES ('9', '房屋出租', '0', '1');
 
 -- ----------------------------
 -- Table structure for `comments`

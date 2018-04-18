@@ -10747,6 +10747,10 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
     font-size:16px;
 }
 
+.header.stark-components .nav-left {
+    padding: 22px;
+}
+
 .header.stark-components .logo {
     margin-left: 60px;
     font-size: 28px;

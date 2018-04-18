@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/emoji.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
-
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 <div class="pre-2" id="big_img">

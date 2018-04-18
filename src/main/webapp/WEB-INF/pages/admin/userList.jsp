@@ -9,9 +9,10 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.bootgrid.min.js"></script>
 	<script src="../js/bootstrap-datetimepicker.min.js"></script>
-	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css">
+	<link rel="stylesheet" href="../css/common.css" />
 </head>
-<body>
+<body background="/img/background.jpg">
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">

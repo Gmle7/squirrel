@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>管理员登录页</title>
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 

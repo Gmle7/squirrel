@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
     <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/zh.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
 
     <style>
         .container{padding-top:10px}

@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="../css/materialize-icon.css"/>
     <link rel="stylesheet" href="../css/user.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
     <script type="text/javascript">
         //主页轮播图13.5s后隐藏换成
         $(function () {
@@ -39,7 +40,7 @@
             <%--<a href="#" class="logo">
                 <em class="em1">湘信院</em>
                 <em class="em2">闲置空间</em>
-                <em class="em3">hnisc.market</em>
+                <em class="em3">idle.market</em>
             </a>--%>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
@@ -54,9 +55,9 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <c:if test="${empty cur_user}">
-                    <li><a onclick="showLogin()"><span
+                    <li><a class="nav-left" onclick="showLogin()"><span
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-                    <li><a onclick="showSignup()"><span
+                    <li><a class="nav-left" onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
@@ -257,7 +258,7 @@
              style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <ul class="slides" style="height: 400px;">
                 <li class="active" style="opacity: 1;">
-                    <a href="/goods/catelog/2">
+                    <a href="/goods/category/2">
                         <div class="bannerimg">
                             <ul class="bannerul">
                                 <p class="text1">亲爱的同学：</p>
@@ -283,20 +284,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods1}">
+            <c:if test="${empty categoryGoods1}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods1}">
+            <c:forEach var="item" items="${categoryGoods1}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -314,20 +315,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods1}">
+            <c:if test="${empty categoryGoods1}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods1}">
+            <c:forEach var="item" items="${categoryGoods1}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -345,20 +346,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods2}">
+            <c:if test="${empty categoryGoods2}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods2}">
+            <c:forEach var="item" items="${categoryGoods2}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -376,20 +377,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods3}">
+            <c:if test="${empty categoryGoods3}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods3}">
+            <c:forEach var="item" items="${categoryGoods3}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -407,20 +408,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods4}">
+            <c:if test="${empty categoryGoods4}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods4}">
+            <c:forEach var="item" items="${categoryGoods4}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -438,20 +439,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods5}">
+            <c:if test="${empty categoryGoods5}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods5}">
+            <c:forEach var="item" items="${categoryGoods5}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -469,20 +470,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods6}">
+            <c:if test="${empty categoryGoods6}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods6}">
+            <c:forEach var="item" items="${categoryGoods6}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -500,20 +501,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods7}">
+            <c:if test="${empty categoryGoods7}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods7}">
+            <c:forEach var="item" items="${categoryGoods7}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -531,20 +532,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods8}">
+            <c:if test="${empty categoryGoods8}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods8}">
+            <c:forEach var="item" items="${categoryGoods8}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -562,20 +563,20 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty catelogGoods9}">
+            <c:if test="${empty categoryGoods9}">
                 <div class="no_share">
                     <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${catelogGoods9}">
+            <c:forEach var="item" items="${categoryGoods9}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.name}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
@@ -590,61 +591,61 @@
 <!--描述：右侧导航条-->
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
     <li ng-class="{true: 'active'}[isAll]">
-        <a href="/goods/catelog/1" class="index">
+        <a href="/goods/category/1" class="index">
             <img src="../img/index.png">
             <em>最新发布</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isDigital]">
-        <a href="/goods/catelog/1" class="digital">
+        <a href="/goods/category/1" class="digital">
             <img src="../img/digital.png"/>
             <em>闲置数码</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isRide]">
-        <a href="/goods/catelog/2" class="ride">
+        <a href="/goods/category/2" class="ride">
             <img src="../img/ride.png"/>
             <em>校园代步</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isCommodity]">
-        <a href="/goods/catelog/3" class="commodity">
+        <a href="/goods/category/3" class="commodity">
             <img src="../img/commodity.png"/>
             <em>电器日用</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isBook]">
-        <a href="/goods/catelog/4" class="book">
+        <a href="/goods/category/4" class="book">
             <img src="../img/book.png"/>
             <em>图书教材</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isMakeup]">
-        <a href="/goods/catelog/5" class="makeup">
+        <a href="/goods/category/5" class="makeup">
             <img src="../img/makeup.png"/>
             <em>美妆衣物</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSport]">
-        <a href="/goods/catelog/6" class="sport">
+        <a href="/goods/category/6" class="sport">
             <img src="../img/sport.png"/>
             <em>运动棋牌</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/7" class="smallthing">
+        <a href="/goods/category/7" class="smallthing">
             <img src="../img/smallthing.png"/>
             <em>票券小物</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/8" class="smallthing">
+        <a href="/goods/category/8" class="smallthing">
             <img src="../img/pet.png"/>
             <em>宠物相关</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
-        <a href="/goods/catelog/9" class="smallthing">
+        <a href="/goods/category/9" class="smallthing">
             <img src="../img/house.png"/>
             <em>房屋出租</em>
         </a>

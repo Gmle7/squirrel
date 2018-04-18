@@ -10,6 +10,7 @@
 <head>
     <title>湘信院闲置空间</title>
     <META HTTP-EQUIV="Refresh" CONTENT="0;URL=/goods/homeGoods">
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 </body>

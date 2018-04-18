@@ -17,6 +17,7 @@
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
     <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css" />
     <link rel="stylesheet" href="<%=basePath%>css/detail.css" />
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -26,7 +27,7 @@
             <%--<a href="#" class="logo">
                 <em class="em1">湘信院</em>
                 <em class="em2">闲置空间</em>
-                <em class="em3">hnisc.market</em>
+                <em class="em3">idle.market</em>
             </a>--%>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
@@ -189,7 +190,7 @@
 <!--显示商品详情-->
 <div ng-controller="detailBoxController" class="detail-box stark-components z-depth-1 row ng-scope">
     <div class="col s12 path">
-        <a href="<%=basePath%>goods/catelog/${catelog.id}">${catelog.name}</a>
+        <a href="<%=basePath%>goods/category/${category.id}">${category.name}</a>
         <em>></em>
         <a>${goodsExtend.goods.name}</a>
     </div>
