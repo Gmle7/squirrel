@@ -15,10 +15,11 @@
     <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
-    <link rel="stylesheet" href="../css/materialize-icon.css" />
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 </head>
-<body ng-view="ng-view" background="/img/background.jpg">
+<body ng-view="ng-view">
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
@@ -190,7 +191,7 @@
 <div class="main-content">
     <!-- 描述：最新发布-->
     <div class="index-title">
-        <a href="">${category.name}</a>
+        <a href="">${category.categoryName}</a>
         <hr class="hr1">
         <hr class="hr2">
     </div>
@@ -198,7 +199,7 @@
         <div class="item-wrapper normal">
             <c:forEach var="item" items="${goodsExtendList}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.goodId}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}">
                         <div class="card-image">
                             <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
                         </div>

@@ -30,11 +30,7 @@
                 <div class="home"></div>
             </a>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：左侧个人中心栏
-        -->
+        <!-- 描述：左侧个人中心栏-->
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
@@ -88,18 +84,10 @@
                 </ul>
             </div>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：右侧内容区域
-        -->
+        <!--描述：右侧内容区域-->
         <div id="user_content">
             <div class="share">
-                <!--
-                    作者：hlk_1135@outlook.com
-                    时间：2017-05-11
-                    描述：闲置商品展示
-                -->
+                <!--描述：闲置商品展示-->
                 <div class="share_content">
                     <c:if test="${empty goodsAndImage}">
                         <div class="no_share">
@@ -109,11 +97,11 @@
                     <c:if test="${!empty goodsAndImage}">
                         <c:forEach var="item" items="${goodsAndImage}">
                             <div class="story">
-                                <a href="<%=basePath%>goods/goodsId/${item.goods.id}" class="head_img">
+                                <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}" class="head_img">
                                     <img src="../upload/${item.images[0].imgUrl}">
                                 </a>
                                 <span class="name">${item.goods.name}</span>
-                                <span class="text" style="overflow: hidden; outline: none;">${item.goods.describle}</span>
+                                <span class="text" style="overflow: hidden; outline: none;">${item.goods.description}</span>
                                 <div class="box">
                                     <div class="box_content">
                                         <div class="left_shadow"></div>
@@ -124,11 +112,11 @@
                                         <span class="com" style="display: none;left: 396.733px;"></span>
                                     </div>
                                     <div class="interact">
-                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goods.id}">编辑</a></span>
+                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goods.goodsId}">编辑</a></span>
                                         <span class="fa fa-share"><a href="">擦亮</a></span>
                                         <span class="fa fa-commenting"><a>${item.goods.commetNum}0</a></span>
                                         <span class="time">${items.goods.startTime}</span>
-                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goods.id}">删除</a></span>
+                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goods.goodsId}">删除</a></span>
                                     </div>
                                     <div class="like_detail">
                                         <div class="like_content">
@@ -141,11 +129,7 @@
                     </c:if>
                 </div>
             </div>
-            <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
-                描述：最右侧，可能认识的人
-            -->
+            <!--描述：最右侧，可能认识的人 -->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>

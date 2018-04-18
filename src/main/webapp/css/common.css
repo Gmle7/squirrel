@@ -1,4 +1,4 @@
 body {
-    background: url(/img/background.jpg) no-repeat;
-    background-size: cover;
+    background: url(/img/logo.jpg) /*no-repeat*/;
+    /*background-size: cover;*/
 }

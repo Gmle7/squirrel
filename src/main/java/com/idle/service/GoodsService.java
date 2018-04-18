@@ -13,9 +13,9 @@ public interface GoodsService {
 
     /**
      * 下架商品
-     * @param goodId
+     * @param goodsId
      */
-    void downGood(Integer goodId);
+    void downGood(Integer goodsId);
 
     /**
      * 通过主键获取商品
@@ -32,22 +32,22 @@ public interface GoodsService {
 
     /**
      * 通过主键删除商品
-     * @param id
+     * @param goodsId
      */
-    void deleteGoodsByPrimaryKey(Integer id);
+    void deleteGoodsByPrimaryKey(Integer goodsId);
 
     /**
      * 获取所有商品信息
      */
     List<Goods> getAllGoods();
 
-    List<Goods> searchGoods(String name, String description);
+    List<Goods> searchGoods(String goodsName, String description);
 
 
     /**
      * 通过商品分类获取商品信息
      */
-    List<Goods> getGoodsByCategory(Integer id,String name,String description);
+    List<Goods> getGoodsByCategory(Integer goodsId,String goodsName,String description);
 
     /**
      * 根据分类id,并进行时间排序,获取前limit个结果

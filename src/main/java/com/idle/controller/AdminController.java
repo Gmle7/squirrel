@@ -41,16 +41,16 @@ public class AdminController {
         return userService.selectByPrimaryKey(userId);
     }
 
-    @RequestMapping(value="/getGoodInfo",produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/getGoodsInfo",produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Goods getGoodInfoById(@RequestParam("goodId") int goodId){
-        return goodsService.getGoodsByPrimaryKey(goodId);
+    public Goods getGoodInfoById(@RequestParam("goodsId") int goodsId){
+        return goodsService.getGoodsByPrimaryKey(goodsId);
     }
 
-    @RequestMapping(value="/downGood",produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/downGoods",produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public void downGoodById(@RequestParam("goodId") int goodId){
-        goodsService.downGood(goodId);
+    public void downGoodById(@RequestParam("goodsId") int goodsId){
+        goodsService.downGood(goodsId);
     }
 
     @RequestMapping(value="/delGood",produces = {"application/json;charset=UTF-8"})

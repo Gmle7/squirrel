@@ -110,8 +110,8 @@
                         <span id="checkphone">已验证</span>
                     </div><hr />
                     <div class="changeinfo">
-                        <span>QQ：</span>
-                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.qq}"/>
+                        <span>E-mail：</span>
+                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.email}"/>
                     </div>
                     <input type="submit" class="setting-save" value="保存修改信息" />
                 </form:form>

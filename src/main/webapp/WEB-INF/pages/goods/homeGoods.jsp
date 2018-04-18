@@ -68,7 +68,7 @@
                         <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
                                 data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
                                 data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
-                            <a>发布闲置</a>
+                            发布闲置
                         </button>
                     </li>
                 </c:if>

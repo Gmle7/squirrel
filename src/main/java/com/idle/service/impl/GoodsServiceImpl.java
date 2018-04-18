@@ -22,8 +22,8 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsMapper goodsMapper;
 
     @Override
-    public void downGood(Integer goodId) {
-        goodsMapper.downGood(goodId);
+    public void downGood(Integer goodsId) {
+        goodsMapper.downGood(goodsId);
     }
 
     public int addGood(Goods goods , Integer duration) {
@@ -38,20 +38,20 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.selectByPrimaryKey(goodsId);
     }
 
-    public void deleteGoodsByPrimaryKey(Integer id) {
-        goodsMapper.deleteByPrimaryKey(id);
+    public void deleteGoodsByPrimaryKey(Integer goodsId) {
+        goodsMapper.deleteByPrimaryKey(goodsId);
     }
 
     public List<Goods> getAllGoods() {
         return goodsMapper.selectAllGoods();
     }
 
-    public List<Goods> searchGoods(String name, String description) {
-        return  goodsMapper.searchGoods(name,description);
+    public List<Goods> searchGoods(String goodsName, String description) {
+        return  goodsMapper.searchGoods(goodsName,description);
     }
 
-    public List<Goods> getGoodsByCategory(Integer id,String name,String description) {
-        return goodsMapper.selectByCategory(id,name,description);
+    public List<Goods> getGoodsByCategory(Integer goodsId,String goodsName,String description) {
+        return goodsMapper.selectByCategory(goodsId,goodsName,description);
     }
 
     public void updateGoodsByPrimaryKeyWithBLOBs(int goodsId,Goods goods) {

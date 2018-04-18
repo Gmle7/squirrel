@@ -17,7 +17,8 @@
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
     <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css" />
     <link rel="stylesheet" href="<%=basePath%>css/detail.css" />
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -190,7 +191,7 @@
 <!--显示商品详情-->
 <div ng-controller="detailBoxController" class="detail-box stark-components z-depth-1 row ng-scope">
     <div class="col s12 path">
-        <a href="<%=basePath%>goods/category/${category.id}">${category.name}</a>
+        <a href="<%=basePath%>goods/category/${category.categoryId}">${category.categoryName}</a>
         <em>></em>
         <a>${goodsExtend.goods.name}</a>
     </div>
@@ -208,7 +209,7 @@
         </div>
     </div>
     <div class="col s6">
-        <h1 class="item-name">${goodsExtend.goods.name}</h1>
+        <h1 class="item-name">${goodsExtend.goods.goodsName}</h1>
         <h2 class="item-price">${goodsExtend.goods.price}</h2>
         <div class="item-public-info">
             <p class="bargain">可讲价</p>

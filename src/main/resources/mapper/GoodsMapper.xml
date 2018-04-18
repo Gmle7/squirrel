@@ -21,7 +21,7 @@
     <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, category_id, user_id, name, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
+    goods_id, goods_name, category_id, user_id, goods_name, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
   </sql>
   <sql id="Blob_Column_List" >
     description
@@ -40,14 +40,14 @@
     select
     *
     from goods
-    where name like concat('%',#{name},'%') OR description like concat('%',#{description},'%')
+    where goods_name like concat('%',#{goodsName},'%') OR description like concat('%',#{description},'%')
     <include refid="Factor"></include>
   </select>
   <select id="selectByCategory" resultMap="ResultMapWithBLOBs">
     select * from goods
     where category_id = #{category_id,jdbcType=INTEGER}
-    <if test="name != null" >
-     AND (name like concat('%',#{name},'%')
+    <if test="goodsName != null" >
+     AND (goodsName like concat('%',#{goodsName},'%')
     </if>
     <if test="description != null" >
      OR description like concat('%',#{description},'%'))
@@ -79,7 +79,7 @@
 
   <insert id="insert" parameterType="com.idle.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
     insert into goods (goods_id,goods_name, category_id, user_id,
-    name, price, real_price, start_time,
+    goods_name, price, real_price, start_time,
     end_time, polish_time, goods_status,comment_num, description)
     values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR},#{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
     #{price,jdbcType=REAL}, #{realPrice,jdbcType=REAL}, #{startTime,jdbcType=VARCHAR},

@@ -93,7 +93,7 @@
                     keyboard: true
 				});
                 rowId = $(this).data("row-id");
-//                $.post("/admin/downGood",{goodId:$(this).data("row-id")},function(){
+//                $.post("/admin/downGood",{goodsId:$(this).data("row-id")},function(){
 //                    alert("下架成功");
 //                    $("#grid-data").bootgrid("reload");
 //                });

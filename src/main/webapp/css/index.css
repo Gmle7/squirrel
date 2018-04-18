@@ -10872,7 +10872,7 @@ div.change-name.stark-components .publish-box .publish-btn:hover {
     margin-left: 500px;
     font-size: 18px;
     width: 120px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 .sidebar.stark-components li {

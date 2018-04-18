@@ -22,14 +22,14 @@ public class CategoryServiceImpl implements CategoryService {
         List<Category> categories = categoryMapper.getAllCategory();
         return categories;
     }
-    public Category selectByPrimaryKey(Integer id){
-        Category category = categoryMapper.selectByPrimaryKey(id);
+    public Category selectByPrimaryKey(Integer categoryId){
+        Category category = categoryMapper.selectByPrimaryKey(categoryId);
         return category;
     }
     public int updateByPrimaryKey(Category category) {
         return  categoryMapper.updateByPrimaryKey(category);
     }
-    public int updateCategoryNum(Integer id,Integer number) {
-        return categoryMapper.updateCategoryNum(id,number);
+    public int updateCategoryNum(Integer categoryId,Integer number) {
+        return categoryMapper.updateCategoryNum(categoryId,number);
     }
 }

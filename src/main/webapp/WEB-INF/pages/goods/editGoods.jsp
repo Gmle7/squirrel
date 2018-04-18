@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
     <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/zh.js"></script>
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 
     <style>
         .container{padding-top:10px}
@@ -119,7 +119,7 @@
                      </div>
                      <div class="changeinfo">
                         <span>物品类别：</span>
-                        <select class="in_info" name="catelogId">
+                        <select class="in_info" name="categoryId">
                             <option value="1">闲置数码</option>
                             <option value="2">校园代步</option>
                             <option value="3">电器日用</option>
@@ -154,7 +154,7 @@
                                         <div class="col-sm-10">
                                             <img src="<%=basePath%>upload/${goodsExtend.goods.imgUrl}"/>
                                             <input type="hidden" name="imgUrl" value="${goodsExtend.images[0].imgUrl}">
-                                            <input type="hidden" name="id" value="${goodsExtend.goods.id}">
+                                            <input type="hidden" name="id" value="${goodsExtend.goods.goodsId}">
                                             <input type="hidden" name="startTime" value="${goodsExtend.goods.startTime}">
                                             <input type="hidden" name="endTime" value="${goodsExtend.goods.endTime}">
                                         </div>

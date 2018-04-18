@@ -9,10 +9,10 @@ import com.idle.pojo.Goods;
 public interface GoodsMapper {
     /**
      * 通过主键删除
-     * @param id
+     * @param goodsId
      * @return
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer goodsId);
 
     /**
      * 添加物品
@@ -21,7 +21,7 @@ public interface GoodsMapper {
      */
     int insert(Goods record);
 
-    int downGood(Integer id);
+    int downGood(Integer goodsId);
     /**
      *
      * @param record
@@ -31,10 +31,10 @@ public interface GoodsMapper {
 
     /**
      * 通过id查询
-     * @param id
+     * @param goodsId
      * @return
      */
-    Goods selectByPrimaryKey(Integer id);
+    Goods selectByPrimaryKey(Integer goodsId);
 
     /**
      * 通过主键更改信息
@@ -63,14 +63,14 @@ public interface GoodsMapper {
      */
     List<Goods> selectAllGoods();
 
-    List<Goods> searchGoods(@Param("name") String name,@Param("description") String description);
+    List<Goods> searchGoods(@Param("goodsName") String goodsName,@Param("description") String description);
 
     /**
      * 根据商品分类的id，查询商品
      * @param category_id
      * @return
      */
-    List<Goods> selectByCategory(@Param("category_id") Integer category_id,@Param("name") String name,@Param("description") String description);
+    List<Goods> selectByCategory(@Param("category_id") Integer category_id,@Param("goodsName") String goodsName,@Param("description") String description);
 
     /**
      * 根据时间先后获取商品信息，进行分页查询

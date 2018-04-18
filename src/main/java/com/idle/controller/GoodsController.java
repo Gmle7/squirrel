@@ -93,16 +93,16 @@ public class GoodsController {
 
     /**
      * 查询该类商品
-     * @param id
+     * @param goodsId
      * 要求该参数不为空
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/category/{id}")
-    public ModelAndView categoryGoods(HttpServletRequest request,@PathVariable("id") Integer id,
+    @RequestMapping(value = "/category/{goodsId}")
+    public ModelAndView categoryGoods(HttpServletRequest request,@PathVariable("goodsId") Integer goodsId,
                                      @RequestParam(value = "str",required = false) String str) throws Exception {
-        List<Goods> goodsList = goodsService.getGoodsByCategory(id,str,str);
-        Category category = categoryService.selectByPrimaryKey(id);
+        List<Goods> goodsList = goodsService.getGoodsByCategory(goodsId,str,str);
+        Category category = categoryService.selectByPrimaryKey(goodsId);
         List<GoodsExtend> goodsExtendList = new ArrayList<>();
         goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
         ModelAndView modelAndView = new ModelAndView();
@@ -115,17 +115,17 @@ public class GoodsController {
 
     /**
      * 根据商品id查询该商品详细信息
-     * @param id
+     * @param goodsId
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/goodsId/{id}")
-    public ModelAndView getGoodsById(@PathVariable("id") Integer id,@RequestParam(value = "str",required = false) String str) throws Exception {
-        Goods goods = goodsService.getGoodsByPrimaryKey(id);
+    @RequestMapping(value = "/goodsId/{goodsId}")
+    public ModelAndView getGoodsById(@PathVariable("goodsId") Integer goodsId,@RequestParam(value = "str",required = false) String str) throws Exception {
+        Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
         User seller = userService.selectByPrimaryKey(goods.getUserId());
         Category category = categoryService.selectByPrimaryKey(goods.getCategoryId());
         GoodsExtend goodsExtend = new GoodsExtend();
-        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
+        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(goodsId);
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);
         ModelAndView modelAndView = new ModelAndView();
@@ -143,10 +143,10 @@ public class GoodsController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/editGoods/{id}")
-    public ModelAndView editGoods(@PathVariable("id") Integer id) throws Exception {
-        Goods goods = goodsService.getGoodsByPrimaryKey(id);
-        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(id);
+    @RequestMapping(value = "/editGoods/{goodsId}")
+    public ModelAndView editGoods(@PathVariable("goodsId") Integer goodsId) throws Exception {
+        Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
+        List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(goodsId);
         GoodsExtend goodsExtend = new GoodsExtend();
         goodsExtend.setGoods(goods);
         goodsExtend.setImages(imageList);
@@ -179,9 +179,9 @@ public class GoodsController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/downGood/{goodId}")
-    public void downGoods(@PathVariable int goodId) throws Exception {
-        goodsService.downGood(goodId);
+    @RequestMapping(value = "/downGood/{goodsId}")
+    public void downGoods(@PathVariable int goodsId) throws Exception {
+        goodsService.downGood(goodsId);
     }
 
     /**
@@ -190,9 +190,9 @@ public class GoodsController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/deleteGoods/{id}")
-    public String deleteGoods(HttpServletRequest request,@PathVariable("id") Integer id) throws Exception {
-        Goods goods = goodsService.getGoodsByPrimaryKey(id);
+    @RequestMapping(value = "/deleteGoods/{goodsId}")
+    public String deleteGoods(HttpServletRequest request,@PathVariable("goodsId") Integer goodsId) throws Exception {
+        Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
         //删除商品后，category的number-1，user表的goods_num-1，image删除,更新session的值
         User cur_user = (User)request.getSession().getAttribute("cur_user");
         goods.setUserId(cur_user.getUserId());
@@ -203,8 +203,8 @@ public class GoodsController {
         userService.updateGoodsNum(cur_user.getUserId(),number-1);
         cur_user.setGoodsNum(number-1);
         request.getSession().setAttribute("cur_user",cur_user);//修改session值
-        imageService.deleteImagesByGoodsPrimaryKey(id);
-        goodsService.deleteGoodsByPrimaryKey(id);
+        imageService.deleteImagesByGoodsPrimaryKey(goodsId);
+        goodsService.deleteGoodsByPrimaryKey(goodsId);
         return "redirect:/user/allGoods";
     }
     /**
@@ -252,26 +252,26 @@ public class GoodsController {
     /**
      * 上传物品
      * @param session
-     * @param myfile
+     * @param myFile
      * @return
      * @throws IllegalStateException
      * @throws IOException
      */
     @ResponseBody
     @RequestMapping(value = "/uploadFile")
-    public  Map<String,Object> uploadFile(HttpSession session,MultipartFile myfile) throws IllegalStateException, IOException{
+    public  Map<String,Object> uploadFile(HttpSession session,MultipartFile myFile) throws IllegalStateException, IOException{
         //原始名称
-        String oldFileName = myfile.getOriginalFilename(); //获取上传文件的原名
+        String oldFileName = myFile.getOriginalFilename(); //获取上传文件的原名
         //存储图片的物理路径
         String file_path = session.getServletContext().getRealPath("upload");
         //上传图片
-        if(myfile!=null && oldFileName!=null && oldFileName.length()>0){
+        if(myFile!=null && oldFileName!=null && oldFileName.length()>0){
             //新的图片名称
             String newFileName = UUID.randomUUID() + oldFileName.substring(oldFileName.lastIndexOf("."));
             //新图片
             File newFile = new File(file_path+"/"+newFileName);
             //将内存中的数据写入磁盘
-            myfile.transferTo(newFile);
+            myFile.transferTo(newFile);
             //将新图片名称返回到前端
             Map<String,Object> map=new HashMap<String,Object>();
             map.put("success", "成功啦");

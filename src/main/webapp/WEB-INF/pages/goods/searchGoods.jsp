@@ -14,9 +14,10 @@
     <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
-    <link rel="stylesheet" href="../css/materialize-icon.css" />
-    <script type="text/javascript" src="../js/user.js"></script>
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css" />
+    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 <body ng-view="ng-view">
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
@@ -31,7 +32,7 @@
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
                         <input id="search" name="str" placeholder="搜索宝贝..." style="height: 40px;width: 400px"
-                               class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
+                               class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" value="<c:out value="${search}"></c:out>"/>
                         <label for="search" class="active">
                             <i ng-click="search()" class="iconfont"></i>
                         </label>
@@ -202,13 +203,13 @@
             </c:if>
             <c:forEach var="item" items="${goodsExtendList}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}">
                         <div class="card-image">
                             <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
                         </div>
                         <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out value="${item.goods.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.goods.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.name}"></c:out></p>
+                            <p><c:out value="${item.goods.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
