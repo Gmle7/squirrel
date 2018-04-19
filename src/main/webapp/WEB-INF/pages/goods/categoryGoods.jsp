@@ -1,23 +1,23 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
-    <link rel="stylesheet" href="<%=basePath%>css/index.css" />
-    <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
-    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -42,13 +42,12 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <c:if test="${empty cur_user}">
-                    <li><a onclick="showLogin()"><span
+                    <li><a class="nav-left" onclick="showLogin()"><span
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-                    <li><a onclick="showSignup()"><span
+                    <li><a class="nav-left" onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
-
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
@@ -105,11 +104,13 @@
                 </a>
                 <form:form action="/user/login" method="post" id="user1" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
@@ -137,15 +138,18 @@
                 </a>
                 <form:form action="/user/addUser" method="post" id="user2" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>昵称</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -173,7 +177,8 @@
                 </div>
                 <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>修改用户名</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -201,7 +206,7 @@
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}">
                         <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
+                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}"/>
                         </div>
                         <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
                         <div class="card-content item-name">
@@ -279,11 +284,24 @@
             <em>房屋出租</em>
         </a>
     </li>
-    <div class="info">
-        <a href="" target="_blank">关于我们</a><em>-</em>
-        <a href="">联系我们</a>
-        <p>©2018 110XB工作室</p>
-    </div>
+</div>
+<div class="bottom">
+    <ul class="pagination pager">
+        <c:if test="${userGrid.current!=1}">
+            <li><a href="#">&laquo;</a></li>
+        </c:if>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+</div>
+<div class="bottom">
+    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
+    备案号：123456789-1
 </div>
 </body>
 </html>

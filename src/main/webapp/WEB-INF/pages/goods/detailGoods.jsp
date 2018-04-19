@@ -1,24 +1,24 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
-    <link rel="stylesheet" href="<%=basePath%>css/index.css" />
-    <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
-    <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css" />
-    <link rel="stylesheet" href="<%=basePath%>css/detail.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css"/>
+    <link rel="stylesheet" href="<%=basePath%>css/detail.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -43,13 +43,12 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <c:if test="${empty cur_user}">
-                    <li><a onclick="showLogin()"><span
+                    <li><a class="nav-left" onclick="showLogin()"><span
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-                    <li><a onclick="showSignup()"><span
+                    <li><a class="nav-left" onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
-
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
@@ -106,11 +105,13 @@
                 </a>
                 <form:form action="/user/login" method="post" id="user" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
@@ -138,15 +139,18 @@
                 </a>
                 <form:form action="/user/addUser" method="post" id="user2" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>昵称</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -174,7 +178,8 @@
                 </div>
                 <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>修改用户名</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -198,7 +203,7 @@
     <div class="col s6">
         <div class="slider" style="height: 440px;">
             <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}" />
+                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}"/>
             </ul>
             <ul class="indicators">
                 <li class="indicator-item"></li>
@@ -219,7 +224,8 @@
             </p>
         </div>
         <div class="publisher-info-title">
-            <em>卖家信息</em><hr>
+            <em>卖家信息</em>
+            <hr>
         </div>
         <c:if test="${empty cur_user}">
             <div class="item-contact">
@@ -264,8 +270,8 @@
 </div>
 <div class="detail-box stark-components z-depth-1 row">
     <h1 class="title">商品详情</h1>
-    <hr class="hr1" />
-    <hr class="hr2" />
+    <hr class="hr1"/>
+    <hr class="hr2"/>
     <p class="section">${goodsExtend.goods.describle}</p>
     <p class="section"></p>
     <p class="section">
@@ -276,8 +282,8 @@
     <div class="clo s12">
         <div ng-controller="commentController" class="comment stark-components z-depth-1 ng-scope">
             <h1 class="title">评论</h1>
-            <hr class="hr1" />
-            <hr class="hr2" />
+            <hr class="hr1"/>
+            <hr class="hr2"/>
             <div class="comment-collection">
                 <div class="comment-item ng-scope">
                     <div class="comment-main-content">

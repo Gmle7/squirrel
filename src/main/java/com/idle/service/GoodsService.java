@@ -1,6 +1,8 @@
 package com.idle.service;
 
 import com.idle.pojo.Goods;
+import com.idle.util.UserGrid;
+
 import java.util.List;
 
 public interface GoodsService {
@@ -41,13 +43,13 @@ public interface GoodsService {
      */
     List<Goods> getAllGoods();
 
-    List<Goods> searchGoods(String goodsName, String description);
+    UserGrid<Goods> searchGoods(String goodsName, String description, int pageNum, int pageSize);
 
 
     /**
      * 通过商品分类获取商品信息
      */
-    List<Goods> getGoodsByCategory(Integer goodsId,String goodsName,String description);
+    UserGrid<Goods> getGoodsByCategory(Integer categoryId,String goodsName,String description,int pageNum, int pageSize);
 
     /**
      * 根据分类id,并进行时间排序,获取前limit个结果

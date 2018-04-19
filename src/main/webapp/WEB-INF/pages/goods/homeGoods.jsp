@@ -45,7 +45,7 @@
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
-                        <input id="search" name="str" placeholder="搜索宝贝..." style="height: 40px;width: 400px"
+                        <input id="search" name="str" placeholder="搜索宝贝..."
                                class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label for="search" class="active">
                             <i ng-click="search()" class="iconfont"></i>
@@ -650,11 +650,10 @@
             <em>房屋出租</em>
         </a>
     </li>
-    <div class="info">
-        <a href="" target="_blank">关于我们</a><em>-</em>
-        <a href="">联系我们</a>
-        <p>©2018 110XB工作室</p>
-    </div>
+</div>
+<div class="copyright-bottom">
+    Copyright &copy; @2018 110XB工作室   <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved. 备案号：123456789-1
 </div>
 </body>
 </html>

@@ -3,12 +3,15 @@ package com.idle.controller;
 import com.idle.pojo.Goods;
 import com.idle.pojo.User;
 import com.idle.service.GoodsService;
+import com.idle.service.UserService;
 import com.idle.util.GoodsGrid;
 import com.idle.util.UserGrid;
-import com.idle.service.UserService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -70,7 +73,7 @@ public class AdminController {
     public UserGrid getUserList(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount) {
         int total = userService.getUserNum();
         List<User>  list = userService.getPageUser(current,rowCount);
-        UserGrid userGrid = new UserGrid();
+        UserGrid<User> userGrid = new UserGrid<>();
         userGrid.setCurrent(current);
         userGrid.setRowCount(rowCount);
         userGrid.setRows(list);

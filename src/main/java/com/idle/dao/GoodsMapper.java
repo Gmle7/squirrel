@@ -67,10 +67,10 @@ public interface GoodsMapper {
 
     /**
      * 根据商品分类的id，查询商品
-     * @param category_id
+     * @param categoryId
      * @return
      */
-    List<Goods> selectByCategory(@Param("category_id") Integer category_id,@Param("goodsName") String goodsName,@Param("description") String description);
+    List<Goods> selectByCategory(@Param("categoryId") Integer categoryId,@Param("goodsName") String goodsName,@Param("description") String description);
 
     /**
      * 根据时间先后获取商品信息，进行分页查询
@@ -87,10 +87,10 @@ public interface GoodsMapper {
 
     /**
      * 查询登录用户的所有闲置商品
-     * @param user_id
+     * @param userId
      * @return
      */
-    List<Goods> getGoodsByUserId(Integer user_id);
+    List<Goods> getGoodsByUserId(Integer userId);
 
     /**
      * 根据种类ID查ID下所有商品

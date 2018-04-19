@@ -1,23 +1,23 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
-    <link rel="stylesheet" href="<%=basePath%>css/index.css" />
-    <script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js" ></script>
-    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js" ></script>
-    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
+    <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css"/>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
 <body ng-view="ng-view">
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
@@ -32,7 +32,8 @@
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
                         <input id="search" name="str" placeholder="搜索宝贝..." style="height: 40px;width: 400px"
-                               class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" value="<c:out value="${search}"></c:out>"/>
+                               class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                               value="<c:out value="${search}"></c:out>"/>
                         <label for="search" class="active">
                             <i ng-click="search()" class="iconfont"></i>
                         </label>
@@ -41,13 +42,12 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                 <c:if test="${empty cur_user}">
-                    <li><a onclick="showLogin()"><span
+                    <li><a class="nav-left" onclick="showLogin()"><span
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
-                    <li><a onclick="showSignup()"><span
+                    <li><a class="nav-left" onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
-
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
@@ -104,11 +104,13 @@
                 </a>
                 <form:form action="/user/login" method="post" id="user1" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
@@ -136,15 +138,18 @@
                 </a>
                 <form:form action="/user/addUser" method="post" id="user2" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>昵称</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="password" required="required" class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" />
+                        <input type="password" name="password" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -172,7 +177,8 @@
                 </div>
                 <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
-                        <input type="text" name="username" required="required" class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched" />
+                        <input type="text" name="username" required="required"
+                               class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>修改用户名</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
@@ -190,30 +196,32 @@
 <div class="main-content">
     <!--描述：分类-->
     <div class="index-title">
-        <a href="">${category.name}</a>
+        <a href="">${userGrid.rows.get(1).categoryName}</a>
         <hr class="hr1">
         <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty goodsExtendList}">
+            <c:if test="${empty userGrid}">
                 <div class="no_share">
                     <span>没有任何内容，试着搜索其他的东西吧！</span>
                 </div>
             </c:if>
-            <c:forEach var="item" items="${goodsExtendList}">
+            <c:forEach var="item" items="${userGrid.rows}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
+                            <img src="<%=basePath%>upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out value="${item.goods.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.goods.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.goodsName}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -283,11 +291,55 @@
             <em>房屋出租</em>
         </a>
     </li>
-    <div class="info">
-        <a href="" target="_blank">关于我们</a><em>-</em>
-        <a href="">联系我们</a>
-        <p>©2018 110XB工作室</p>
-    </div>
+</div>
+<!-- 底部分页栏-->
+<div class="bottom">
+    <ul class="pagination pager">
+        <c:if test="${userGrid.current!=1}">
+            <li><a href="#">&laquo;</a></li>
+        </c:if>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+    <!-- 在这个上面添加上一页的功能(添加这个功能之前还需要判断当前页面是否为第一页,如果为第一页则不显示上一页) -->
+    <%--<c:if test="${userGrid.current!=1}">
+        <a href="<c:url value='/goods/search?str=${search}&&current${userGrid.currentPage-1}' />">
+            上一页
+        </a>
+        &nbsp;
+    </c:if>--%>
+
+    <%--<!-- 分页的分页进行修改的地方就是这里---将已经拿到的页面进行分页操作! -->
+    <c:forEach begin="${startN }" end="${endN }" var="idx">
+        <!-- 用超链接进行包一下即可 -->
+        <c:if test="${result.currentPage!=idx }">
+            <!-- 这里记得将当前页的参数传参过去 -->
+            <a href="<c:url value='/goods/search/${idx }' />">
+                    ${idx }
+            </a>
+        </c:if>
+        <c:if test="${userGrid.current==idx }">
+            ${idx }
+        </c:if>
+        &nbsp;
+    </c:forEach>--%>
+
+    <!-- 在这个下面添加下一页的功能(添加这个功能之前还需要判断当前页面是否为最后一页,如果为最后一页则不显示下一页) -->
+    <%--<c:if test="${userGrid.current!=userGrid.pageCount }">
+        <a href="<c:url value='/goods/search?str=${search}&&current${userGrid.currentPage+1}' />">
+            下一页
+        </a>
+    </c:if>--%>
+</div>
+<!--网页底部信息-->
+<div class="bottom">
+    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
+    备案号：123456789-1
 </div>
 </body>
 </html>

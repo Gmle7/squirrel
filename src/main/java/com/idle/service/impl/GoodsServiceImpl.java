@@ -5,6 +5,7 @@ import com.idle.dao.GoodsMapper;
 import com.idle.pojo.Goods;
 import com.idle.service.GoodsService;
 import com.idle.util.DateUtil;
+import com.idle.util.UserGrid;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,12 +47,26 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.selectAllGoods();
     }
 
-    public List<Goods> searchGoods(String goodsName, String description) {
-        return  goodsMapper.searchGoods(goodsName,description);
+    public UserGrid<Goods> searchGoods(String goodsName,String description,int pageNum,int pageSize) {
+        //PageHelper.startPage(pageNum,pageSize);
+        List<Goods> goodsList = goodsMapper.searchGoods(goodsName,description);
+        UserGrid<Goods> userGrid=new UserGrid<>();
+        userGrid.setCurrent(pageNum);
+        userGrid.setRowCount(4);
+        userGrid.setRows(goodsList);
+        userGrid.setTotal(0);
+        return  userGrid;
     }
 
-    public List<Goods> getGoodsByCategory(Integer goodsId,String goodsName,String description) {
-        return goodsMapper.selectByCategory(goodsId,goodsName,description);
+    public UserGrid<Goods> getGoodsByCategory(Integer categoryId,String goodsName,String description,int pageNum, int pageSize) {
+        //PageHelper.startPage(pageNum,pageSize);
+        List<Goods> goodsList=goodsMapper.selectByCategory(categoryId,goodsName,description);
+        UserGrid<Goods> userGrid=new UserGrid<>();
+        userGrid.setCurrent(pageNum);
+        userGrid.setRowCount(4);
+        userGrid.setRows(goodsList);
+        userGrid.setTotal(0);
+        return userGrid;
     }
 
     public void updateGoodsByPrimaryKeyWithBLOBs(int goodsId,Goods goods) {

@@ -2,3 +2,11 @@ body {
     background: url(/img/logo.jpg) /*no-repeat*/;
     /*background-size: cover;*/
 }
+.copyright-bottom {
+    font-size: 14px;
+    color: #999;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}

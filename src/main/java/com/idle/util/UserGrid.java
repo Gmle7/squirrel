@@ -1,6 +1,6 @@
 package com.idle.util;
 
-import com.idle.pojo.User;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.List;
 
@@ -8,12 +8,12 @@ import java.util.List;
  * 用户分页查询工具类
  * Created by lenovo on 2017/5/14.
  */
-public class UserGrid {
+public class UserGrid<T> {
 
     private int current;//当前页面号
     private int rowCount;//每页行数
     private int total;//总行数
-    private List<User> rows;
+    private List<T> rows;
 
     public int getCurrent() {
         return current;
@@ -39,11 +39,11 @@ public class UserGrid {
         this.total = total;
     }
 
-    public List<User> getRows() {
+    public List<T> getRows() {
         return rows;
     }
 
-    public void setRows(List<User> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 }

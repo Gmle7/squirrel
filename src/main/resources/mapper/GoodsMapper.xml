@@ -21,10 +21,10 @@
     <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, category_id, user_id, goods_name, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
+    goods_id, goods_name, category_id, category_name, user_id, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
   </sql>
   <sql id="Blob_Column_List" >
-    description
+    description, description
   </sql>
   <sql id="Factor">
 --     and end_time >= now() order by polish_time DESC
@@ -36,18 +36,16 @@
     where goods_id = #{goodsId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
-  <select id="searchGoods" resultMap="ResultMapWithBLOBs" parameterType="String" >
-    select
-    *
-    from goods
-    where goods_name like concat('%',#{goodsName},'%') OR description like concat('%',#{description},'%')
+  <select id="searchGoods" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+    select goods.*,image.img_url,category.category_name from goods LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN image on goods.goods_id=image.goods_id
+    where goods_name like concat('%',#{goodsName,jdbcType=VARCHAR},'%') OR description like concat('%',#{description,jdbcType=VARCHAR},'%')
     <include refid="Factor"></include>
   </select>
   <select id="selectByCategory" resultMap="ResultMapWithBLOBs">
     select * from goods
-    where category_id = #{category_id,jdbcType=INTEGER}
+    where category_id = #{categoryId,jdbcType=INTEGER}
     <if test="goodsName != null" >
-     AND (goodsName like concat('%',#{goodsName},'%')
+     AND (goods_name like concat('%',#{goodsName},'%')
     </if>
     <if test="description != null" >
      OR description like concat('%',#{description},'%'))
@@ -62,7 +60,7 @@
     LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN user on goods.user_id=user.user_id
   </select>
   <select id="getGoodsByUserId" resultMap="ResultMapWithBLOBs">
-    select * from goods where user_id = #{user_id,jdbcType=INTEGER}
+    select * from goods where user_id = #{userId,jdbcType=INTEGER}
   </select>
 
   <select id="selectByCategoryOrderByDate" resultMap="ResultMapWithBLOBs">
@@ -127,10 +125,10 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="goods_id != null" >
+      <if test="goodsId != null" >
         #{goodsId,jdbcType=INTEGER},
       </if>
-      <if test="goods_name != null" >
+      <if test="goodsName != null" >
         #{goodsName,jdbcType=INTEGER},
       </if>
       <if test="categoryId != null" >

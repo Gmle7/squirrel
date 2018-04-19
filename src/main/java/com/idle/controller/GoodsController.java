@@ -7,6 +7,7 @@ import com.idle.service.ImageService;
 import com.idle.service.UserService;
 import com.idle.util.DateUtil;
 import com.idle.util.GoodsExtendAndImage;
+import com.idle.util.UserGrid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,12 +81,10 @@ public class GoodsController {
     }
 
     @RequestMapping(value = "/search")
-    public ModelAndView searchGoods(@RequestParam(value = "str",required = false) String str)throws Exception {
-        List<Goods> goodsList = goodsService.searchGoods(str,str);
-        List<GoodsExtend> goodsExtendList = new ArrayList<>();
-        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
+    public ModelAndView searchGoods(@RequestParam(value = "str",required = false) String str,@RequestParam(defaultValue = "1",value = "pageNum") int pageNum, @RequestParam(defaultValue = "16",value = "pageSize")int pageSize)throws Exception {
+        UserGrid<Goods> userGrid= goodsService.searchGoods(str,str,pageNum,pageSize);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("goodsExtendList", goodsExtendList);
+        modelAndView.addObject("userGrid", userGrid);
         modelAndView.addObject("search",str);
         modelAndView.setViewName("/goods/searchGoods");
         return modelAndView;
@@ -93,20 +92,18 @@ public class GoodsController {
 
     /**
      * 查询该类商品
-     * @param goodsId
+     * @param str
      * 要求该参数不为空
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/category/{goodsId}")
-    public ModelAndView categoryGoods(HttpServletRequest request,@PathVariable("goodsId") Integer goodsId,
-                                     @RequestParam(value = "str",required = false) String str) throws Exception {
-        List<Goods> goodsList = goodsService.getGoodsByCategory(goodsId,str,str);
-        Category category = categoryService.selectByPrimaryKey(goodsId);
-        List<GoodsExtend> goodsExtendList = new ArrayList<>();
-        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
+    @RequestMapping(value = "/category/{categoryId}")
+    public ModelAndView categoryGoods(@PathVariable("categoryId") Integer categoryId,
+                                     @RequestParam(value = "str",required = false) String str,@RequestParam(defaultValue = "1",value = "pageNum") int pageNum, @RequestParam(defaultValue = "4",value = "pageSize")int pageSize) throws Exception {
+        UserGrid<Goods>  userGrid = goodsService.getGoodsByCategory(categoryId,str,str,pageNum,pageSize);
+        Category category = categoryService.selectByPrimaryKey(categoryId);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("goodsExtendList", goodsExtendList);
+        modelAndView.addObject("userGrid", userGrid);
         modelAndView.addObject("category", category);
         modelAndView.addObject("search",str);
         modelAndView.setViewName("/goods/categoryGoods");
