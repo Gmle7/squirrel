@@ -10,15 +10,69 @@
 <head>
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
-    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
     <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css"/>
     <link rel="stylesheet" href="<%=basePath%>css/detail.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
+    <script>
+        //验证消息显示在页面上
+        $(function () {
+            $("input[name='password']").focus(function () {
+                $("#badPwd").html("");
+                $("#badUser").html("");
+            })
+            $("input[name='phone']").focus(function () {
+                $("#badPwd").html("");
+                $("#badUser").html("");
+            })
+            $("#commentWarning").css("display", "none");
+            $("#commentSuccess").css("display", "none");
+            $("#commentError").css("display", "none");
+        })
+
+        function submitComments() {
+            var comments = {
+                userId:${goodsExtend.goods.userId},
+                goodsId:${goodsExtend.goods.goodsId},
+                content: $('#commentBox').value();
+        }
+            if (comments.content == "") {
+                $("#commentWarning").css("display", "block");
+                return false;
+            }
+            //创建异步对象
+            $.ajax({
+                // 请求发送方式
+                type: 'post',
+                // 验证文件
+                url: '/comments/addComments',
+                // 用户输入的帐号密码
+                data: JSON.stringify(comments),
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8',
+                // 异步，不写默认为True
+                async: true,
+                //请求成功后的回调
+                success: function (data) {
+                    if (data) {
+                        $("#commentSuccess").css("display", "block");
+                    } else {
+                        $("#commentError").css("display", "block");
+                    }
+                },
+                error: function () {
+                    alert('服务端异常');
+                }
+            })
+        }
+    </script>
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -55,7 +109,7 @@
                         <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
                                 data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
                                 data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
-                            发布闲置
+                            <a>发布闲置</a>
                         </button>
                     </li>
                 </c:if>
@@ -196,21 +250,25 @@
 <!--显示商品详情-->
 <div ng-controller="detailBoxController" class="detail-box stark-components z-depth-1 row ng-scope">
     <div class="col s12 path">
-        <a href="<%=basePath%>goods/category/${category.categoryId}">${category.categoryName}</a>
+        <a href="<%=basePath%>goods/category/${goodsExtend.goods.categoryId}">${goodsExtend.goods.categoryName}</a>
         <em>></em>
-        <a>${goodsExtend.goods.name}</a>
+        <a>${goodsExtend.goods.goodsName}</a>
     </div>
-    <div class="col s6">
-        <div class="slider" style="height: 440px;">
-            <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}"/>
-            </ul>
-            <ul class="indicators">
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-            </ul>
+    <!-- 轮播图 -->
+    <div id="myCarouse2" class="carousel slide" style="width: 485px">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <c:forEach var="item" items="${goodsExtend.images}" varStatus="status">
+            <li data-target="#myCarouse2" data-slide-to=${status.index} <c:if test="${status.index==0}">class='active'</c:if>></li>
+            </c:forEach>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <c:forEach var="item" items="${goodsExtend.images}" varStatus="status">
+                <div class="item <c:if test="${status.index==0}">active</c:if>" style="height: 300px">
+                    <img src="<%=basePath%>upload/${item.imgUrl}" alt="First slide${item.id}" style="width: 100%;height: 100%">
+                </div>
+            </c:forEach>
         </div>
     </div>
     <div class="col s6">
@@ -255,7 +313,7 @@
                     <div class="base-blue z-depth-1 attr">
                         <i class="iconfont"></i>
                     </div>
-                    <div class="value">${seller.qq}</div>
+                    <div class="value">${seller.email}</div>
                 </div>
                 <div>
                     <div class="base-blue z-depth-1 attr">
@@ -272,43 +330,70 @@
     <h1 class="title">商品详情</h1>
     <hr class="hr1"/>
     <hr class="hr2"/>
-    <p class="section">${goodsExtend.goods.describle}</p>
+    <p class="section">${goodsExtend.goods.description}</p>
     <p class="section"></p>
     <p class="section">
         联系我的时候，请说明是在湘信院Squirrel校园闲置空间上看见的哦~
     </p>
 </div>
-<div class="row detail-area">
+<div class="row detail-area" id="comment">
     <div class="clo s12">
         <div ng-controller="commentController" class="comment stark-components z-depth-1 ng-scope">
             <h1 class="title">评论</h1>
             <hr class="hr1"/>
             <hr class="hr2"/>
             <div class="comment-collection">
-                <div class="comment-item ng-scope">
-                    <div class="comment-main-content">
-                        <em class="name ng-binding">hlk_1135:</em>
-                        <em class="ng-hide">回复</em>
-                        <em class="name ng-binding ng-hide">@:</em>
-                        <em class="ng-binding">不错。</em>
+                <c:forEach var="item" items="${commentsList}">
+                    <em></em>
+                    <div class="comment-item ng-scope">
+                        <div class="comment-main-content">
+                            <em class="name ng-binding">${item.username}</em>
+                            <em class="ng-hide">回复</em>
+                            <em class="name ng-binding ng-hide">@:</em>
+                            <em class="ng-binding">${item.content}</em>
+                        </div>
+                        <div class="comment-function">
+                            <em class="time ng-biinding">${item.createAt}</em>
+                            <a class="reply-or-delete">删除</a>
+                            <a class="reply-or-delete">回复</a>
+                        </div>
                     </div>
-                    <div class="comment-function">
-                        <em class="time ng-biinding">2017/05/15 16:45:54</em>
-                        <a class="reply-or-delete">删除</a>
-                        <a class="reply-or-delete">回复</a>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
             <div class="comment-add row">
                 <div class="input-field col s12">
-                    <i class="iconfont prefix"></i>
-                    <input id="commentbox" type="text" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
-                    <label for="commentbox">这里写下评论</label>
-                    <button type="submit" class="waves-effect wave-light btn comment-submit">确认</button>
+                    <%--<form:form action="/comments/addComments" method="post" id="comments" role="form">--%>
+                        <i class="iconfont prefix"></i>
+                        <input id="commentBox" type="text" name="commentBox" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
+                        <label for="commentBox">这里写下评论</label>
+                        <div class="alert alert-success" id="commentSuccess">
+                            <a href="#" class="alert-link">评论成功！</a>
+                        </div>
+                        <div class="alert alert-warning alert-dismissable" id="commentWarning">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">
+                                &times;
+                            </button>
+                            评论不能为空！
+                        </div>
+                        <div class="alert alert-danger alert-dismissable" id="commentError">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">
+                                &times;
+                            </button>
+                            系统错误，评论失败！
+                        </div>
+                        <button type="button" class="waves-effect wave-light btn comment-submit" onclick="return submitComments()">确认</button>
+                    <%--</form:form>--%>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="copyright-bottom">
+    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
+    备案号：123456789-1
 </div>
 </body>
 </html>

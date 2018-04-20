@@ -70,7 +70,7 @@ public interface GoodsMapper {
      * @param categoryId
      * @return
      */
-    List<Goods> selectByCategory(@Param("categoryId") Integer categoryId,@Param("goodsName") String goodsName,@Param("description") String description);
+    List<Goods> selectByCategoryId(@Param("categoryId") Integer categoryId);
 
     /**
      * 根据时间先后获取商品信息，进行分页查询

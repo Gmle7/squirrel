@@ -9,9 +9,10 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.bootgrid.min.js"></script>
 	<script src="../js/bootstrap-datetimepicker.min.js"></script>
-	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css">
+	<link rel="stylesheet" href="../css/common.css" />
 </head>
-<body>
+<body background="/img/background.jpg">
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -43,7 +44,7 @@
 					查看接口数据 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="/admin/users?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
+					<li><a href="/admin/userList?current=1&rowCount=10&sort[sender]=asc&searchPhrase=&id=b0df282a-0d67-40e5-8558-c9e93b7befed" target="_blank">JSON</a></li>
 				</ul>
 			</div>
 			<table id="grid-data" class="table table-condensed table-hover table-striped">
@@ -52,11 +53,12 @@
 					<th data-column-id="id"  data-identifier="true" data-type="numeric">序号</th>
 					<th data-column-id="phone">手机号</th>
 					<th data-column-id="username">姓名</th>
-					<th data-column-id="qq">QQ</th>
+					<th data-column-id="email">E-Mail</th>
 					<th data-column-id="createAt">开通时间</th>
+					<th data-column-id="lastLogin">最近登录</th>
 					<th data-column-id="goodsNum">商品数量</th>
 					<th data-column-id="power">用户权限</th>
-					<th data-column-id="commands" data-formatter="commands" data-sortable="false">Commands</th>
+					<th data-column-id="commands" data-formatter="commands" data-sortable="false">操作</th>
 				</tr>
 				</thead>
 			</table>
@@ -73,7 +75,7 @@
                     id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
                 };
             },
-            url:"/admin/users",
+            url:"/admin/userList",
             formatters: {
                 "commands": function(column, row)
                 {
@@ -82,7 +84,7 @@
                 }
             }
         }).on("loaded.rs.jquery.bootgrid", function()
-		{
+        {
             grid.find(".command-edit").on("click", function(e)
             {
                 $(".stumodal").modal();
@@ -173,6 +175,10 @@
 			</form>
 		</div>
 	</div>
+</div>
+<div class="copyright-bottom">
+	Copyright &copy; @2018 110XB工作室   <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+	<strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved. 备案号：123456789-1
 </div>
 </body>
 </html>

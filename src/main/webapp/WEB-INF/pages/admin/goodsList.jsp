@@ -239,7 +239,7 @@
 		</div>
 	</div>
 </div>
-<div class="bottom">
+<div class="copyright-bottom">
 	Copyright &copy; @2018 110XB工作室   <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
 	<strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved. 备案号：123456789-1
 </div>

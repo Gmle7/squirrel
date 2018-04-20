@@ -1,97 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ldu.dao.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.ldu.pojo.Goods" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="catelog_id" property="catelogId" jdbcType="INTEGER" />
+<mapper namespace="com.idle.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.idle.pojo.Goods" >
+    <id column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="REAL" />
     <result column="real_price" property="realPrice" jdbcType="REAL" />
     <result column="start_time" property="startTime" jdbcType="VARCHAR" />
     <result column="end_time" property="endTime" jdbcType="VARCHAR" />
-    <result column="commet_num" property="commetNum" jdbcType="INTEGER" />
+    <result column="goods_status" property="goodsStatus" jdbcType="VARCHAR" />
+    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="polish_time" property="polishTime" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.ldu.pojo.Goods" extends="BaseResultMap" >
-    <result column="describle" property="describle" jdbcType="LONGVARCHAR" />
+  <resultMap id="ResultMapWithBLOBs" type="com.idle.pojo.Goods" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, catelog_id, user_id, name, price, real_price, start_time, polish_time, end_time, commet_num
+    goods_id, goods_name, category_id, category_name, user_id, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
   </sql>
   <sql id="Blob_Column_List" >
-    describle
+    description, description
   </sql>
   <sql id="Factor">
 --     and end_time >= now() order by polish_time DESC
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select
-    *
-    from goods
-    where id = #{id,jdbcType=INTEGER}
+    select goods.*,category.category_name from goods LEFT JOIN category on goods.category_id=category.category_id
+    where goods_id = #{goodsId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
-  <select id="searchGoods" resultMap="ResultMapWithBLOBs" parameterType="String" >
-    select
-    *
-    from goods
-    where name like concat('%',#{name},'%') OR describle like concat('%',#{describle},'%')
+  <select id="searchGoods" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+    select goods.*,image.img_url,category.category_name from goods LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN image on goods.goods_id=image.goods_id
+    where goods_name like concat('%',#{goodsName,jdbcType=VARCHAR},'%') OR description like concat('%',#{description,jdbcType=VARCHAR},'%')
     <include refid="Factor"></include>
   </select>
-  <select id="selectByCatelog" resultMap="ResultMapWithBLOBs">
-    select * from goods
-    where catelog_id = #{catelog_id,jdbcType=INTEGER}
-    <if test="name != null" >
-     AND (name like concat('%',#{name},'%')
-    </if>
-    <if test="describle != null" >
-     OR describle like concat('%',#{describle},'%'))
-    </if>
+  <select id="selectByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+    select goods.*,image.img_url,category.category_name from goods
+    LEFT JOIN image on goods.goods_id= image.goods_id LEFT JOIN category on goods.category_id=category.category_id
+    where goods.category_id = #{categoryId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
   <select id="selectAllGoods" resultMap="ResultMapWithBLOBs">
     select * from goods
   </select>
+  <select id="selectAllGoodsAndCategoryNameAndUserName" resultMap="ResultMapWithBLOBs">
+    select goods.*,category.category_name,user.username from goods
+    LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN user on goods.user_id=user.user_id
+  </select>
   <select id="getGoodsByUserId" resultMap="ResultMapWithBLOBs">
-    select * from goods where user_id = #{user_id,jdbcType=INTEGER}
+    select * from goods where user_id = #{userId,jdbcType=INTEGER}
   </select>
 
-  <select id="selectByCatelogOrderByDate" resultMap="ResultMapWithBLOBs">
-    select * from goods
-    where catelog_id = #{catelogId,jdbcType=INTEGER}
-    order by polish_time DESC
-    limit #{limit,jdbcType=INTEGER}
+  <select id="selectByCategoryOrderByDate" resultMap="ResultMapWithBLOBs">
+    select * from goods where category_id = #{categoryId,jdbcType=INTEGER}
+    order by polish_time DESC limit #{limit,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from goods
-    where id = #{id,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.ldu.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
-    insert into goods (id, catelog_id, user_id,
-    name, price, real_price, start_time,
-    end_time, polish_time, commet_num, describle)
-    values (#{id,jdbcType=INTEGER}, #{catelogId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-    #{name,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, #{realPrice,jdbcType=REAL}, #{startTime,jdbcType=VARCHAR},
-    #{endTime,jdbcType=VARCHAR}, #{polishTime,jdbcType=VARCHAR}, #{commetNum,jdbcType=INTEGER}, #{describle,jdbcType=LONGVARCHAR}
+  <insert id="insert" parameterType="com.idle.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
+    insert into goods (goods_id,goods_name, category_id, user_id,
+    goods_name, price, real_price, start_time,
+    end_time, polish_time, goods_status,comment_num, description)
+    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR},#{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+    #{price,jdbcType=REAL}, #{realPrice,jdbcType=REAL}, #{startTime,jdbcType=VARCHAR},
+    #{endTime,jdbcType=VARCHAR}, #{polishTime,jdbcType=VARCHAR},#{goodsStatus,jdbcType=VARCHAR}, #{commentNum,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}
     )
   </insert>
-  <insert id="insertSelective" parameterType="com.ldu.pojo.Goods" >
+  <insert id="insertSelective" parameterType="com.idle.pojo.Goods" >
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="goodsId != null" >
+        goods_id,
       </if>
-      <if test="catelogId != null" >
-        catelog_id,
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
       </if>
       <if test="userId != null" >
         user_id,
-      </if>
-      <if test="name != null" >
-        name,
       </if>
       <if test="price != null" >
         price,
@@ -108,25 +105,28 @@
       <if test="polishTime != null" >
         polish_time,
       </if>
-      <if test="commetNum != null" >
-        commet_num,
+      <if test="goodsStatus != null" >
+        polish_time,
       </if>
-      <if test="describle != null" >
-        describle,
+      <if test="commentNum != null" >
+        comment_num,
+      </if>
+      <if test="description != null" >
+        description,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
       </if>
-      <if test="catelogId != null" >
-        #{catelogId,jdbcType=INTEGER},
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         #{price,jdbcType=REAL},
@@ -143,25 +143,28 @@
       <if test="endTime != null" >
         #{polishTime,jdbcType=VARCHAR},
       </if>
-      <if test="commetNum != null" >
-        #{commetNum,jdbcType=INTEGER},
+      <if test="goodsStatus != null" >
+        #{goodsStatus,jdbcType=VARCHAR},
       </if>
-      <if test="describle != null" >
-        #{describle,jdbcType=LONGVARCHAR},
+      <if test="commentNum != null" >
+        #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ldu.pojo.Goods" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.idle.pojo.Goods" >
     update goods
     <set >
-      <if test="catelogId != null" >
-        catelog_id = #{catelogId,jdbcType=INTEGER},
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=REAL},
@@ -178,41 +181,58 @@
       <if test="endTime != null" >
         polish_time = #{polishTime,jdbcType=VARCHAR},
       </if>
-      <if test="commetNum != null" >
-        commet_num = #{commetNum,jdbcType=INTEGER},
+      <if test="goodsStatus != null" >
+        goods_status #{goodsStatus,jdbcType=VARCHAR},
       </if>
-      <if test="describle != null" >
-        describle = #{describle,jdbcType=LONGVARCHAR},
+      <if test="commentNum != null" >
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ldu.pojo.Goods" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.idle.pojo.Goods" >
     update goods
-    set catelog_id = #{catelogId,jdbcType=INTEGER},
+    set category_id = #{categoryId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       real_price = #{realPrice,jdbcType=REAL},
       start_time = #{startTime,jdbcType=VARCHAR},
       end_time = #{endTime,jdbcType=VARCHAR},
       polish_time = #{polishTime,jdbcType=VARCHAR},
-      commet_num = #{commetNum,jdbcType=INTEGER},
-      describle = #{describle,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      goods_status #{goodsStatus,jdbcType=VARCHAR},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ldu.pojo.Goods" >
+  <update id="updateByPrimaryKey" parameterType="com.idle.pojo.Goods" >
     update goods
-    set catelog_id = #{catelogId,jdbcType=INTEGER},
+    set category_id = #{categoryId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       real_price = #{realPrice,jdbcType=REAL},
       start_time = #{startTime,jdbcType=VARCHAR},
       end_time = #{endTime,jdbcType=VARCHAR},
       polish_time = #{polishTime,jdbcType=VARCHAR},
-      commet_num = #{commetNum,jdbcType=INTEGER},
-      describle = #{describle,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      goods_status #{goodsStatus,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <select id="getGoodsListByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select goods.*,img_url from goods
+    LEFT JOIN image on image.goods_id= goods.goods_id
+    where goods.category_id = #{category_id,jdbcType=INTEGER} limit 8
+    <include refid="Factor"></include>
+  </select>
+  <select id="getGoodsCount" resultType="java.lang.Integer">
+    select count(*) from goods
+  </select>
+  <update id="downGood" parameterType="java.lang.Integer" >
+    UPDATE goods SET `status`='已下架' where goods_id= #{goodsId,jdbcType=INTEGER}
   </update>
 </mapper>

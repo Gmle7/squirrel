@@ -14,4 +14,5 @@ public interface UserService {
     List<User> getPageUser(int pageNum,int pageSize);
     int getUserNum();
     InputStream getInputStream() throws Exception;
+    void updateLastLogin(String lastLogin,int userId);
 }

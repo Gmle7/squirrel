@@ -172,4 +172,9 @@
   <select id="getUserCount" resultType="java.lang.Integer">
     select count(*) from user;
   </select>
+  <update id="updateLastLogin" parameterType="java.lang.String" >
+    update user set
+    last_login = #{lastLogin,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
 </mapper>

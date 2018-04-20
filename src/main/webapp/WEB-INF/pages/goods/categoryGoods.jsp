@@ -10,11 +10,11 @@
 <head>
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
-    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
     <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
@@ -54,7 +54,7 @@
                         <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
                                 data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
                                 data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
-                            发布闲置
+                            <a>发布闲置</a>
                         </button>
                     </li>
                 </c:if>
@@ -196,25 +196,32 @@
 <div class="main-content">
     <!-- 描述：最新发布-->
     <div class="index-title">
-        <a href="">${category.categoryName}</a>
+        <a href="">${userGrid.rows.get(1).categoryName}</a>
         <hr class="hr1">
         <hr class="hr2">
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:forEach var="item" items="${goodsExtendList}">
+            <c:if test="${empty userGrid}">
+                <div class="no_share">
+                    <span>没有任何内容，试着搜索其他的东西吧！</span>
+                </div>
+            </c:if>
+            <c:forEach var="item" items="${userGrid.rows}">
                 <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}">
+                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}"/>
+                            <img src="<%=basePath%>upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
-                            <p><c:out value="${item.goods.goodsName}"></c:out></p>
+                            <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
                         <div class="card-content item-location">
                             <p>湖南信息学院</p>
-                            <p><c:out value="${item.goods.startTime}"></c:out></p>
+                            <p><c:out value="${item.startTime}"></c:out></p>
                         </div>
                     </a>
                 </div>
@@ -285,7 +292,7 @@
         </a>
     </li>
 </div>
-<div class="bottom">
+<div class="copyright-bottom">
     <ul class="pagination pager">
         <c:if test="${userGrid.current!=1}">
             <li><a href="#">&laquo;</a></li>
@@ -298,7 +305,7 @@
         <li><a href="#">&raquo;</a></li>
     </ul>
 </div>
-<div class="bottom">
+<div class="copyright-bottom">
     Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
     <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
     备案号：123456789-1

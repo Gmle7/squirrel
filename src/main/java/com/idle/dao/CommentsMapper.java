@@ -2,6 +2,8 @@ package com.idle.dao;
 
 import com.idle.pojo.Comments;
 
+import java.util.List;
+
 public interface CommentsMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,6 @@ public interface CommentsMapper {
     int updateByPrimaryKeyWithBLOBs(Comments record);
 
     int updateByPrimaryKey(Comments record);
+
+    List<Comments> selectCommentsByGoodsId(int goodsId);
 }

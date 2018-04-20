@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.idle.pojo.Comments" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="create_at" property="createAt" jdbcType="VARCHAR" />
   </resultMap>
@@ -11,18 +12,22 @@
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, goods_id, create_at
+    id, user_id,goods_id, create_at
   </sql>
   <sql id="Blob_Column_List" >
     content
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from comments
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectCommentsByGoodsId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select comments.*,user.username from comments LEFT JOIN user on comments.user_id=user.user_id
+    where goods_id = #{goodsId,jdbcType=INTEGER} ORDER BY create_at ASC
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from comments

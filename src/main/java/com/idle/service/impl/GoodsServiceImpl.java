@@ -58,9 +58,9 @@ public class GoodsServiceImpl implements GoodsService {
         return  userGrid;
     }
 
-    public UserGrid<Goods> getGoodsByCategory(Integer categoryId,String goodsName,String description,int pageNum, int pageSize) {
+    public UserGrid<Goods> getGoodsByCategoryId(Integer categoryId,int pageNum, int pageSize) {
         //PageHelper.startPage(pageNum,pageSize);
-        List<Goods> goodsList=goodsMapper.selectByCategory(categoryId,goodsName,description);
+        List<Goods> goodsList=goodsMapper.selectByCategoryId(categoryId);
         UserGrid<Goods> userGrid=new UserGrid<>();
         userGrid.setCurrent(pageNum);
         userGrid.setRowCount(4);

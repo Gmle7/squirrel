@@ -25,4 +25,6 @@ public interface UserMapper {
     List<User> getUserList();
 
     int getUserCount();
+
+    void updateLastLogin(@Param("lastLogin") String lastLogin,@Param("userId") int userId); //修改用户最近登录时间
 }

@@ -40,20 +40,22 @@ public class UserServiceImpl implements UserService {
     }
 
     public User selectByPrimaryKey(Integer userId) {
-        User user = userMapper.selectByPrimaryKey(userId);
-        return user;
+        return userMapper.selectByPrimaryKey(userId);
     }
 
     //获取出当前页用户
     public List<User> getPageUser(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);//分页核心代码
-        List<User> data= userMapper.getUserList();
-        return data;
+        return userMapper.getUserList();
     }
 
     //获取出用户的数量
     public int getUserNum() {
         return userMapper.getUserCount();
+    }
+
+    public void updateLastLogin(String lastLogin,int userId){
+        userMapper.updateLastLogin(lastLogin,userId);
     }
 
     public InputStream getInputStream() throws Exception {

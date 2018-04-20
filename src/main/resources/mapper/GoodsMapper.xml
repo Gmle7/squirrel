@@ -30,9 +30,7 @@
 --     and end_time >= now() order by polish_time DESC
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select
-    *
-    from goods
+    select goods.*,category.category_name from goods LEFT JOIN category on goods.category_id=category.category_id
     where goods_id = #{goodsId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
@@ -41,15 +39,10 @@
     where goods_name like concat('%',#{goodsName,jdbcType=VARCHAR},'%') OR description like concat('%',#{description,jdbcType=VARCHAR},'%')
     <include refid="Factor"></include>
   </select>
-  <select id="selectByCategory" resultMap="ResultMapWithBLOBs">
-    select * from goods
-    where category_id = #{categoryId,jdbcType=INTEGER}
-    <if test="goodsName != null" >
-     AND (goods_name like concat('%',#{goodsName},'%')
-    </if>
-    <if test="description != null" >
-     OR description like concat('%',#{description},'%'))
-    </if>
+  <select id="selectByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+    select goods.*,image.img_url,category.category_name from goods
+    LEFT JOIN image on goods.goods_id= image.goods_id LEFT JOIN category on goods.category_id=category.category_id
+    where goods.category_id = #{categoryId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
   <select id="selectAllGoods" resultMap="ResultMapWithBLOBs">
@@ -64,10 +57,8 @@
   </select>
 
   <select id="selectByCategoryOrderByDate" resultMap="ResultMapWithBLOBs">
-    select * from goods
-    where category_id = #{categoryId,jdbcType=INTEGER}
-    order by polish_time DESC
-    limit #{limit,jdbcType=INTEGER}
+    select * from goods where category_id = #{categoryId,jdbcType=INTEGER}
+    order by polish_time DESC limit #{limit,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -233,15 +224,15 @@
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   <select id="getGoodsListByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select goods.*,img_url
-    from goods LEFT JOIN image on image.goods_id= goods.goods_id
+    select goods.*,img_url from goods
+    LEFT JOIN image on image.goods_id= goods.goods_id
     where goods.category_id = #{category_id,jdbcType=INTEGER} limit 8
     <include refid="Factor"></include>
   </select>
   <select id="getGoodsCount" resultType="java.lang.Integer">
-    select count(*) from goods;
+    select count(*) from goods
   </select>
   <update id="downGood" parameterType="java.lang.Integer" >
-    UPDATE goods SET `status`='已下架' where goods_id= #{goodsId,jdbcType=INTEGER};
+    UPDATE goods SET `status`='已下架' where goods_id= #{goodsId,jdbcType=INTEGER}
   </update>
 </mapper>

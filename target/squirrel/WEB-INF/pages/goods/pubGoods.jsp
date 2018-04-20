@@ -10,17 +10,18 @@
 <head>
     <meta charset="UTF-8">
     <title>发布商品</title>
-    <link rel="stylesheet" href="../css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/userhome.css" />
-    <link rel="stylesheet" href="../css/user.css" />
-    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/userhome.css" />
+    <link rel="stylesheet" href="<%=basePath%>/css/user.css" />
+    <script type="text/javascript" src="<%=basePath%>/js/jquery-3.1.1.min.js"></script>
     <!-- bootstrap -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
+    <script type="text/javascript" src="<%=basePath%>/js/bootstrap.min.js"></script>
     <!-- 图片上传即使预览插件 -->
-    <link rel="stylesheet" href="../css/fileinput.min.css">
-    <script type="text/javascript" src="../js/fileinput.min.js"></script>
-    <script type="text/javascript" src="../js/zh.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/fileinput.min.css">
+    <script type="text/javascript" src="<%=basePath%>/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/js/zh.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 
     <style>
         .container{padding-top:10px}
@@ -41,8 +42,6 @@
             </a>
         </div>
         <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
             描述：左侧个人中心栏
         -->
         <div id="user_nav">
@@ -54,7 +53,7 @@
                     <img src="">
                 </div>
                 <span class="name">${cur_user.username}</span>
-                <span class="school">鲁东大学</span>
+                <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
             </div>
             <div class="home_nav">
@@ -98,8 +97,6 @@
             </div>
         </div>
         <!--
-	            作者：hlk_1135@outlook.com
-	            时间：2017-05-10
 	            描述：发布物品
         -->
         <div id="user_content">
@@ -123,7 +120,7 @@
                     </div>
                     <div class="changeinfo">
                         <span>物品类别：</span>
-                        <select class="in_info" name="catelogId">
+                        <select class="in_info" name="categoryId">
                             <option value="1">闲置数码</option>
                             <option value="2">校园代步</option>
                             <option value="3">电器日用</option>
@@ -131,6 +128,8 @@
                             <option value="5">美妆衣物</option>
                             <option value="6">运动棋牌</option>
                             <option value="7">票券小物</option>
+                            <option value="7">宠物相关</option>
+                            <option value="7">房屋出租</option>
                         </select>
                     </div>
                     <div class="changeinfo" id="dir">
@@ -166,8 +165,6 @@
                 </form:form>
             </div>
             <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
                 描述：最右侧，可能认识的人
             -->
             <div class="recommend">
@@ -271,5 +268,10 @@
         console.log("filepreupload");
     });
 </script>
+<div class="copyright-bottom">
+    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
+    备案号：123456789-1
+</div>
 </body>
 </html>

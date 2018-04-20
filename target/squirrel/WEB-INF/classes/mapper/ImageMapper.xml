@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ldu.dao.ImageMapper" >
-  <resultMap id="BaseResultMap" type="com.ldu.pojo.Image" >
+<mapper namespace="com.idle.dao.ImageMapper" >
+  <resultMap id="BaseResultMap" type="com.idle.pojo.Image" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.ldu.pojo.Image" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.idle.pojo.Image" extends="BaseResultMap" >
     <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -15,31 +15,31 @@
     img_url
   </sql>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from image
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByGoodsPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
-    select * from image where goods_id = #{goodsId,jdbcType=INTEGER}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from image
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteImagesByGoodsPrimaryKey" parameterType="java.lang.Integer">
-    delete from image
-    where goods_id = #{goodsId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.ldu.pojo.Image" >
+  <insert id="insert" parameterType="com.idle.pojo.Image" >
     insert into image (id, goods_id, img_url
       )
-    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{imgUrl,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=VARCHAR}, #{imgUrl,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ldu.pojo.Image" >
+  <select id="selectByGoodsPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+    select * from image where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteImagesByGoodsPrimaryKey" parameterType="java.lang.String">
+    delete from image
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.idle.pojo.Image" >
     insert into image
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,18 +57,18 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="goodsId != null" >
-        #{goodsId,jdbcType=INTEGER},
+        #{goodsId,jdbcType=VARCHAR},
       </if>
       <if test="imgUrl != null" >
         #{imgUrl,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ldu.pojo.Image" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.idle.pojo.Image" >
     update image
     <set >
       <if test="goodsId != null" >
-        goods_id = #{goodsId,jdbcType=INTEGER},
+        goods_id = #{goodsId,jdbcType=VARCHAR},
       </if>
       <if test="imgUrl != null" >
         img_url = #{imgUrl,jdbcType=LONGVARCHAR},
@@ -76,15 +76,15 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ldu.pojo.Image" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.idle.pojo.Image" >
     update image
-    set goods_id = #{goodsId,jdbcType=INTEGER},
+    set goods_id = #{goodsId,jdbcType=VARCHAR},
       img_url = #{imgUrl,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ldu.pojo.Image" >
+  <update id="updateByPrimaryKey" parameterType="com.idle.pojo.Image" >
     update image
-    set goods_id = #{goodsId,jdbcType=INTEGER}
+    set goods_id = #{goodsId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

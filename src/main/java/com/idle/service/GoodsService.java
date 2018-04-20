@@ -49,7 +49,7 @@ public interface GoodsService {
     /**
      * 通过商品分类获取商品信息
      */
-    UserGrid<Goods> getGoodsByCategory(Integer categoryId,String goodsName,String description,int pageNum, int pageSize);
+    UserGrid<Goods> getGoodsByCategoryId(Integer categoryId,int pageNum, int pageSize);
 
     /**
      * 根据分类id,并进行时间排序,获取前limit个结果

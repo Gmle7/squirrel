@@ -42,7 +42,7 @@ public class UserController {
     @RequestMapping(value = "/addUser")
     @ResponseBody
     public boolean addUser(@RequestBody User user1) {
-        String t = DateUtil.getNowDate();
+        String t = DateUtil.getNowTime();
         //对密码进行MD5加密
         String str = MD5.md5(user1.getPassword());
         user1.setCreateAt(t);//创建开始时间
@@ -77,6 +77,8 @@ public class UserController {
     @RequestMapping(value = "/login")
     public ModelAndView loginValidate(HttpServletRequest request, User user) {
         User cur_user = userService.getUserByPhone(user.getPhone());
+        String time = DateUtil.getNowTime();
+        userService.updateLastLogin(time,cur_user.getUserId());//设置登录时间
         String url = request.getHeader("Referer");
         request.getSession().setAttribute("cur_user", cur_user);
         return new ModelAndView("redirect:" + url);

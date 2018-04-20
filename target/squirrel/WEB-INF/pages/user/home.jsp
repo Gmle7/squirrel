@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/emoji.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
-
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 <div class="pre-2" id="big_img">
@@ -30,11 +30,7 @@
                 <div class="home"></div>
             </a>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：左侧个人中心栏
-        -->
+        <!--描述：左侧个人中心栏-->
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
@@ -44,8 +40,8 @@
                     <img src="">
                 </div>
                 <span class="name">${cur_urser.username}</span>
-                <span class="school">鲁东大学</span>
-                <span class="name">闲置数量：${cur_user.goodsNum}</span>
+                <span class="school">湖南信息学院</span>
+                <span class="name">闲置数量：${cur_user.goodsNum}件</span>
                 <span class="fa fa-share-alt">"快去分享一下"</span>
             </div>
             <div class="home_nav">
@@ -88,11 +84,7 @@
                 </ul>
             </div>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：右侧内容区域
-        -->
+        <!--描述：右侧内容区域-->
         <div id="user_content">
             <div class="share">
                 <div class="publish">
@@ -117,22 +109,14 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                    作者：hlk_1135@outlook.com
-                    时间：2017-05-11
-                    描述：闲置商品展示
-                -->
+                <!--描述：闲置商品展示-->
                 <div class="share_content">
                     <div class="no_share">
                         <span>没有任何内容，去逛逛其它的吧！</span>
                     </div>
                 </div>
             </div>
-            <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
-                描述：最右侧，可能认识的人
-            -->
+            <!--描述：最右侧，可能认识的人-->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>

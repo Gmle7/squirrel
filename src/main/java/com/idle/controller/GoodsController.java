@@ -1,10 +1,7 @@
 package com.idle.controller;
 
 import com.idle.pojo.*;
-import com.idle.service.CategoryService;
-import com.idle.service.GoodsService;
-import com.idle.service.ImageService;
-import com.idle.service.UserService;
+import com.idle.service.*;
 import com.idle.util.DateUtil;
 import com.idle.util.GoodsExtendAndImage;
 import com.idle.util.UserGrid;
@@ -36,7 +33,7 @@ public class GoodsController {
     @Autowired
     private UserService userService;
     @Autowired
-    private GoodsExtendAndImage goodsExtendAndImage;
+    private CommentsService commentsService;
 
     /**
      * 首页显示商品，每一类商品查询6件，根据最新上架排序 key的命名为categoryGoods1、categoryGoods2....
@@ -100,7 +97,7 @@ public class GoodsController {
     @RequestMapping(value = "/category/{categoryId}")
     public ModelAndView categoryGoods(@PathVariable("categoryId") Integer categoryId,
                                      @RequestParam(value = "str",required = false) String str,@RequestParam(defaultValue = "1",value = "pageNum") int pageNum, @RequestParam(defaultValue = "4",value = "pageSize")int pageSize) throws Exception {
-        UserGrid<Goods>  userGrid = goodsService.getGoodsByCategory(categoryId,str,str,pageNum,pageSize);
+        UserGrid<Goods>  userGrid = goodsService.getGoodsByCategoryId(categoryId,pageNum,pageSize);
         Category category = categoryService.selectByPrimaryKey(categoryId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userGrid", userGrid);
@@ -117,10 +114,10 @@ public class GoodsController {
      * @throws Exception
      */
     @RequestMapping(value = "/goodsId/{goodsId}")
-    public ModelAndView getGoodsById(@PathVariable("goodsId") Integer goodsId,@RequestParam(value = "str",required = false) String str) throws Exception {
+    public ModelAndView getGoodsById(@PathVariable("goodsId") Integer goodsId) throws Exception {
         Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
+        List<Comments> commentsList=commentsService.selectCommentsByGoodsId(goodsId);
         User seller = userService.selectByPrimaryKey(goods.getUserId());
-        Category category = categoryService.selectByPrimaryKey(goods.getCategoryId());
         GoodsExtend goodsExtend = new GoodsExtend();
         List<Image> imageList = imageService.getImagesByGoodsPrimaryKey(goodsId);
         goodsExtend.setGoods(goods);
@@ -128,8 +125,7 @@ public class GoodsController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("goodsExtend", goodsExtend);
         modelAndView.addObject("seller", seller);
-        modelAndView.addObject("search",str);
-        modelAndView.addObject("category", category);
+        modelAndView.addObject("commentsList", commentsList);
         modelAndView.setViewName("/goods/detailGoods");
         return modelAndView;
     }

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="../css/common.css" />
 
 </head>
 <body>
@@ -43,7 +44,7 @@
                     <img src="<%=basePath%>img/findfun.png">
                 </div>
                 <span class="name">${cur_user.username}</span>
-                <span class="school">鲁东大学</span>
+                <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
             </div>
             <div class="home_nav">
@@ -93,7 +94,7 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="/user/updateInfo" method="post" commandName="user" role="form">
+                <form:form action="/user/updateInfo" method="post" id="user4" role="form">
                     <h1>完善与修改个人信息</h1><hr />
                     <div class="changeinfo">
                         <span>昵称：</span>
@@ -109,8 +110,8 @@
                         <span id="checkphone">已验证</span>
                     </div><hr />
                     <div class="changeinfo">
-                        <span>QQ：</span>
-                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.qq}"/>
+                        <span>E-mail：</span>
+                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.email}"/>
                     </div>
                     <input type="submit" class="setting-save" value="保存修改信息" />
                 </form:form>

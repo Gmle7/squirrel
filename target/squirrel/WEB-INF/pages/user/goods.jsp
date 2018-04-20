@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/emoji.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
-
+    <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 <div class="pre-2" id="big_img">
@@ -30,11 +30,7 @@
                 <div class="home"></div>
             </a>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：左侧个人中心栏
-        -->
+        <!-- 描述：左侧个人中心栏-->
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
@@ -44,7 +40,7 @@
                     <img src="">
                 </div>
                 <span class="name">${cur_user.username}</span>
-                <span class="school">鲁东大学</span>
+                <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
                 <span class="fa fa-share-alt">"快去分享一下"</span>
             </div>
@@ -88,18 +84,10 @@
                 </ul>
             </div>
         </div>
-        <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
-            描述：右侧内容区域
-        -->
+        <!--描述：右侧内容区域-->
         <div id="user_content">
             <div class="share">
-                <!--
-                    作者：hlk_1135@outlook.com
-                    时间：2017-05-11
-                    描述：闲置商品展示
-                -->
+                <!--描述：闲置商品展示-->
                 <div class="share_content">
                     <c:if test="${empty goodsAndImage}">
                         <div class="no_share">
@@ -107,28 +95,28 @@
                         </div>
                     </c:if>
                     <c:if test="${!empty goodsAndImage}">
-                        <c:forEach var="items" items="${goodsAndImage}">
+                        <c:forEach var="item" items="${goodsAndImage}">
                             <div class="story">
-                                <a href="<%=basePath%>goods/goodsId/${items.goods.id}" class="head_img">
-                                    <img src="../upload/${items.images[0].imgUrl}">
+                                <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}" class="head_img">
+                                    <img src="../upload/${item.images[0].imgUrl}">
                                 </a>
-                                <span class="name">${items.goods.name}</span>
-                                <span class="text" style="overflow: hidden; outline: none;">${items.goods.describle}</span>
+                                <span class="name">${item.goods.name}</span>
+                                <span class="text" style="overflow: hidden; outline: none;">${item.goods.description}</span>
                                 <div class="box">
                                     <div class="box_content">
                                         <div class="left_shadow"></div>
                                         <div class="left" index="1" style="display: none;"><</div>
                                         <div class="right_shadow"></div>
                                         <div class="left" index="3" style="display: none;">></div>
-                                        <img src="../upload/${items.images[0].imgUrl}" index="2">
+                                        <img src="../upload/${item.images[0].imgUrl}" index="2">
                                         <span class="com" style="display: none;left: 396.733px;"></span>
                                     </div>
                                     <div class="interact">
-                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${items.goods.id}">编辑</a></span>
+                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goods.goodsId}">编辑</a></span>
                                         <span class="fa fa-share"><a href="">擦亮</a></span>
-                                        <span class="fa fa-commenting"><a>${items.goods.commetNum}0</a></span>
+                                        <span class="fa fa-commenting"><a>${item.goods.commetNum}0</a></span>
                                         <span class="time">${items.goods.startTime}</span>
-                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${items.goods.id}">删除</a></span>
+                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goods.goodsId}">删除</a></span>
                                     </div>
                                     <div class="like_detail">
                                         <div class="like_content">
@@ -141,11 +129,7 @@
                     </c:if>
                 </div>
             </div>
-            <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
-                描述：最右侧，可能认识的人
-            -->
+            <!--描述：最右侧，可能认识的人 -->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
