@@ -224,9 +224,7 @@
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   <select id="getGoodsListByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select goods.*,img_url from goods
-    LEFT JOIN image on image.goods_id= goods.goods_id
-    where goods.category_id = #{category_id,jdbcType=INTEGER} limit 8
+    select goods.*,img_url from goods LEFT JOIN image on image.goods_id=goods.goods_id where image.img_id=(select img_id from image where goods_id = goods.goods_id limit 1) and goods.category_id = #{category_id,jdbcType=INTEGER} limit 8
     <include refid="Factor"></include>
   </select>
   <select id="getGoodsCount" resultType="java.lang.Integer">

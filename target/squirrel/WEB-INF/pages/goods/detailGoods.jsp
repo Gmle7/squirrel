@@ -21,6 +21,56 @@
     <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
+    <script>
+        //验证消息显示在页面上
+        $(function () {
+            //进页面先不让评论就警告框显示
+            $("#commentWarning").css("display", "none");
+            $("#commentSuccess").css("display", "none");
+            $("#commentError").css("display", "none");
+            $("#commentBox").focus(function () {
+                $("#commentWarning").css("display", "none");
+                $("#commentSuccess").css("display", "none");
+                $("#commentError").css("display", "none");
+            })
+        })
+
+        function submitComments() {
+            var comments = {
+                userId:${goodsExtend.goods.userId},
+                goodsId:${goodsExtend.goods.goodsId},
+                content: $('#commentBox').value();
+        }
+            if (comments.content == "") {
+                $("#commentWarning").css("display", "block");
+                return false;
+            }
+            //创建异步对象
+            $.ajax({
+                // 请求发送方式
+                type: 'post',
+                // 验证文件
+                url: '/comments/addComments',
+                // 用户输入的帐号密码
+                data: JSON.stringify(comments),
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8',
+                // 异步，不写默认为True
+                async: true,
+                //请求成功后的回调
+                success: function (data) {
+                    if (data) {
+                        $("#commentSuccess").css("display", "block");
+                    } else {
+                        $("#commentError").css("display", "block");
+                    }
+                },
+                error: function () {
+                    alert('服务端异常');
+                }
+            })
+        }
+    </script>
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -202,19 +252,6 @@
         <em>></em>
         <a>${goodsExtend.goods.goodsName}</a>
     </div>
-    <%--<div class="col s6">
-        <div class="slider" style="height: 440px;">
-            <ul class="slides" style="height: 400px;">
-                <img src="<%=basePath%>upload/${goodsExtend.images[0].imgUrl}"/>
-            </ul>
-            <ul class="indicators">
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-                <li class="indicator-item"></li>
-            </ul>
-        </div>
-    </div>--%>
     <!-- 轮播图 -->
     <div id="myCarouse2" class="carousel slide" style="width: 485px">
         <!-- 轮播（Carousel）指标 -->
@@ -323,10 +360,29 @@
             </div>
             <div class="comment-add row">
                 <div class="input-field col s12">
-                    <i class="iconfont prefix"></i>
-                    <input id="commentbox" type="text" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
-                    <label for="commentbox">这里写下评论</label>
-                    <button type="submit" class="waves-effect wave-light btn comment-submit">确认</button>
+                    <%--<form:form action="/comments/addComments" method="post" id="comments" role="form">--%>
+                        <i class="iconfont prefix"></i>
+                        <input id="commentBox" type="text" name="commentBox" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
+                        <label for="commentBox">这里写下评论</label>
+                        <div class="alert alert-success" id="commentSuccess">
+                            <a href="#" class="alert-link">评论成功！</a>
+                        </div>
+                        <div class="alert alert-warning alert-dismissable" id="commentWarning">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">
+                                &times;
+                            </button>
+                            评论不能为空！
+                        </div>
+                        <div class="alert alert-danger alert-dismissable" id="commentError">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">
+                                &times;
+                            </button>
+                            系统错误，评论失败！
+                        </div>
+                        <button type="button" class="waves-effect wave-light btn comment-submit" onclick="return submitComments()">确认</button>
+                    <%--</form:form>--%>
                 </div>
             </div>
         </div>

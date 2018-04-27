@@ -22,13 +22,13 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <script type="text/javascript">
-        //主页轮播图13.5s后隐藏换成
+        //主页轮播图1.35s后隐藏换成
         $(function () {
             setTimeout(function () {
                 $("#welcome").css("display", "none");
                 $("#myCarousel").css("display", "block");
-                /*$('#myCarousel').carousel();*/
-            }, 1350)
+                $('#myCarousel').carousel();
+            }, 3000)
         });
     </script>
 </head>
@@ -234,13 +234,16 @@
             <!-- 轮播（Carousel）项目 -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="../img/findfun.png" alt="First slide1">
+                    <img src="../img/1.jpg" alt="闲置推荐1">
                 </div>
                 <div class="item">
-                    <img src="../img/findfun.png" alt="Second slide2">
+                    <img src="../img/2.jpg" alt="闲置推荐2">
                 </div>
                 <div class="item">
-                    <img src="../img/findfun.png" alt="Third slide3">
+                    <img src="../img/3.jpg" alt="闲置推荐3">
+                </div>
+                <div class="item">
+                    <img src="../img/findfun.jpg" alt="欢迎">
                 </div>
             </div>
             <!-- 轮播（Carousel）导航 -->
@@ -256,20 +259,20 @@
         <!-- 进入主页校园广告 -->
         <div id="welcome" class="slider"
              style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-            <ul class="slides" style="height: 400px;">
+            <ul class="slides">
                 <li class="active" style="opacity: 1;">
                     <a href="/goods/category/2">
                         <div class="bannerimg">
-                            <ul class="bannerul">
+                            <%--<ul class="bannerul">
                                 <p class="text1">亲爱的同学：</p>
                                 <p class="text2">欢迎来到湖南信息学院Squirrel校园闲置空间。临近毕业季</p>
                                 <p class="text3">的你，是否有太多的闲置与校友分享，为了追求更好的校园服</p>
                                 <p class="text4">务，我们打造了一个全新的校园平台——<span>Squirrel闲置空间</span></p>
                                 <p class="text5">更丰富的闲置分享，更自由的校园话题讨论，你想要的，都在这里！</p>
                                 <p class="text6">加入Squirrel，你的大学，应更精彩!!!</p>
-                            </ul>
+                            </ul>--%>
                             <div class="logoimg">
-                                <img src="../img/p_logo.jpg"/>
+                                <img src="../img/title.png"/>
                             </div>
                         </div>
                     </a>
@@ -592,7 +595,7 @@
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">
     <li ng-class="{true: 'active'}[isAll]">
         <a href="/goods/category/1" class="index">
-            <img src="../img/index.png">
+            <img src="../img/index.gif">
             <em>最新发布</em>
         </a>
     </li>

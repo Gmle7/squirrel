@@ -44,11 +44,11 @@ public class GoodsController {
     @RequestMapping(value = "/homeGoods")
     public ModelAndView homeGoods() throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        long startTime = System.currentTimeMillis(); // 获取开始时间
+        //long startTime = System.currentTimeMillis(); // 获取开始时间
         //商品种类数量
         int categorySize = 9;
         //每个种类显示商品数量
-        int goodsSize = 8;
+        //int goodsSize = 8;
         for (int i = 1; i <= categorySize; i++) {
             List<Goods> goodsList = goodsService.getGoodsListByCategoryId(i);
 
@@ -71,8 +71,8 @@ public class GoodsController {
             String key = "category" + "Goods" + i;
             modelAndView.addObject(key, goodsList);
         }
-        long endTime = System.currentTimeMillis(); // 获取结束时间
-        System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
+        //long endTime = System.currentTimeMillis(); // 获取结束时间
+        //System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
         modelAndView.setViewName("goods/homeGoods");
         return modelAndView;
     }

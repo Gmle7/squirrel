@@ -24,17 +24,15 @@
     <script>
         //验证消息显示在页面上
         $(function () {
-            $("input[name='password']").focus(function () {
-                $("#badPwd").html("");
-                $("#badUser").html("");
-            })
-            $("input[name='phone']").focus(function () {
-                $("#badPwd").html("");
-                $("#badUser").html("");
-            })
+            //进页面先不让评论就警告框显示
             $("#commentWarning").css("display", "none");
             $("#commentSuccess").css("display", "none");
             $("#commentError").css("display", "none");
+            $("#commentBox").focus(function () {
+                $("#commentWarning").css("display", "none");
+                $("#commentSuccess").css("display", "none");
+                $("#commentError").css("display", "none");
+            })
         })
 
         function submitComments() {
