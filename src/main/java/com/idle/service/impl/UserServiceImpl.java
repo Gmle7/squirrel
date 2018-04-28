@@ -39,6 +39,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateGoodsNum(userId,goodsNum);
     }
 
+    public int updateGoodsNum2(Integer userId) {
+        return userMapper.updateGoodsNum2(userId);
+    }
+
     public User selectByPrimaryKey(Integer userId) {
         return userMapper.selectByPrimaryKey(userId);
     }

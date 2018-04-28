@@ -49,9 +49,11 @@ public class GoodsController {
         int categorySize = 9;
         //每个种类显示商品数量
         //int goodsSize = 8;
+        //获取最新的8条商品信息
+        List<Goods> goodsListNew=goodsService.getNewGoods();
+        modelAndView.addObject("goodsListNew",goodsListNew);
         for (int i = 1; i <= categorySize; i++) {
             List<Goods> goodsList = goodsService.getGoodsListByCategoryId(i);
-
             /*List<Goods> goodsList = null;
             List<GoodsExtend> goodsAndImage = null;
             goodsList = goodsService.getGoodsByCategoryOrderByDate(i, goodsSize);
@@ -160,8 +162,7 @@ public class GoodsController {
     public String editGoodsSubmit(HttpServletRequest request,Goods goods) throws Exception {
         User cur_user = (User)request.getSession().getAttribute("cur_user");
         goods.setUserId(cur_user.getUserId());
-        String polish_time = DateUtil.getNowDay();
-        goods.setPolishTime(polish_time);
+        goods.setPolishTime(DateUtil.getNowTime());
         goodsService.updateGoodsByPrimaryKeyWithBLOBs(goods.getGoodsId(), goods);
         return "redirect:/user/allGoods";
     }
@@ -185,18 +186,18 @@ public class GoodsController {
      */
     @RequestMapping(value = "/deleteGoods/{goodsId}")
     public String deleteGoods(HttpServletRequest request,@PathVariable("goodsId") Integer goodsId) throws Exception {
-        Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
+        //Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
         //删除商品后，category的number-1，user表的goods_num-1，image删除,更新session的值
         User cur_user = (User)request.getSession().getAttribute("cur_user");
-        goods.setUserId(cur_user.getUserId());
+        //goods.setUserId(cur_user.getUserId());
         int number = cur_user.getGoodsNum();
-        Integer categoryId_id = goods.getCategoryId();
-        Category category = categoryService.selectByPrimaryKey(categoryId_id);
-        categoryService.updateCategoryNum(categoryId_id, category.getNumber()-1);
-        userService.updateGoodsNum(cur_user.getUserId(),number-1);
+        //Integer categoryId_id = goods.getCategoryId();
+        //Category category = categoryService.selectByPrimaryKey(categoryId_id);
+        //categoryService.updateCategoryNum(categoryId_id, category.getNumber()-1);
+        //userService.updateGoodsNum(cur_user.getUserId(),number-1);
         cur_user.setGoodsNum(number-1);
         request.getSession().setAttribute("cur_user",cur_user);//修改session值
-        imageService.deleteImagesByGoodsPrimaryKey(goodsId);
+        //imageService.deleteImagesByGoodsPrimaryKey(goodsId);
         goodsService.deleteGoodsByPrimaryKey(goodsId);
         return "redirect:/user/allGoods";
     }
@@ -223,20 +224,27 @@ public class GoodsController {
      * @throws Exception
      */
     @RequestMapping(value = "/publishGoodsSubmit")
-    public String publishGoodsSubmit(HttpServletRequest request,Image img,Goods goods) throws Exception {
+    public String publishGoodsSubmit(HttpServletRequest request,Goods goods) throws Exception {
         //查询出当前用户cur_user对象，便于使用id
         User cur_user = (User)request.getSession().getAttribute("cur_user");
         goods.setUserId(cur_user.getUserId());
-        int i = goodsService.addGood(goods,10);//在goods表中插入物品
+        //上传多张图片截取imgUrl
+        String imgUrl=goods.getImgUrl();
+        imgUrl=imgUrl.substring(0,imgUrl.length()-1);//去掉最后一个逗号
+        String[] imgUrlList=imgUrl.split(",");//截取逗号分隔
+        goodsService.addGood(goods);//在goods表中插入物品
         //返回插入的该物品的id
-        int goodsId = goods.getGoodsId();
-        img.setGoodsId(goodsId + "");
-        imageService.insert(img);//在image表中插入商品图片
+        for (int i=0;i<imgUrlList.length;i++) {
+            Image image=new Image();
+            image.setGoodsId(goods.getGoodsId() + "");
+            image.setImgUrl(imgUrlList[i]);
+            imageService.insert(image);//在image表中插入商品图片
+        }
         //发布商品后，category的number+1，user表的goods_num+1，更新session的值
         int number = cur_user.getGoodsNum();
-        Category category = categoryService.selectByPrimaryKey(goods.getCategoryId());
-        categoryService.updateCategoryNum(goods.getCategoryId(), category.getNumber()+1);
-        userService.updateGoodsNum(cur_user.getUserId(),number+1);
+        //Category category = categoryService.selectByPrimaryKey(goods.getCategoryId());
+        //categoryService.updateCategoryNum2(goods.getCategoryId());数据库触发器实现
+        //userService.updateGoodsNum2(cur_user.getUserId());
         cur_user.setGoodsNum(number+1);
         request.getSession().setAttribute("cur_user",cur_user);//修改session值
         return "redirect:/user/allGoods";
@@ -254,7 +262,7 @@ public class GoodsController {
     @RequestMapping(value = "/uploadFile")
     public  Map<String,Object> uploadFile(HttpSession session,MultipartFile myFile) throws IllegalStateException, IOException{
         //原始名称
-        String oldFileName = myFile.getOriginalFilename(); //获取上传文件的原名
+          String oldFileName = myFile.getOriginalFilename(); //获取上传文件的原名
         //存储图片的物理路径
         String file_path = session.getServletContext().getRealPath("upload");
         //上传图片

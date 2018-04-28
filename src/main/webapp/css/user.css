@@ -155,7 +155,8 @@
 }
 .sha .publ .text_pu {
     width: 400px;
-    padding: 10px 20px;
+    background-color: #f6f8fa;
+    /*padding: 10px 20px;*/
 }
 .sha .publ .text_pu .emoji-wysiwyg-editor {
     position: relative;
@@ -173,7 +174,7 @@
 }
 .bannerimg {
     background: url(../img/findfun.png);
-    height: 400px;
+    height: 300px;
 }
 .bannerimg .bannerul {
     /*width: 530px;*/

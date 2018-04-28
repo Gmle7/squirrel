@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.idle.dao.ImageMapper" >
   <resultMap id="BaseResultMap" type="com.idle.pojo.Image" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="img_id" property="imgId" jdbcType="INTEGER" />
     <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.idle.pojo.Image" extends="BaseResultMap" >
@@ -20,17 +20,15 @@
     ,
     <include refid="Blob_Column_List" />
     from image
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from image
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.idle.pojo.Image" >
-    insert into image (id, goods_id, img_url
-      )
-    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=VARCHAR}, #{imgUrl,jdbcType=LONGVARCHAR}
-      )
+    insert into image (img_id, goods_id, img_url)
+    values (#{imgId,jdbcType=INTEGER}, #{goodsId,jdbcType=VARCHAR}, #{imgUrl,jdbcType=LONGVARCHAR})
   </insert>
   <select id="selectByGoodsPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
     select * from image where goods_id = #{goodsId,jdbcType=VARCHAR}
@@ -42,8 +40,8 @@
   <insert id="insertSelective" parameterType="com.idle.pojo.Image" >
     insert into image
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="imgId != null" >
+        img_id,
       </if>
       <if test="goodsId != null" >
         goods_id,
@@ -53,8 +51,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="imgId != null" >
+        #{imgId,jdbcType=INTEGER},
       </if>
       <if test="goodsId != null" >
         #{goodsId,jdbcType=VARCHAR},
@@ -74,17 +72,17 @@
         img_url = #{imgUrl,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.idle.pojo.Image" >
     update image
     set goods_id = #{goodsId,jdbcType=VARCHAR},
       img_url = #{imgUrl,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.idle.pojo.Image" >
     update image
     set goods_id = #{goodsId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </update>
 </mapper>

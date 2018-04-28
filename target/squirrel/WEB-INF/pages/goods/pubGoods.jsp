@@ -105,7 +105,7 @@
                     <h1 style="margin-left: 210px;">发布物品</h1><hr />
                     <div class="changeinfo">
                         <span>物品名：</span>
-                        <input class="in_info" type="text" name="name" placeholder="请输入物品名"/>
+                        <input class="in_info" type="text" name="goodsName" placeholder="请输入物品名"/>
                         <span>(*必填)</span>
                     </div>
                     <div class="changeinfo">
@@ -128,8 +128,8 @@
                             <option value="5">美妆衣物</option>
                             <option value="6">运动棋牌</option>
                             <option value="7">票券小物</option>
-                            <option value="7">宠物相关</option>
-                            <option value="7">房屋出租</option>
+                            <option value="8">宠物相关</option>
+                            <option value="9">房屋出租</option>
                         </select>
                     </div>
                     <div class="changeinfo" id="dir">
@@ -138,7 +138,7 @@
                             <div class="publ">
                                 <div class="pub_con">
                                     <div class="text_pu">
-                                        <input type="text" name="describle" class="emoji-wysiwyg-editor"/>
+                                        <input type="text" name="description" class="emoji-wysiwyg-editor"/>
                                     </div>
                                 </div>
                             </div>
@@ -147,13 +147,18 @@
                     <br />
                     <hr />
                     <div class="changeinfo">
+                        <span>是否接受讲价：</span>
+                        <label class="in_info"><input type="radio" name="isBargain" value="1">不接受</label>
+                        <label class="in_info"><input type="radio" name="isBargain" value="0">接受</label>
+                    </div>
+                    <div class="changeinfo">
                         <span>商品图片：</span>
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-6 col-sm-offset-1">
                                     <div class="form-group">
                                         <div class="col-sm-10">
-                                            <input type="file" name="myfile" data-ref="imgUrl" class="col-sm-10 myfile" value=""/>
+                                            <input type="file" name="myFile" data-ref="imgUrl" multiple class="col-sm-10 myFile" value=""/>
                                             <input type="hidden" name="imgUrl" value="">
                                         </div>
                                     </div>
@@ -215,7 +220,7 @@
     </div>
 </div>
 <script>
-    $(".myfile").fileinput({
+    $(".myFile").fileinput({
         uploadUrl:"<%=basePath%>goods/uploadFile",//上传的地址
         uploadAsync:true, //默认异步上传
         showUpload: false, //是否显示上传按钮,跟随文本框的那个
@@ -229,7 +234,7 @@
         //maxImageHeight: 1000,//图片的最大高度
         //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
         //minFileCount: 0,
-        maxFileCount: 3, //表示允许同时上传的最大文件个数
+        maxFileCount: 4, //表示允许同时上传的最大文件个数
         enctype: 'multipart/form-data',
         validateInitialCount:true,
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
@@ -240,31 +245,34 @@
         language : 'zh'
     })
     //异步上传返回结果处理
-    $('.myfile').on('fileerror', function(event, data, msg) {
+    $('.myFile').on('fileerror', function(event, data, msg) {
         console.log("fileerror");
         console.log(data);
     });
     //异步上传返回结果处理
-    $(".myfile").on("fileuploaded", function (event, data, previewId, index) {
-        console.log("fileuploaded");
+    $(".myFile").on("fileuploaded", function (event, data, previewId, index) {
         var ref=$(this).attr("data-ref");
-        $("input[name='"+ref+"']").val(data.response.imgUrl);
+        var imgUrl=$("input[name='"+ref+"']").val();
+        imgUrl+=data.response.imgUrl+',';
+        //imgUrl=imgUrl.substring(0,imgUrl.length-1);
+        $("input[name='"+ref+"']").val(imgUrl);
+        console.log($("input[name='"+ref+"']").val());
     });
 
     //同步上传错误处理
-    $('.myfile').on('filebatchuploaderror', function(event, data, msg) {
+    $('.myFile').on('filebatchuploaderror', function(event, data, msg) {
         console.log("filebatchuploaderror");
         console.log(data);
     });
 
     //同步上传返回结果处理
-    $(".myfile").on("filebatchuploadsuccess", function (event, data, previewId, index) {
+    $(".myFile").on("filebatchuploadsuccess", function (event, data, previewId, index) {
         console.log("filebatchuploadsuccess");
         console.log(data);
     });
 
     //上传前
-    $('.myfile').on('filepreupload', function(event, data, previewId, index) {
+    $('.myFile').on('filepreupload', function(event, data, previewId, index) {
         console.log("filepreupload");
     });
 </script>

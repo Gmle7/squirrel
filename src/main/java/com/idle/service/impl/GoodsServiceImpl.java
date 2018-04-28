@@ -27,11 +27,14 @@ public class GoodsServiceImpl implements GoodsService {
         goodsMapper.downGood(goodsId);
     }
 
-    public int addGood(Goods goods , Integer duration) {
+    public int addGood(Goods goods) {
         String startTime = DateUtil.getNowTime();
         //添加上架时间，第一次擦亮时间和发布时间相同
+        goods.setGoodsStatus("正常");
         goods.setStartTime(startTime);
         goods.setPolishTime(startTime);
+        goods.setEndTime("未下架");
+        goods.setCommentNum(0);
         return goodsMapper.insert(goods);
     }
 
@@ -95,6 +98,11 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> getGoodsPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);//分页核心代码
         return goodsMapper.selectAllGoodsAndCategoryNameAndUserName();
+    }
+
+    @Override
+    public List<Goods> getNewGoods() {
+        return goodsMapper.getNewGoods();
     }
 
 }

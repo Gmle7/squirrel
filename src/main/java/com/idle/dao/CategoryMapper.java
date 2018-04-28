@@ -18,7 +18,9 @@ public interface CategoryMapper {
 
     int updateByPrimaryKey(Category record);
 
-    int updateCategoryNum(@Param("id") Integer id,@Param("number") Integer number);
+    int updateCategoryNum(@Param("categoryId") Integer id,@Param("number") Integer number);
+
+    int updateCategoryNum2(@Param("categoryId") Integer id);
 
     List<Category> getAllCategory();//根据商品类别查询商品
 

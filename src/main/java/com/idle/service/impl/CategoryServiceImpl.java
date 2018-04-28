@@ -29,7 +29,12 @@ public class CategoryServiceImpl implements CategoryService {
     public int updateByPrimaryKey(Category category) {
         return  categoryMapper.updateByPrimaryKey(category);
     }
+
     public int updateCategoryNum(Integer categoryId,Integer number) {
         return categoryMapper.updateCategoryNum(categoryId,number);
+    }
+
+    public int updateCategoryNum2(Integer categoryId) {
+        return categoryMapper.updateCategoryNum2(categoryId);
     }
 }

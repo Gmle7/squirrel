@@ -100,7 +100,7 @@
                                 <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}" class="head_img">
                                     <img src="../upload/${item.images[0].imgUrl}">
                                 </a>
-                                <span class="name">${item.goods.name}</span>
+                                <span class="name">${item.goods.goodsName}</span>
                                 <span class="text" style="overflow: hidden; outline: none;">${item.goods.description}</span>
                                 <div class="box">
                                     <div class="box_content">
@@ -114,7 +114,7 @@
                                     <div class="interact">
                                         <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goods.goodsId}">编辑</a></span>
                                         <span class="fa fa-share"><a href="">擦亮</a></span>
-                                        <span class="fa fa-commenting"><a>${item.goods.commetNum}0</a></span>
+                                        <span class="fa fa-commenting"><a>${item.goods.commentNum}0</a></span>
                                         <span class="time">${items.goods.startTime}</span>
                                         <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goods.goodsId}">删除</a></span>
                                     </div>

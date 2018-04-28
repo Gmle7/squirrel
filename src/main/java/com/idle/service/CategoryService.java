@@ -10,4 +10,5 @@ public interface CategoryService {
     Category selectByPrimaryKey(Integer id);
     int updateByPrimaryKey(Category record);
     int updateCategoryNum(Integer id,Integer number);
+    int updateCategoryNum2(Integer id);
 }

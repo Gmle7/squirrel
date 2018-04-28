@@ -23,6 +23,8 @@ public class Goods {
 
     private String polishTime;
 
+    private String isBargain;
+
     private String goodsStatus;
 
     private Integer commentNum;
@@ -141,6 +143,14 @@ public class Goods {
 
     public void setPolishTime(String polishTime) {
         this.polishTime = polishTime;
+    }
+
+    public String isBargain() {
+        return isBargain;
+    }
+
+    public void setBargain(String bargain) {
+        isBargain = bargain;
     }
 
     public String getGoodsStatus() {

@@ -9,9 +9,8 @@ public interface GoodsService {
     /**
      * 发布商品
      * @param goods
-     * @param duration 允许上架时长
      */
-    int addGood(Goods goods , Integer duration);
+    int addGood(Goods goods);
 
     /**
      * 下架商品
@@ -86,5 +85,11 @@ public interface GoodsService {
      * @return
      */
     List<Goods> getGoodsPage(int pageNum,int pageSize);
+
+    /**
+     * 查询最新发布的8条商品信息带图片
+     * @return
+     */
+    List<Goods> getNewGoods();
 
 }

@@ -12,6 +12,7 @@
     <result column="real_price" property="realPrice" jdbcType="REAL" />
     <result column="start_time" property="startTime" jdbcType="VARCHAR" />
     <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="is_bargain" property="isBargain" jdbcType="VARCHAR" />
     <result column="goods_status" property="goodsStatus" jdbcType="VARCHAR" />
     <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="polish_time" property="polishTime" jdbcType="VARCHAR" />
@@ -21,10 +22,10 @@
     <result column="img_url" property="imgUrl" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goods_id, goods_name, category_id, category_name, user_id, price, real_price, start_time, polish_time, end_time, goods_status, comment_num
+    goods_id, goods_name, category_id, category_name, user_id, price, real_price, start_time, polish_time, end_time, is_bargain, goods_status, comment_num
   </sql>
   <sql id="Blob_Column_List" >
-    description, description
+    description
   </sql>
   <sql id="Factor">
 --     and end_time >= now() order by polish_time DESC
@@ -66,14 +67,12 @@
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.idle.pojo.Goods" useGeneratedKeys="true" keyProperty="id">
-    insert into goods (goods_id,goods_name, category_id, user_id,
-    goods_name, price, real_price, start_time,
-    end_time, polish_time, goods_status,comment_num, description)
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR},#{categoryId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
-    #{price,jdbcType=REAL}, #{realPrice,jdbcType=REAL}, #{startTime,jdbcType=VARCHAR},
-    #{endTime,jdbcType=VARCHAR}, #{polishTime,jdbcType=VARCHAR},#{goodsStatus,jdbcType=VARCHAR}, #{commentNum,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}
-    )
+  <insert id="insert" parameterType="com.idle.pojo.Goods" useGeneratedKeys="true" keyProperty="goodsId">
+    insert into goods (goods_id, category_id, user_id, goods_name, price, real_price, start_time,
+    end_time, polish_time, is_bargain, goods_status,comment_num, description)
+    values (#{goodsId,jdbcType=INTEGER},#{categoryId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{goodsName,jdbcType=VARCHAR},
+    #{price,jdbcType=REAL},#{realPrice,jdbcType=REAL},#{startTime,jdbcType=VARCHAR},#{endTime,jdbcType=VARCHAR},
+    #{polishTime,jdbcType=VARCHAR},#{isBargain,jdbcType=VARCHAR},#{goodsStatus,jdbcType=VARCHAR},#{commentNum,jdbcType=INTEGER},#{description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.idle.pojo.Goods" >
     insert into goods
@@ -104,6 +103,9 @@
       </if>
       <if test="polishTime != null" >
         polish_time,
+      </if>
+      <if test="isBargain != null" >
+        is_bargain,
       </if>
       <if test="goodsStatus != null" >
         polish_time,
@@ -143,6 +145,9 @@
       <if test="endTime != null" >
         #{polishTime,jdbcType=VARCHAR},
       </if>
+      <if test="isBargain != null" >
+        #{is_bargain,jdbcType=VARCHAR},
+      </if>
       <if test="goodsStatus != null" >
         #{goodsStatus,jdbcType=VARCHAR},
       </if>
@@ -181,6 +186,9 @@
       <if test="endTime != null" >
         polish_time = #{polishTime,jdbcType=VARCHAR},
       </if>
+      <if test="isBargain != null" >
+        is_bargain #{isBargain,jdbcType=VARCHAR},
+      </if>
       <if test="goodsStatus != null" >
         goods_status #{goodsStatus,jdbcType=VARCHAR},
       </if>
@@ -203,6 +211,7 @@
       start_time = #{startTime,jdbcType=VARCHAR},
       end_time = #{endTime,jdbcType=VARCHAR},
       polish_time = #{polishTime,jdbcType=VARCHAR},
+      is_bargain #{isBargain,jdbcType=VARCHAR},
       goods_status #{goodsStatus,jdbcType=VARCHAR},
       comment_num = #{commentNum,jdbcType=INTEGER},
       description = #{description,jdbcType=LONGVARCHAR}
@@ -219,6 +228,7 @@
       end_time = #{endTime,jdbcType=VARCHAR},
       polish_time = #{polishTime,jdbcType=VARCHAR},
       comment_num = #{commentNum,jdbcType=INTEGER},
+      is_bargain #{isBargain,jdbcType=VARCHAR},
       goods_status #{goodsStatus,jdbcType=VARCHAR},
       description = #{description,jdbcType=LONGVARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
@@ -233,4 +243,7 @@
   <update id="downGood" parameterType="java.lang.Integer" >
     UPDATE goods SET `status`='已下架' where goods_id= #{goodsId,jdbcType=INTEGER}
   </update>
+  <select id="getNewGoods" resultMap="ResultMapWithBLOBs">
+    select goods.* ,img_url from goods LEFT JOIN image on image.goods_id=goods.goods_id order by start_time desc limit 8
+  </select>
 </mapper>

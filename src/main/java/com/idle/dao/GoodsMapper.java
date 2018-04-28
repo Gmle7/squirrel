@@ -110,4 +110,6 @@ public interface GoodsMapper {
      * @return
      */
     List<Goods> selectAllGoodsAndCategoryNameAndUserName();
+    //查询最新发布的8条商品信息带图片
+    List<Goods> getNewGoods();
 }

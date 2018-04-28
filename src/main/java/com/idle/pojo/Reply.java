@@ -7,7 +7,7 @@ public class Reply {
 
     private Integer atuserId;
 
-    private Integer commetId;
+    private Integer commentId;
 
     private String createAt;
 
@@ -37,12 +37,12 @@ public class Reply {
         this.atuserId = atuserId;
     }
 
-    public Integer getCommetId() {
-        return commetId;
+    public Integer getCommentId() {
+        return commentId;
     }
 
-    public void setCommetId(Integer commetId) {
-        this.commetId = commetId;
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
     }
 
     public String getCreateAt() {

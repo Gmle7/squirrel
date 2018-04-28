@@ -1,19 +1,13 @@
 package com.idle.pojo;
 
+import java.util.List;
+
 public class Image {
-    private Integer id;
+    private Integer imgId;
 
     private String goodsId;
 
     private String imgUrl;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getGoodsId() {
         return goodsId;
@@ -29,5 +23,13 @@ public class Image {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
+    public Integer getImgId() {
+        return imgId;
+    }
+
+    public void setImgId(Integer imgId) {
+        this.imgId = imgId;
     }
 }

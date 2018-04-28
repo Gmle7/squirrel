@@ -78,14 +78,13 @@
     where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.idle.pojo.Category" >
-    update category
-    set category_name = #{categoryName,jdbcType=VARCHAR},
-      number = #{number,jdbcType=INTEGER},
-      category_status = #{categoryStatus,jdbcType=TINYINT}
-    where category_id = #{categoryId,jdbcType=INTEGER}
+    update category set category_name = #{categoryName,jdbcType=VARCHAR},number = #{number,jdbcType=INTEGER},
+      category_status = #{categoryStatus,jdbcType=TINYINT} where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
   <update id="updateCategoryNum" parameterType="Integer" >
-    update category
-    set number = #{number,jdbcType=INTEGER} where category_id = #{categoryId,jdbcType=INTEGER}
+    update category set number = #{number,jdbcType=INTEGER} where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
+  <!--<update id="updateCategoryNum2" parameterType="Integer" >数据库触发器实现
+    update category set number = number+1 where category_id = #{categoryId,jdbcType=INTEGER}
+  </update>-->
 </mapper>

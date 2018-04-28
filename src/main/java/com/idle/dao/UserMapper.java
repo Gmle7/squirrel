@@ -20,7 +20,9 @@ public interface UserMapper {
 
     User getUserByPhone(String phone);//通过手机号查询用户
 
-    int updateGoodsNum(@Param("id") Integer id, @Param("goodsNum") Integer goodsNum);//更改用户的商品数量
+    int updateGoodsNum(@Param("userId") Integer id, @Param("goodsNum") Integer goodsNum);//更改用户的商品数量
+
+    int updateGoodsNum2(@Param("userId") Integer id);//用户的商品数量+1
 
     List<User> getUserList();
 

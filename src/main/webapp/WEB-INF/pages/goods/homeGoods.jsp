@@ -22,14 +22,14 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <script type="text/javascript">
-        //主页轮播图1.35s后隐藏换成
+        /*//主页轮播图1.35s后隐藏换成
         $(function () {
             setTimeout(function () {
                 $("#welcome").css("display", "none");
                 $("#myCarousel").css("display", "block");
                 $('#myCarousel').carousel();
-            }, 3000)
-        });
+            }, 13000)
+        });*/
     </script>
 </head>
 <body ng-view="ng-view">
@@ -287,12 +287,7 @@
     </div>
     <div class="waterfoo stark-components row">
         <div class="item-wrapper normal">
-            <c:if test="${empty categoryGoods1}">
-                <div class="no_share">
-                    <span>该分类下还没有人发布闲置，去看看其他的东西吧！</span>
-                </div>
-            </c:if>
-            <c:forEach var="item" items="${categoryGoods1}">
+            <c:forEach var="item" items="${goodsListNew}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
                         <div class="card-image">
