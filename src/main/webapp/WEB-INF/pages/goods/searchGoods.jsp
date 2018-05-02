@@ -242,7 +242,7 @@
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/category/1" class="digital">
             <img src="<%=basePath%>img/digital.png"/>
-            <em>闲置数码</em>
+            <em>数码电子</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isRide]">
@@ -254,7 +254,7 @@
     <li ng-class="{true: 'active'}[isCommodity]">
         <a href="/goods/category/3" class="commodity">
             <img src="<%=basePath%>img/commodity.png"/>
-            <em>电器日用</em>
+            <em>生活电器</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isBook]">
@@ -266,7 +266,7 @@
     <li ng-class="{true: 'active'}[isMakeup]">
         <a href="/goods/category/5" class="makeup">
             <img src="<%=basePath%>img/makeup.png"/>
-            <em>美妆衣物</em>
+            <em>服装衣帽</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSport]">
@@ -278,7 +278,7 @@
     <li ng-class="{true: 'active'}[isSmallthing]">
         <a href="/goods/category/7" class="smallthing">
             <img src="<%=basePath%>img/smallthing.png"/>
-            <em>票券小物</em>
+            <em>精致迷你</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">

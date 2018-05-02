@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/common.css"/>
     <script type="text/javascript">
         //主页轮播图3s后隐藏换成
         $(function () {
@@ -36,14 +36,7 @@
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
-        <div class=" ">
-            <c:if test="${!empty cur_user}">
-                <a href="<%=basePath%>goods/homeGoods" class="logo">
-                    <em class="em1">Gmle7</em>
-                    <em class="em2">闲置空间</em>
-                    <%--<em class="em3">idle.market</em>--%>
-                </a>
-            </c:if>
+        <div class="">
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
@@ -63,7 +56,15 @@
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
                 </c:if>
             </ul>
-
+            <ul class="nav navbar-nav navbar-left">
+                <c:if test="${!empty cur_user}">
+                    <a href="<%=basePath%>goods/homeGoods" class="logo">
+                        <em class="em1">Gmle7</em>
+                        <em class="em2">闲置空间</em>
+                            <%--<em class="em3">idle.market</em>--%>
+                    </a>
+                </c:if>
+            </ul>
             <ul class="right">
                 <c:if test="${empty cur_user}">
                     <li class="publish-btn">
@@ -267,11 +268,11 @@
                         <div class="bannerimg">
                             <%--<ul class="bannerul">
                                 <p class="text1">亲爱的同学：</p>
-                                <p class="text2">欢迎来到湖南信息学院Squirrel校园闲置空间。临近毕业季</p>
+                                <p class="text2">欢迎来到湖南信息学院Gmle7校园闲置空间。临近毕业季</p>
                                 <p class="text3">的你，是否有太多的闲置与校友分享，为了追求更好的校园服</p>
-                                <p class="text4">务，我们打造了一个全新的校园平台——<span>Squirrel闲置空间</span></p>
+                                <p class="text4">务，我们打造了一个全新的校园平台——<span>Gmle7闲置空间</span></p>
                                 <p class="text5">更丰富的闲置分享，更自由的校园话题讨论，你想要的，都在这里！</p>
-                                <p class="text6">加入Squirrel，你的大学，应更精彩!!!</p>
+                                <p class="text6">加入Gmle7，你的大学，应更精彩!!!</p>
                             </ul>--%>
                             <div class="logoimg">
                                 <img src="../img/title.png"/>
@@ -295,7 +296,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -326,7 +329,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -357,7 +362,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -388,7 +395,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -419,7 +428,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -450,7 +461,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -481,7 +494,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -512,7 +527,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -543,7 +560,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -574,7 +593,9 @@
                         <div class="card-image">
                             <img src="../upload/${item.imgUrl}"/>
                         </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out value="${item.realPrice}"></c:out></s></span></a></div>
+                        <div class="card-content item-price"><a style="position: relative;color: red">¥:<c:out
+                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                value="${item.realPrice}"></c:out></s></span></a></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goodsName}"></c:out></p>
                         </div>
@@ -629,7 +650,7 @@
     <li ng-class="{true: 'active'}[isSport]">
         <a href="/goods/category/6" class="sport">
             <img src="../img/sport.png"/>
-            <em>娱乐棋牌</em>
+            <em>娱乐运动</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
@@ -652,8 +673,9 @@
     </li>
 </div>
 <div class="copyright-bottom">
-    Copyright &copy; @2018 110XB工作室   <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
-    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved. 备案号：123456789-1
+    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
+    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
+    备案号：123456789-1
 </div>
 </body>
 </html>

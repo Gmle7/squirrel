@@ -284,7 +284,7 @@
     <p class="section">${goodsExtend.goods.description}</p>
     <p class="section"></p>
     <p class="section">
-        联系我的时候，请说明是在湘信院Squirrel校园闲置空间上看见的哦~
+        联系我的时候，请说明是在湘信院Gmle7校园闲置空间上看见的哦~
     </p>
 </div>
 <div class="row detail-area" id="comment">
@@ -350,9 +350,8 @@
     备案号：123456789-1
 </div>
 <script>
-    //验证消息显示在页面上
     $(function () {
-        //进页面先不让评论就警告框显示
+        //进页面先不让评论警告框显示
         $("#commentWarning").css("display", "none");
         $("#commentSuccess").css("display", "none");
         $("#commentError").css("display", "none");
@@ -364,14 +363,14 @@
     })
 
     function freshComments() {
-        var commentsMsg={
+        var comments={
             goodsId:${goodsExtend.goods.goodsId},
         }
         $.ajax({
             type: 'post',
             url: '/comments/getComments',
             //params:{goodsId:${goodsExtend.goods.goodsId},
-            data:commentsMsg,
+            data:comments,
             dataType: 'json',
             contentType: 'application/json;charset=UTF-8',
             async: true,

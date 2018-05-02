@@ -42,13 +42,13 @@ public class CommentController {
 
     /**
      * 根据商品Id获取商品评论
-     * @param goodsId
+     * @param comments
      * @return
      */
     @RequestMapping(value = "/getComments")
     @ResponseBody
-    public List<Comments> getComments(Integer goodsId){
-        List<Comments> commentsList=commentsService.selectCommentsByGoodsId(goodsId);
+    public List<Comments> getComments(Comments comments){
+        List<Comments> commentsList=commentsService.selectCommentsByGoodsId(comments.getGoodsId());
         return commentsList;
     }
 }

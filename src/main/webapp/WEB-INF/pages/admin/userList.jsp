@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>Squirrel后台管理系统</title>
+	<title>Gmle7后台管理系统</title>
 	<script src="../js/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/jquery.bootgrid.min.css">
@@ -23,7 +23,7 @@
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar">*****</span>
 						</button>
-						<a class="navbar-brand" href="#">Squirrel后台管理系统</a>
+						<a class="navbar-brand" href="#">Gmle7后台管理系统</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -36,7 +36,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Squirrel用户信息</h2>
+			<h2>Gmle7用户信息</h2>
 			<a class="btn btn-primary" href="/admin/exportUser">导出数据为excel</a>
 			<a class="btn btn-primary" href="#" id="add">添加用户</a>
 			<div class="btn-group">
