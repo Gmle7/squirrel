@@ -24,11 +24,13 @@
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
         <div class=" ">
-            <%--<a href="#" class="logo">
-                <em class="em1">湘信院</em>
-                <em class="em2">闲置空间</em>
-                <em class="em3">idle.market</em>
-            </a>--%>
+            <c:if test="${!empty cur_user}">
+                <a href="<%=basePath%>goods/homeGoods" class="logo">
+                    <em class="em1">Gmle7</em>
+                    <em class="em2">闲置空间</em>
+                        <%--<em class="em3">idle.market</em>--%>
+                </a>
+            </c:if>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
@@ -194,7 +196,6 @@
 </div>
 <!--描述：左侧显示部分-->
 <div class="main-content">
-    <!-- 描述：最新发布-->
     <div class="index-title">
         <a href="">${userGrid.rows.get(1).categoryName}</a>
         <hr class="hr1">

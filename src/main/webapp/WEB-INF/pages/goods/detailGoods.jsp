@@ -21,67 +21,20 @@
     <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
-    <script>
-        //验证消息显示在页面上
-        $(function () {
-            //进页面先不让评论就警告框显示
-            $("#commentWarning").css("display", "none");
-            $("#commentSuccess").css("display", "none");
-            $("#commentError").css("display", "none");
-            $("#commentBox").focus(function () {
-                $("#commentWarning").css("display", "none");
-                $("#commentSuccess").css("display", "none");
-                $("#commentError").css("display", "none");
-            })
-        })
 
-        function submitComments() {
-            var comments = {
-                userId:${goodsExtend.goods.userId},
-                goodsId:${goodsExtend.goods.goodsId},
-                content: $('#commentBox').value();
-        }
-            if (comments.content == "") {
-                $("#commentWarning").css("display", "block");
-                return false;
-            }
-            //创建异步对象
-            $.ajax({
-                // 请求发送方式
-                type: 'post',
-                // 验证文件
-                url: '/comments/addComments',
-                // 用户输入的帐号密码
-                data: JSON.stringify(comments),
-                dataType: 'json',
-                contentType: 'application/json;charset=UTF-8',
-                // 异步，不写默认为True
-                async: true,
-                //请求成功后的回调
-                success: function (data) {
-                    if (data) {
-                        $("#commentSuccess").css("display", "block");
-                    } else {
-                        $("#commentError").css("display", "block");
-                    }
-                },
-                error: function () {
-                    alert('服务端异常');
-                }
-            })
-        }
-    </script>
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
         <div class=" ">
-            <%--<a href="#" class="logo">
-                <em class="em1">湘信院</em>
-                <em class="em2">闲置空间</em>
-                <em class="em3">idle.market</em>
-            </a>--%>
+            <c:if test="${!empty cur_user}">
+                <a href="<%=basePath%>goods/homeGoods" class="logo">
+                    <em class="em1">Gmle7</em>
+                    <em class="em2">闲置空间</em>
+                        <%--<em class="em3">idle.market</em>--%>
+                </a>
+            </c:if>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
@@ -264,7 +217,7 @@
         <div class="carousel-inner">
             <c:forEach var="item" items="${goodsExtend.images}" varStatus="status">
                 <div class="item <c:if test="${status.index==0}">active</c:if>" style="height: 300px">
-                    <img src="<%=basePath%>upload/${item.imgUrl}" alt="First slide${item.id}" style="width: 100%;height: 100%">
+                    <img src="<%=basePath%>upload/${item.imgUrl}" alt="First slide${item.imgId}" style="width: 100%;height: 100%">
                 </div>
             </c:forEach>
         </div>
@@ -289,7 +242,7 @@
                     <a onclick="showLogin()">登录</a>
                     <em>或</em>
                     <a onclick="showSignup()">注册</a>
-                    <em>后查看联系信息</em>
+                    <em>后可查看联系信息和发表评论哦</em>
                 </p>
             </div>
         </c:if>
@@ -359,6 +312,7 @@
                 </c:forEach>
             </div>
             <div class="comment-add row">
+                <c:if test="${!empty cur_user}">
                 <div class="input-field col s12">
                     <%--<form:form action="/comments/addComments" method="post" id="comments" role="form">--%>
                         <i class="iconfont prefix"></i>
@@ -382,8 +336,10 @@
                             系统错误，评论失败！
                         </div>
                         <button type="button" class="waves-effect wave-light btn comment-submit" onclick="return submitComments()">确认</button>
+                        <button type="button" class="waves-effect wave-light btn comment-submit" onclick="return freshComments()">确认2</button>
                     <%--</form:form>--%>
                 </div>
+                </c:if>
             </div>
         </div>
     </div>
@@ -393,5 +349,88 @@
     <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
     备案号：123456789-1
 </div>
+<script>
+    //验证消息显示在页面上
+    $(function () {
+        //进页面先不让评论就警告框显示
+        $("#commentWarning").css("display", "none");
+        $("#commentSuccess").css("display", "none");
+        $("#commentError").css("display", "none");
+        $("#commentBox").focus(function () {
+            $("#commentWarning").css("display", "none");
+            $("#commentSuccess").css("display", "none");
+            $("#commentError").css("display", "none");
+        })
+    })
+
+    function freshComments() {
+        var commentsMsg={
+            goodsId:${goodsExtend.goods.goodsId},
+        }
+        $.ajax({
+            type: 'post',
+            url: '/comments/getComments',
+            //params:{goodsId:${goodsExtend.goods.goodsId},
+            data:commentsMsg,
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            async: true,
+            success: function (data) {
+                console.log(data);
+                if (data) {
+
+                } else {
+
+                }
+            },
+            error: function () {
+                alert('服务端异常');
+            }
+        })
+    }
+
+    function submitComments() {
+        console.log($('#commentBox').val());
+        if ($('#commentBox').val() == "") {
+            $("#commentWarning").css("display", "block");
+            return false;
+        }
+        var comments = {
+            userId:${goodsExtend.goods.userId},
+            goodsId:${goodsExtend.goods.goodsId},
+            content: $('#commentBox').val()
+        }
+        //创建异步对象
+        $.ajax({
+            // 请求发送方式
+            type: 'post',
+            // 验证文件
+            url: '/comments/addComments',
+            // 用户输入的帐号密码
+            data: JSON.stringify(comments),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            // 异步，不写默认为True
+            async: true,
+            //请求成功后的回调
+            success: function (data) {
+                console.log(data)
+                if (data) {
+                    $("#commentSuccess").css("display", "block");
+                    $(function () {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500)
+                    });
+                } else {
+                    $("#commentError").css("display", "block");
+                }
+            },
+            error: function () {
+                alert('服务端异常');
+            }
+        })
+    }
+</script>
 </body>
 </html>

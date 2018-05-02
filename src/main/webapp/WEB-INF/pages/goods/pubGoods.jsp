@@ -54,7 +54,7 @@
                 </div>
                 <span class="name">${cur_user.username}</span>
                 <span class="school">湖南信息学院</span>
-                <span class="name">闲置数量：${cur_user.goodsNum}</span>
+                <span class="name">发布闲置数量：${cur_user.goodsNum}</span>
             </div>
             <div class="home_nav">
                 <ul>
@@ -121,13 +121,13 @@
                     <div class="changeinfo">
                         <span>物品类别：</span>
                         <select class="in_info" name="categoryId">
-                            <option value="1">闲置数码</option>
+                            <option value="1">数码电子</option>
                             <option value="2">校园代步</option>
-                            <option value="3">电器日用</option>
-                            <option value="4">图书教材</option>
-                            <option value="5">美妆衣物</option>
-                            <option value="6">运动棋牌</option>
-                            <option value="7">票券小物</option>
+                            <option value="3">生活电器</option>
+                            <option value="4">图书期刊</option>
+                            <option value="5">服装衣帽</option>
+                            <option value="6">娱乐运动</option>
+                            <option value="7">精致迷你</option>
                             <option value="8">宠物相关</option>
                             <option value="9">房屋出租</option>
                         </select>

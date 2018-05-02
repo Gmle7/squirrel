@@ -33,11 +33,10 @@
     delete from comments
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.idle.pojo.Comments" >
-    insert into comments (id, user_id, goods_id, 
-      create_at, content)
+  <insert id="insert" parameterType="com.idle.pojo.Comments" useGeneratedKeys="true">
+    insert into comments (id, user_id, goods_id, content, create_at)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
-      #{createAt,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+      #{content,jdbcType=LONGVARCHAR}, #{createAt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.idle.pojo.Comments" >
     insert into comments

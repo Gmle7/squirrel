@@ -17,8 +17,8 @@ public class CommentsServiceImpl implements CommentsService{
     private CommentsMapper commentsMapper;
 
     @Override
-    public void insertComment(Comments comments) {
-        commentsMapper.insert(comments);
+    public int addComment(Comments comments) {
+        return commentsMapper.insert(comments);
     }
 
     @Override

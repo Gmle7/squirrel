@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface CommentsService {
 
-    void insertComment(Comments comments);
+    int addComment(Comments comments);
 
     List<Comments> selectCommentsByGoodsId(int goodsId);
 }

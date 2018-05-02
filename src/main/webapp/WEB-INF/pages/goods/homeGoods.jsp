@@ -22,14 +22,14 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/common.css" />
     <script type="text/javascript">
-        /*//主页轮播图1.35s后隐藏换成
+        //主页轮播图3s后隐藏换成
         $(function () {
             setTimeout(function () {
                 $("#welcome").css("display", "none");
                 $("#myCarousel").css("display", "block");
                 $('#myCarousel').carousel();
-            }, 13000)
-        });*/
+            }, 3000)
+        });
     </script>
 </head>
 <body ng-view="ng-view">
@@ -37,11 +37,13 @@
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
         <div class=" ">
-            <%--<a href="#" class="logo">
-                <em class="em1">湘信院</em>
-                <em class="em2">闲置空间</em>
-                <em class="em3">idle.market</em>
-            </a>--%>
+            <c:if test="${!empty cur_user}">
+                <a href="<%=basePath%>goods/homeGoods" class="logo">
+                    <em class="em1">Gmle7</em>
+                    <em class="em2">闲置空间</em>
+                    <%--<em class="em3">idle.market</em>--%>
+                </a>
+            </c:if>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
@@ -308,7 +310,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">闲置数码</a>
+        <a href="">数码电子</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -370,7 +372,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">电器日用</a>
+        <a href="">生活电器</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -401,7 +403,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">图书教材</a>
+        <a href="">图书期刊</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -432,7 +434,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">美妆衣物</a>
+        <a href="">服装衣帽</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -463,7 +465,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">运动棋牌</a>
+        <a href="">娱乐运动</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -494,7 +496,7 @@
     </div>
     <div class="index-title">
         <hr class="hr2">
-        <a href="">票券小物</a>
+        <a href="">精致迷你</a>
         <hr class="hr1">
     </div>
     <div class="waterfoo stark-components row">
@@ -597,7 +599,7 @@
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/category/1" class="digital">
             <img src="../img/digital.png"/>
-            <em>闲置数码</em>
+            <em>数码电子</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isRide]">
@@ -609,31 +611,31 @@
     <li ng-class="{true: 'active'}[isCommodity]">
         <a href="/goods/category/3" class="commodity">
             <img src="../img/commodity.png"/>
-            <em>电器日用</em>
+            <em>生活家电</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isBook]">
         <a href="/goods/category/4" class="book">
             <img src="../img/book.png"/>
-            <em>图书教材</em>
+            <em>图书期刊</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isMakeup]">
         <a href="/goods/category/5" class="makeup">
             <img src="../img/makeup.png"/>
-            <em>美妆衣物</em>
+            <em>服装衣帽</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSport]">
         <a href="/goods/category/6" class="sport">
             <img src="../img/sport.png"/>
-            <em>运动棋牌</em>
+            <em>娱乐棋牌</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
         <a href="/goods/category/7" class="smallthing">
             <img src="../img/smallthing.png"/>
-            <em>票券小物</em>
+            <em>精致迷你</em>
         </a>
     </li>
     <li ng-class="{true: 'active'}[isSmallthing]">
