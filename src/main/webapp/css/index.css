@@ -10441,8 +10441,9 @@ div.login.stark-components .publish-box {
     position: absolute;
     left: 50%;
     margin-left: -150px;
-    top: 20%;
-    background: #fff
+    top: 10%;
+    background: #fff;
+    border-radius: 4px;
 }
 
 div.login.stark-components .publish-box > .row {
@@ -10505,7 +10506,8 @@ div.signup.stark-components .publish-box {
     left: 50%;
     margin-left: -150px;
     top: 10%;
-    background: #fff
+    background: #fff;
+    border-radius: 4px;
 }
 
 div.signup.stark-components .publish-box > .row {
@@ -10523,11 +10525,12 @@ div.signup.stark-components .publish-box div.s6 {
 }
 
 div.signup.stark-components .publish-box .verify-btn {
-    /*position: absolute;*/
-    /*bottom: 50px;*/
-    /*left: 50%;*/
-    /*margin-left: -75px*/
-    display: inline-block;
+    /*position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -100px;
+    display: inline-block;*/
+    width: 200px;
 }
 
 div.signup.stark-components .publish-box .signup-btn {

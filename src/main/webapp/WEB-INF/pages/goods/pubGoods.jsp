@@ -102,9 +102,9 @@
         <div id="user_content">
             <div class="basic">
                 <form:form action="/goods/publishGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
-                    <h1 style="margin-left: 210px;">发布物品</h1><hr />
+                    <h1 style="margin-left: 210px;margin-top: -30px;">发布物品</h1><hr />
                     <div class="changeinfo">
-                        <span>物品名：</span>
+                        <span>物品名称：</span>
                         <input class="in_info" type="text" name="goodsName" placeholder="请输入物品名"/>
                         <span>(*必填)</span>
                     </div>
@@ -114,7 +114,7 @@
                         <span>(*必填)</span>
                     </div>
                     <div class="changeinfo">
-                        <span>原价：</span>
+                        <span>商品原价：</span>
                         <input class="in_info" type="text" name="realPrice" placeholder="请输入商品原价"/>
                         <span id="checkphone">(*选填,请如实填写)</span>
                     </div>
@@ -134,21 +134,21 @@
                     </div>
                     <div class="changeinfo" id="dir">
                         <span>商品描述：</span>
-                        <div class="sha">
+                        <%--<div class="sha">
                             <div class="publ">
                                 <div class="pub_con">
-                                    <div class="text_pu">
+                                    <div class="text_pu">--%>
                                         <input type="text" name="description" class="emoji-wysiwyg-editor"/>
-                                    </div>
+                                    <%--</div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                     <br />
                     <hr />
                     <div class="changeinfo">
-                        <span>是否接受讲价：</span>
-                        <label class="in_info"><input type="radio" name="isBargain" value="1">不接受</label>
+                        <span>可否讲价：</span>
+                        <label class="in_info"><input type="radio" name="isBargain" value="1">拒绝</label>
                         <label class="in_info"><input type="radio" name="isBargain" value="0">接受</label>
                     </div>
                     <div class="changeinfo">
@@ -157,7 +157,7 @@
                             <div class="row">
                                 <div class="col-sm-6 col-sm-offset-1">
                                     <div class="form-group">
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-10" style="padding-left: 50px;">
                                             <input type="file" name="myFile" data-ref="imgUrl" multiple class="col-sm-10 myFile" value=""/>
                                             <input type="hidden" name="imgUrl" value="">
                                         </div>

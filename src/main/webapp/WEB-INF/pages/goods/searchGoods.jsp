@@ -206,7 +206,7 @@
         <div class="item-wrapper normal">
             <c:if test="${empty userGrid}">
                 <div class="no_share">
-                    <span>没有任何内容，试着搜索其他的东西吧！</span>
+                    <span>没有任何内容，试着换个关键字或者搜索其他的东西吧！</span>
                 </div>
             </c:if>
             <c:forEach var="item" items="${userGrid.rows}">

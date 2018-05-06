@@ -244,6 +244,6 @@
     UPDATE goods SET `status`='已下架' where goods_id= #{goodsId,jdbcType=INTEGER}
   </update>
   <select id="getNewGoods" resultMap="ResultMapWithBLOBs">
-    select goods.* ,img_url from goods LEFT JOIN image on image.goods_id=goods.goods_id order by start_time desc limit 8
+    select goods.* ,img_url from goods LEFT JOIN image on image.goods_id=goods.goods_id where image.img_id=(select img_id from image where goods_id = goods.goods_id limit 1) order by start_time desc limit 8
   </select>
 </mapper>

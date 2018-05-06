@@ -178,6 +178,11 @@
                                class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                     </div>
+                    <div class="input-field col s12">
+                        <input type="password" name="confiPassword" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
+                        <label>确认密码</label>
+                    </div>
                     <div>
                         <a id="badUser" style="color: red"></a>
                     </div>
