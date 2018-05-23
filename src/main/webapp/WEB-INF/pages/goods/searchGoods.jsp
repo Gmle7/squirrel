@@ -218,7 +218,7 @@
     <!--描述：分类-->
     <c:if test="${!empty userGrid.rows}">
         <div class="index-title">
-            <a href="">${userGrid.rows.get(1).categoryName}</a>
+            <a href="">${userGrid.rows.get(0).categoryName}</a>
             <hr class="hr1">
             <hr class="hr2">
         </div>

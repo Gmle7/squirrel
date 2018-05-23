@@ -211,39 +211,41 @@
 </div>
 <!--描述：左侧显示部分-->
 <div class="main-content">
-    <div class="index-title">
-        <a href="">${userGrid.rows.get(1).categoryName}</a>
-        <hr class="hr1">
-        <hr class="hr2">
-    </div>
-    <div class="waterfoo stark-components row">
-        <div class="item-wrapper normal">
-            <c:if test="${empty userGrid}">
-                <div class="no_share">
-                    <span>没有任何内容，试着搜索其他的东西吧！</span>
-                </div>
-            </c:if>
-            <c:forEach var="item" items="${userGrid.rows}">
-                <div class="card col">
-                    <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
-                        <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.imgUrl}"/>
-                        </div>
-                        <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out
-                                value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
-                                value="${item.realPrice}"></c:out></s></span></a></div>
-                        <div class="card-content item-name">
-                            <p><c:out value="${item.goodsName}"></c:out></p>
-                        </div>
-                        <div class="card-content item-location">
-                            <p>湖南信息学院</p>
-                            <p><c:out value="${item.startTime}"></c:out></p>
-                        </div>
-                    </a>
-                </div>
-            </c:forEach>
+    <c:if test="${empty userGrid.rows}">
+        <div class="no_share" style="font-size: 14px;margin: 0 auto;width: 100%;text-align: center;padding: 20px 0;">
+            <span>没有找到任何内容，试着换个关键字或者搜索其他的东西吧！</span>
         </div>
-    </div>
+    </c:if>
+    <c:if test="${!empty userGrid.rows}">
+        <div class="index-title">
+            <a href="">${userGrid.rows.get(0).categoryName}</a>
+            <hr class="hr1">
+            <hr class="hr2">
+        </div>
+        <div class="waterfoo stark-components row">
+            <div class="item-wrapper normal">
+                <c:forEach var="item" items="${userGrid.rows}">
+                    <div class="card col">
+                        <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
+                            <div class="card-image">
+                                <img src="<%=basePath%>upload/${item.imgUrl}"/>
+                            </div>
+                            <div class="card-content item-price"><a style="position: relative;color: red;">¥:<c:out
+                                    value="${item.price}"></c:out><span class="itemRealPrice">¥:<s><c:out
+                                    value="${item.realPrice}"></c:out></s></span></a></div>
+                            <div class="card-content item-name">
+                                <p><c:out value="${item.goodsName}"></c:out></p>
+                            </div>
+                            <div class="card-content item-location">
+                                <p>湖南信息学院</p>
+                                <p><c:out value="${item.startTime}"></c:out></p>
+                            </div>
+                        </a>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+    </c:if>
 </div>
 <!--描述：右侧导航条-->
 <div ng-controller="sidebarController" class="sidebar stark-components ng-scope">

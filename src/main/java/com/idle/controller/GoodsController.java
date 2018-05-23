@@ -29,8 +29,6 @@ public class GoodsController {
     @Autowired
     private ImageService imageService;
     @Autowired
-    private CategoryService categoryService;
-    @Autowired
     private UserService userService;
     @Autowired
     private CommentsService commentsService;
@@ -100,11 +98,11 @@ public class GoodsController {
     public ModelAndView categoryGoods(@PathVariable("categoryId") Integer categoryId,
                                      @RequestParam(value = "str",required = false) String str,@RequestParam(defaultValue = "1",value = "pageNum") int pageNum, @RequestParam(defaultValue = "4",value = "pageSize")int pageSize) throws Exception {
         UserGrid<Goods>  userGrid = goodsService.getGoodsByCategoryId(categoryId,pageNum,pageSize);
-        Category category = categoryService.selectByPrimaryKey(categoryId);
+        //Category category = categoryService.selectByPrimaryKey(categoryId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userGrid", userGrid);
-        modelAndView.addObject("category", category);
-        modelAndView.addObject("search",str);
+        //modelAndView.addObject("category", category);
+        //modelAndView.addObject("search",str);
         modelAndView.setViewName("/goods/categoryGoods");
         return modelAndView;
     }
