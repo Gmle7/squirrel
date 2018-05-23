@@ -38,20 +38,18 @@ function ChangeName() {
 function check(form) {
     var user = {
         phone: form.phone.value,
-        password: form.password.value
+        password: form.password.value,
     }
-    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))) {
-        $("#badPwd").html("请输入正确的手机号码！");
+    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))||user.phone.length<11) {
+        $("#signInBadMsg").html("请输入正确的手机号码！");
         return false;
     }
-    if (user.phone == "") {
-        $("#badPwd").html("手机号不能为空！");
-        form.username.focus();
+    if (user.password == ""||user.password.replace(/(^s*)|(s*$)/g, "").length ==0) {
+        $("#signInBadMsg").html("密码不能为空！");
         return false;
     }
-    if (user.password == "") {
-        $("#badPwd").html("密码不能为空！");
-        form.password.focus();
+    if (user.password.length<6) {
+        $("#signInBadMsg").html("密码长度不能小于6位！");
         return false;
     }
     //创建异步对象
@@ -70,11 +68,9 @@ function check(form) {
         //请求成功后的回调
         success: function (data) {
             if (data) {
-                /*alert('登录成功')*/
                 $("#user1").submit();
             } else {
-                /*alert('帐号或密码错误');*/
-                $("#badPwd").html("账号或密码错误！");
+                $("#signInBadMsg").html("账号或密码错误！");
             }
         },
         error: function () {
@@ -89,10 +85,36 @@ function checkSameUser(form) {
     var user = {
         phone: form.phone.value,
         password: form.password.value,
-        username: form.username.value
+        username: form.username.value,
+        confirmPassword:form.confirmPassword.value
     }
-    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))) {
-        $("#badUser").html("请输入正确的手机号码！");
+    if (user.username == "") {
+        $("#signUpBadMsg").html("昵称不能为空！");
+        //form.username.focus();
+        return false;
+    }
+    /*if (user.username.replace(/(^s*)|(s*$)/g, "").length ==0) {
+        $("#signUpBadMsg").html("昵称不能为空格！");
+        return false;
+    }*/
+    if ((/[^a-zA-Z0-9\_\u4e00-\u9fa5]/.test(user.username))) {
+        $("#signUpBadMsg").html("昵称存在非法字符！");
+        return false;
+    }
+    if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(user.phone))||user.phone.length<11) {
+        $("#signUpBadMsg").html("请输入正确的手机号码！");
+        return false;
+    }
+    if (user.password == ""||user.password.replace(/(^s*)|(s*$)/g, "").length ==0) {
+        $("#signUpBadMsg").html("密码不能为空！");
+        return false;
+    }
+    if (user.password.length<6) {
+        $("#signUpBadMsg").html("密码长度不能小于6位！");
+        return false;
+    }
+    if (user.password != user.confirmPassword ) {
+        $("#signUpBadMsg").html("两次密码输入不相同！");
         return false;
     }
     //创建异步对象
@@ -112,7 +134,7 @@ function checkSameUser(form) {
             if (data) {
                 submitSignUp(form);
             } else {
-                $("#badUser").html("该手机号无效或已被注册！");
+                $("#signUpBadMsg").html("该手机号已被注册！");
             }
         },
         error: function () {
@@ -143,9 +165,9 @@ function submitSignUp(form) {
         //请求成功后的回调
         success: function (data) {
             if (data) {
-                $("#badUser").html("注册成功，请前往登录页登录！");
+                $("#signUpBadMsg").html("注册成功，请前往登录！");
             } else {
-                $("#badUser").html("系统错误，请联系管理员！");
+                $("#signUpBadMsg").html("系统错误，请联系管理员！");
             }
         },
         error: function () {
@@ -156,13 +178,19 @@ function submitSignUp(form) {
 
 //验证消息显示在页面上
 $(function () {
+    $("input[name='username']").focus(function () {
+        $("#signUpBadMsg").html("");
+    })
     $("input[name='password']").focus(function () {
-        $("#badPwd").html("");
-        $("#badUser").html("");
+        $("#signUpBadMsg").html("");
+        $("#signInBadMsg").html("");
     })
     $("input[name='phone']").focus(function () {
-        $("#badPwd").html("");
-        $("#badUser").html("");
+        $("#signUpBadMsg").html("");
+        $("#signInBadMsg").html("");
+    })
+    $("input[name='confirmPassword']").focus(function () {
+        $("#signUpBadMsg").html("");
     })
 })
 

@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserCount();
     }
 
-    public void updateLastLogin(String lastLogin,int userId){
-        userMapper.updateLastLogin(lastLogin,userId);
+    public int updateLastLogin(String lastLogin,Integer userId){
+        return userMapper.updateLastLogin(lastLogin,userId);
     }
 
     public InputStream getInputStream() throws Exception {

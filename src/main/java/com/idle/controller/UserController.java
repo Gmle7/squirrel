@@ -78,7 +78,7 @@ public class UserController {
     public ModelAndView loginValidate(HttpServletRequest request, User user) {
         User cur_user = userService.getUserByPhone(user.getPhone());
         String time = DateUtil.getNowTime();
-        userService.updateLastLogin(time,cur_user.getUserId());//设置登录时间
+        userService.updateLastLogin(time, cur_user.getUserId());//设置登录时间
         String url = request.getHeader("Referer");
         request.getSession().setAttribute("cur_user", cur_user);
         return new ModelAndView("redirect:" + url);
@@ -107,7 +107,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/changeName")
-    public ModelAndView changeName(HttpServletRequest request, User user, ModelMap modelMap) {
+    public ModelAndView changeName(HttpServletRequest request, @RequestBody User user, ModelMap modelMap) {
         String url = request.getHeader("Referer");
         //从session中获取出当前用户
         User cur_user = (User) request.getSession().getAttribute("cur_user");
@@ -122,18 +122,19 @@ public class UserController {
      *
      * @param request
      * @param user
-     * @param modelMap
      * @return
      */
     @RequestMapping(value = "/updateInfo")
-    public ModelAndView updateInfo(HttpServletRequest request, User user, ModelMap modelMap) {
+    @ResponseBody
+    public boolean updateInfo(HttpServletRequest request, @RequestBody User user) {
         //从session中获取出当前用户
         User cur_user = (User) request.getSession().getAttribute("cur_user");
         cur_user.setUsername(user.getUsername());
         cur_user.setEmail(user.getEmail());
+        //cur_user.setPassword(user.getPassword());
+        cur_user.setWeixin(user.getWeixin());
         userService.updateUserName(cur_user);//执行修改操作
-        request.getSession().setAttribute("cur_user", cur_user);//修改session值
-        return new ModelAndView("redirect:/user/basic");
+        return true;
     }
 
     /**

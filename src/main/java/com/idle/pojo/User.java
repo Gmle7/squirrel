@@ -9,6 +9,8 @@ public class User {
 
     private String password;
 
+    private String weixin;
+
     private String email;
 
     private String createAt;
@@ -51,6 +53,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public String getWeixin() {
+        return weixin;
+    }
+
+    public void setWeixin(String weixin) {
+        this.weixin = weixin;
     }
 
     public String getEmail() {

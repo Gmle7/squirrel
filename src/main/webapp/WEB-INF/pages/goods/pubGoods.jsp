@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="<%=basePath%>/css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=basePath%>/css/userhome.css" />
     <link rel="stylesheet" href="<%=basePath%>/css/user.css" />
-    <script type="text/javascript" src="<%=basePath%>/js/jquery-3.1.1.min.js"></script>
+    <%--<script type="text/javascript" src="<%=basePath%>/js/jquery-3.1.1.min.js"></script>--%>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <!-- bootstrap -->
-    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
-    <script type="text/javascript" src="<%=basePath%>/js/bootstrap.min.js"></script>
+    <%--<link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">--%>
+    <%--<script type="text/javascript" src="<%=basePath%>/js/bootstrap.min.js"></script>--%>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- 图片上传即使预览插件 -->
     <link rel="stylesheet" href="<%=basePath%>/css/fileinput.min.css">
     <script type="text/javascript" src="<%=basePath%>/js/fileinput.min.js"></script>
@@ -101,10 +104,10 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="/goods/publishGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
+                <form:form action="/goods/publishGoodsSubmit" method="post" role="form" id="pubForm" enctype="multipart/form-data">
                     <h1 style="margin-left: 210px;margin-top: -30px;">发布物品</h1><hr />
                     <div class="changeinfo">
-                        <span>物品名称：</span>
+                        <span>商品名称：</span>
                         <input class="in_info" type="text" name="goodsName" placeholder="请输入物品名"/>
                         <span>(*必填)</span>
                     </div>
@@ -131,18 +134,19 @@
                             <option value="8">宠物相关</option>
                             <option value="9">房屋出租</option>
                         </select>
+                        <span>(*必填)</span>
                     </div>
-                    <div class="changeinfo" id="dir">
+                    <div class="changeinfo" id="description">
                         <span>商品描述：</span>
-                        <%--<div class="sha">
+                        <div class="sha">
                             <div class="publ">
                                 <div class="pub_con">
-                                    <div class="text_pu">--%>
-                                        <input type="text" name="description" class="emoji-wysiwyg-editor"/>
-                                    <%--</div>
+                                    <div class="text_pu">
+                                        <input type="text" name="description" class="emoji-wysiwyg -editor" style="width: 390px;height: 100px;border-radius: 4px"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>--%>
+                        </div>
                     </div>
                     <br />
                     <hr />
@@ -166,7 +170,9 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" class="setting-save" value="发布物品" style="margin-top: 20px;background-color: blue;"/>
+                    <div style="height: 20px"><a id="pubBadMsg" style="color: red;margin-left: 300px;"></a></div>
+                    <input type="button" class="setting-save" value="发布物品" style="margin-top: 30px;background-color: blue;margin-left: 260px;
+                    width: 200px;" onclick="return checkPublish(this.form)"/>
                 </form:form>
             </div>
             <!--
@@ -183,35 +189,35 @@
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
                         </a>
-                        <span>Brudce</span>
+                        <span>格物楼楼主</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo2.jpg">
                         </a>
-                        <span>Graham</span>
+                        <span>XDF厨师长</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo3.jpg">
                         </a>
-                        <span>策马奔腾hly</span>
+                        <span>石岚舟</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo4.jpg">
                         </a>
-                        <span>Danger-XFH</span>
+                        <span>赤沙岘</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo5.jpg">
                         </a>
-                        <span>Keithw</span>
+                        <span>Kevin</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>
@@ -275,6 +281,62 @@
     $('.myFile').on('filepreupload', function(event, data, previewId, index) {
         console.log("filepreupload");
     });
+    //验证注册时手机号是否已经被用过
+    function checkPublish(form) {
+        var pubMsg={
+            goodsName:form.goodsName.value,
+            price:form.price.value,
+            categoryId:form.categoryId.value,
+            isBargain:form.isBargain.value,
+            description:form.description.value,
+            imgUrl:form.imgUrl.value
+        }
+        if (pubMsg.goodsName == ""||pubMsg.goodsName.replace(/(^s*)|(s*$)/g, "").length ==0) {
+            $("#pubBadMsg").html("商品名称不能为空！");
+            return false;
+        }
+        if (pubMsg.price == "") {
+            $("#pubBadMsg").html("商品价格不能为空！");
+            return false;
+        }
+        if (pubMsg.categoryId == "") {
+            $("#pubBadMsg").html("请选择物品类别！");
+            return false;
+        }
+        if (pubMsg.isBargain == "") {
+            $("#pubBadMsg").html("可否讲价为必选项！");
+            return false;
+        }if (pubMsg.description.length>255) {
+            $("#pubBadMsg").html("商品描述不能超过255字！");
+            return false;
+        }
+        if (pubMsg.imgUrl == "") {
+            $("#pubBadMsg").html("请上传至少一张商品图片");
+            return false;
+        }
+        $("#pubForm").submit();
+    }
+    //验证消息显示在页面上
+    $(function () {
+        $("input[name='goodsName']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+        $("input[name='price']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+        $("select[name='categoryId']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+        $("textarea[name='description']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+        $("label[name='isBargain']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+        $("input[name='imgUrl']").focus(function () {
+            $("#pubBadMsg").html("");
+        })
+    })
 </script>
 <div class="copyright-bottom">
     Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;

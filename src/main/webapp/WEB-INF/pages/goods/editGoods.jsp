@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=basePath%>css/userhome.css" />
     <link rel="stylesheet" href="<%=basePath%>css/user.css" />
-    <script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
-    <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
+    <%--<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>--%>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <%--<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
+    <script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>--%>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/zh.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css" />
 
@@ -104,7 +106,7 @@
                     <h1 style="margin-left: 210px;">修改物品信息</h1><hr />
                     <div class="changeinfo">
                         <span>物品名：</span>
-                        <input class="in_info" type="text" name="name" placeholder="请输入物品名" value="${goodsExtend.goods.name}"/>
+                        <input class="in_info" type="text" name="name" placeholder="请输入物品名" value="${goodsExtend.goods.goodsName}"/>
                         <span>(*必填)</span>
                     </div>
                     <div class="changeinfo">
@@ -137,7 +139,7 @@
                             <div class="publ">
                                 <div class="pub_con">
                                     <div class="text_pu">
-                                        <input type="text" name="describle" class="emoji-wysiwyg-editor" value="${goodsExtend.goods.describle}"/>
+                                        <input type="text" name="describle" class="emoji-wysiwyg-editor" value="${goodsExtend.goods.description}"/>
                                     </div>
                                 </div>
                             </div>
@@ -180,35 +182,35 @@
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
                         </a>
-                        <span>Brudce</span>
+                        <span>格物楼楼主</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo2.jpg">
                         </a>
-                        <span>Graham</span>
+                        <span>XDF厨师长</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo3.jpg">
                         </a>
-                        <span>策马奔腾hly</span>
+                        <span>石岚舟</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo4.jpg">
                         </a>
-                        <span>Danger-XFH</span>
+                        <span>赤沙岘</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo5.jpg">
                         </a>
-                        <span>Keithw</span>
+                        <span>Kevin老师</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>

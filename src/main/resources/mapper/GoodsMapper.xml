@@ -54,7 +54,7 @@
     LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN user on goods.user_id=user.user_id
   </select>
   <select id="getGoodsByUserId" resultMap="ResultMapWithBLOBs">
-    select * from goods where user_id = #{userId,jdbcType=INTEGER} ORDER BY start_time
+    select * from goods where user_id = #{userId,jdbcType=INTEGER} ORDER BY start_time DESC
   </select>
 
   <select id="selectByCategoryOrderByDate" resultMap="ResultMapWithBLOBs">

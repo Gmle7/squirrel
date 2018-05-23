@@ -11,14 +11,16 @@
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="../css/index.css"/>
-    <script type="text/javascript" src="../js/jquery.js"></script>
+    <%--<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>--%>
     <script type="text/javascript" src="../js/user.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
-    <script type="text/javascript" src="../js/index.bundle.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/materialize/0.100.0/js/materialize.js"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>--%>
+    <%--<script type="text/javascript" src="../js/materialize.min.js"></script>--%>
+    <%--<script type="text/javascript" src="../js/index.bundle.js"></script>--%>
     <link rel="stylesheet" href="../css/materialize-icon.css"/>
     <link rel="stylesheet" href="../css/user.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <%--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/common.css"/>
     <script type="text/javascript">
@@ -90,7 +92,7 @@
                     <li class="notification">
                         <i ng-click="showNotificationBox()" class="iconfont"></i>
                         <div ng-show="notification.tagIsShow"
-                             class="notification-amount red lighten-1 ng-binding ng-hide">
+                             class="notification-amount red lighten-1 ng-binding ng-hide">0
                         </div>
                     </li>
                     <li class="changemore">
@@ -122,7 +124,7 @@
     <div id="login-show" class="login stark-components">
         <div class="publish-box z-depth-4">
             <div class="row">
-                <a onclick="showLogin()">
+                <a onclick="showLogin()" data-tooltip="单击关闭登录框！" trigger="click|hover|focus">
                     <div class="col s12 title"></div>
                 </a>
                 <form:form action="/user/login" method="post" id="user1" role="form">
@@ -135,7 +137,7 @@
                         <input type="password" id="password" name="password" required="required"
                                class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
-                        <a id="badPwd" style="color: red"></a>
+                        <a id="signInBadMsg" style="color: red;padding-left: 20px"></a>
                         <a ng-click="showForget()" class="forget-btn">忘记密码？</a>
                     </div>
                     <button type="button" class="waves-effect waves-light btn login-btn red lighten-1"
@@ -158,7 +160,7 @@
     <div id="signup-show" class="signup stark-components">
         <div class="publish-box z-depth-4">
             <div class="row">
-                <a onclick="showSignup()">
+                <a onclick="showSignup()" data-tooltip="单击关闭注册框！">
                     <div class="col s12 title"></div>
                 </a>
                 <form:form action="/user/addUser" method="post" id="user2" role="form"
@@ -179,12 +181,12 @@
                         <label>密码</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="password" name="confiPassword" required="required"
+                        <input type="password" name="confirmPassword" required="required"
                                class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>确认密码</label>
                     </div>
                     <div>
-                        <a id="badUser" style="color: red"></a>
+                        <a id="signUpBadMsg" style="color: red;padding-left: 20px"></a>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
                         <button type="button" class="waves-effect waves-light btn verify-btn red lighten-1"
@@ -624,7 +626,7 @@
     </li>
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/category/1" class="digital">
-            <img src="../img/digital.png"/>
+            <img src="../img/digital.jpg"/>
             <em>数码电子</em>
         </a>
     </li>

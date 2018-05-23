@@ -11,9 +11,12 @@
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="<%=basePath%>css/index.css"/>
-    <script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
-    <script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>
+    <%--<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>--%>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/materialize/0.100.0/js/materialize.js"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>--%>
+    <%--<script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>--%>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/materialize-icon.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,13 +27,6 @@
 <div ng-controller="headerController" class="header stark-components navbar-fixed ng-scope">
     <nav class="nav1">
         <div class=" ">
-            <c:if test="${!empty cur_user}">
-                <a href="<%=basePath%>goods/homeGoods" class="logo">
-                    <em class="em1">Gmle7</em>
-                    <em class="em2">闲置空间</em>
-                        <%--<em class="em3">idle.market</em>--%>
-                </a>
-            </c:if>
             <div class="nav-wrapper search-bar">
                 <form ng-submit="search()" class="ng-pristine ng-invalid ng-invalid-required" action="/goods/search">
                     <div class="input-field">
@@ -48,6 +44,15 @@
                             class="glyphicon glyphicon-user"></span> 同学，要先<span style="color: red">登录</span>哦</a></li>
                     <li><a class="nav-left" onclick="showSignup()"><span
                             class="glyphicon glyphicon-log-in"></span> 免费注册</a></li>
+                </c:if>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <c:if test="${!empty cur_user}">
+                    <a href="<%=basePath%>goods/homeGoods" class="logo">
+                        <em class="em1">Gmle7</em>
+                        <em class="em2">闲置空间</em>
+                            <%--<em class="em3">idle.market</em>--%>
+                    </a>
                 </c:if>
             </ul>
             <ul class="right">
@@ -138,14 +143,15 @@
                 <a onclick="showSignup()">
                     <div class="col s12 title"></div>
                 </a>
-                <form:form action="/user/addUser" method="post" id="user2" role="form">
+                <form:form action="/user/addUser" method="post" id="user2" role="form"
+                           onsubmit="return submitSignUp(this)">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required"
                                class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>昵称</label>
                     </div>
                     <div class="input-field col s12">
-                        <input type="text" name="phone" required="required" pattern="^1[0-9]{10}$"
+                        <input type="text" name="phone" id="phone2" required="required" pattern="^1[0-9]{10}$"
                                class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
                         <label>手机</label>
                     </div>
@@ -154,8 +160,17 @@
                                class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
                         <label>密码</label>
                     </div>
+                    <div class="input-field col s12">
+                        <input type="password" name="confirmPassword" required="required"
+                               class="validate ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"/>
+                        <label>确认密码</label>
+                    </div>
+                    <div>
+                        <a id="badUser" style="color: red"></a>
+                    </div>
                     <div ng-show="checkTelIsShow" class="col s12">
-                        <button type="submit" class="waves-effect waves-light btn verify-btn red lighten-1">
+                        <button type="button" class="waves-effect waves-light btn verify-btn red lighten-1"
+                                onclick="return checkSameUser(this.form)">
                             <i class="iconfont left"></i>
                             <em>点击注册</em>
                         </button>
@@ -240,7 +255,7 @@
     </li>
     <li ng-class="{true: 'active'}[isDigital]">
         <a href="/goods/category/1" class="digital">
-            <img src="<%=basePath%>img/digital.png"/>
+            <img src="<%=basePath%>img/digital.jpg"/>
             <em>数码电子</em>
         </a>
     </li>
