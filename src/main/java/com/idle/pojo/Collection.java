@@ -1,15 +1,13 @@
 package com.idle.pojo;
 
-public class Goods {
+public class Collection {
+    private Integer collectionId;
+
     private Integer goodsId;
 
     private Integer categoryId;
 
-    private String categoryName;   //分类名称，翻译给后台看
-
     private Integer userId;
-
-    private String username;     //用户名，翻译给后台看
 
     private String goodsName;
 
@@ -33,52 +31,28 @@ public class Goods {
 
     private String imgUrl;
 
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Integer collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getGoodsId() {
         return goodsId;
     }
 
     public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
-    }
-
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }
-
-    public Integer getCommentNum() {
-        return commentNum;
-    }
-
-    public void setCommentNum(Integer commentNum) {
-        this.commentNum = commentNum;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Integer getCategoryId() {
@@ -89,12 +63,12 @@ public class Goods {
         this.categoryId = categoryId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getGoodsName() {
+        return goodsName;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
     }
 
     public Float getPrice() {
@@ -111,14 +85,6 @@ public class Goods {
 
     public void setRealPrice(Float realPrice) {
         this.realPrice = realPrice;
-    }
-
-    public String getDescrible() {
-        return description;
-    }
-
-    public void setDescrible(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     public String getStartTime() {
@@ -145,14 +111,6 @@ public class Goods {
         this.polishTime = polishTime;
     }
 
-    public String isBargain() {
-        return isBargain;
-    }
-
-    public void setBargain(String bargain) {
-        isBargain = bargain;
-    }
-
     public String getIsBargain() {
         return isBargain;
     }
@@ -167,6 +125,22 @@ public class Goods {
 
     public void setGoodsStatus(String goodsStatus) {
         this.goodsStatus = goodsStatus;
+    }
+
+    public Integer getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(Integer commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImgUrl() {

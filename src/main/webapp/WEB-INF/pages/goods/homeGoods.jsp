@@ -11,9 +11,9 @@
     <meta charset="utf-8"/>
     <title>湘信院闲置空间</title>
     <link rel="stylesheet" href="../css/index.css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <%--<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>--%>
     <script type="text/javascript" src="../js/user.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/materialize/0.100.0/js/materialize.js"></script>
     <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>--%>
     <%--<script type="text/javascript" src="../js/materialize.min.js"></script>--%>

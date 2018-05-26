@@ -1,8 +1,10 @@
 package com.idle.controller;
 
+import com.idle.pojo.Collection;
 import com.idle.pojo.Goods;
 import com.idle.pojo.GoodsExtend;
 import com.idle.pojo.User;
+import com.idle.service.CollectionService;
 import com.idle.service.GoodsService;
 import com.idle.service.UserService;
 import com.idle.util.DateUtil;
@@ -30,6 +32,8 @@ public class UserController {
     private UserService userService;
     @Resource
     private GoodsService goodsService;
+    @Resource
+    private CollectionService collectionService;
     @Resource
     private GoodsExtendAndImage goodsExtendAndImage;
 
@@ -186,6 +190,22 @@ public class UserController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("goodsAndImage", goodsExtendList);
         mv.setViewName("/user/goods");
+        return mv;
+    }
+
+    /**
+     * 我的关注
+     * 查询出用户所有的收藏商品带图片
+     * @return 返回的model为 goodsAndImage对象,该对象中包含goods 和 images，参考相应的类
+     */
+    @RequestMapping(value = "/allCollection")
+    public ModelAndView collection(HttpServletRequest request) {
+        User cur_user = (User) request.getSession().getAttribute("cur_user");
+        Integer userId = cur_user.getUserId();
+        List<Collection> collectionList = collectionService.getCollectionsByUserId(userId);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("collectionList", collectionList);
+        mv.setViewName("/user/collection");
         return mv;
     }
 

@@ -67,7 +67,7 @@
                     <a href="">
                         <li class="fri">
                             <div></div>
-                            <span>关注列表</span>
+                            <span>我的关注</span>
                             <strong></strong>
                         </li>
                     </a>

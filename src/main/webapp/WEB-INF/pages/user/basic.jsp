@@ -52,17 +52,17 @@
             </div>
             <div class="home_nav">
                 <ul>
-                    <a href="">
+                    <a href="/user/home">
                         <li class="notice">
                             <div></div>
                             <span>我的消息</span>
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="">
+                    <a href="/user/allCollection">
                         <li class="fri">
                             <div></div>
-                            <span>关注列表</span>
+                            <span>我的关注</span>
                             <strong></strong>
                         </li>
                     </a>

@@ -19,11 +19,11 @@
     <%--<script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>--%>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<%=basePath%>css/detail.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
-
 </head>
 <body ng-view="ng-view">
 <!--描述：顶部-->
@@ -54,13 +54,12 @@
                     <a href="<%=basePath%>goods/homeGoods" class="logo">
                         <em class="em1">Gmle7</em>
                         <em class="em2">闲置空间</em>
-                            <%--<em class="em3">idle.market</em>--%>
                     </a>
                 </c:if>
             </ul>
             <ul class="right">
                 <c:if test="${empty cur_user}">
-                    <li class="publish-btn">
+                    <li>
                         <button ng-click="showLogin()" data-position="bottom" data-delay="0" trigger="click|hover|focus"
                                 data-tooltip="需要先登录哦！" title="需要先登录哦" class="red lighten-1 waves-effect waves-light btn"
                                 data-tooltip-id="510d3084-e666-f82f-3655-5eae4304a83a">
@@ -69,7 +68,7 @@
                     </li>
                 </c:if>
                 <c:if test="${!empty cur_user}">
-                    <li class="publish-btn">
+                    <li>
                         <button data-position="bottom" class="red lighten-1 waves-effect waves-light btn">
                             <a href="/goods/publishGoods">发布闲置</a>
                         </button>
@@ -220,28 +219,50 @@
         <a>${goodsExtend.goods.goodsName}</a>
     </div>
     <!-- 轮播图 -->
-    <div id="myCarouse2" class="carousel slide" style="width: 485px">
+    <div id="myCarouse2" class="carousel slide" style="width: 480px;margin-left: 240px">
         <!-- 轮播（Carousel）指标 -->
         <ol class="carousel-indicators">
             <c:forEach var="item" items="${goodsExtend.images}" varStatus="status">
-            <li data-target="#myCarouse2" data-slide-to=${status.index} <c:if test="${status.index==0}">class='active'</c:if>></li>
+                <li data-target="#myCarouse2"
+                    data-slide-to=${status.index} <c:if test="${status.index==0}">class='active'</c:if>></li>
             </c:forEach>
         </ol>
         <!-- 轮播（Carousel）项目 -->
         <div class="carousel-inner">
             <c:forEach var="item" items="${goodsExtend.images}" varStatus="status">
-                <div class="item <c:if test="${status.index==0}">active</c:if>" style="height: 300px">
-                    <img src="<%=basePath%>upload/${item.imgUrl}" alt="First slide${item.imgId}" style="width: 100%;height: 100%">
+                <div class="item <c:if test="${status.index==0}">active</c:if>"
+                     style="height: 300px;border: 2px;border-color: #00b8d4">
+                    <img src="<%=basePath%>upload/${item.imgUrl}" alt="First slide${item.imgId}"
+                         style="width: 100%;height: 100%">
                 </div>
             </c:forEach>
         </div>
     </div>
-    <div class="col s6">
-        <h1 class="item-name">${goodsExtend.goods.goodsName}</h1>
-        <h2 class="item-price">${goodsExtend.goods.price}</h2>
+    <div class="col s6" style="margin-left: 240px">
+        <h1 class="item-name" style="display: inherit">${goodsExtend.goods.goodsName}</h1>
+        <%--<a onclick="addCollection()"><i class="black material-icons">stars</i>关注一下</a>--%>
+
+        <a onclick="addCollection()" id="noCollection"><img src="<%=basePath%>img/heart1.png"
+                                                            style="height: 24px;width: 24px"/>关注一下</a>
+
+        <a onclick="cancelCollection()" style="display: none" id="yesCollection"><img
+                src="<%=basePath%>img/heart2.png" style="height: 24px;width: 24px"/>已经关注</a>
+
+        <h2 class="item-price" style="padding-left: 90px">¥:${goodsExtend.goods.price}
+            <span class="itemRealPrice" style="padding-left: 90px;color: black">¥:<s><c:out
+                    value="${goodsExtend.goods.realPrice}"></c:out></s>
+            </span>
+        </h2>
         <div class="item-public-info">
-            <p class="bargain">可讲价</p>
-            <p>
+            <c:choose>
+                <c:when test="${goodsExtend.goods.isBargain eq '0'}">
+                    <p class="bargain" style="padding-left: 80px">可接受讲价</p>
+                </c:when>
+                <c:otherwise>
+                    <p class="bargain">不接受讲价</p>
+                </c:otherwise>
+            </c:choose>
+            <p style="padding-left: 80px">
                 <i class="iconfont"></i>
                 <em class="item-location">湖南信息学院</em>
             </p>
@@ -284,11 +305,22 @@
                     <div class="base-blue z-depth-1 attr">
                         <i class="iconfont"></i>
                     </div>
-                    <div class="value"></div>
+                    <div class="value">${seller.weixin}</div>
                 </div>
             </div>
         </c:if>
-        <h1 class="item-pub-time">发布于 ${goodsExtend.goods.startTime}</h1>
+        <h2 class="item-pub-time">发布于 ${goodsExtend.goods.startTime}
+            <%--<span><c:set var="nowDate" value="<%=System.currentTimeMillis()%>"></c:set>
+                <c:choose>
+                    <c:when test="${nowDate-seller.lastLogin > 0}">
+                        <span class="STYLE1">当前用户在线</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="STYLE2">当前用户不在线</span>
+                    </c:otherwise>
+                </c:choose>
+            </span>--%>
+        </h2>
     </div>
 </div>
 <div class="detail-box stark-components z-depth-1 row">
@@ -298,7 +330,7 @@
     <p class="section">${goodsExtend.goods.description}</p>
     <p class="section"></p>
     <p class="section">
-        联系我的时候，请说明是在湘信院Gmle7校园闲置空间上看见的哦~
+        如果联系卖家没有回应，建议加卖家微信，联系卖家的时候，请说明是在湘信院Gmle7校园闲置空间上看见的哦~
     </p>
 </div>
 <div class="row detail-area" id="comment">
@@ -308,7 +340,7 @@
             <hr class="hr1"/>
             <hr class="hr2"/>
             <div class="comment-collection">
-                <c:forEach var="item" items="${commentsList}">
+                <c:forEach var="item" items="${commentsList}" varStatus="status">
                     <em></em>
                     <div class="comment-item ng-scope">
                         <div class="comment-main-content">
@@ -318,20 +350,20 @@
                             <em class="ng-binding">${item.content}</em>
                         </div>
                         <div class="comment-function">
-                            <em class="time ng-biinding">${item.createAt}</em>
+                            <em class="time ng-binding">${item.createAt}</em>
                             <a class="reply-or-delete">删除</a>
-                            <a class="reply-or-delete">回复</a>
+                            <a class="reply-or-delete" onclick="willReply(${status.index})">回复</a>
                         </div>
                     </div>
                 </c:forEach>
             </div>
             <div class="comment-add row">
                 <c:if test="${!empty cur_user}">
-                <div class="input-field col s12">
-                    <%--<form:form action="/comments/addComments" method="post" id="comments" role="form">--%>
+                    <div class="input-field col s12">
                         <i class="iconfont prefix"></i>
-                        <input id="commentBox" type="text" name="commentBox" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
-                        <label for="commentBox">这里写下评论</label>
+                        <input id="commentBox" type="text" name="commentBox"
+                               class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
+                        <label for="commentBox" name="forCommentBox">这里写下评论</label>
                         <div class="alert alert-success" id="commentSuccess">
                             <a href="#" class="alert-link">评论成功！</a>
                         </div>
@@ -349,8 +381,10 @@
                             </button>
                             系统错误，评论失败！
                         </div>
-                        <button type="button" class="waves-effect wave-light btn comment-submit" onclick="return submitComments()">确认</button>
-                </div>
+                        <button type="button" class="waves-effect wave-light btn comment-submit"
+                                onclick="return submitComments()">确认
+                        </button>
+                    </div>
                 </c:if>
             </div>
         </div>
@@ -362,6 +396,105 @@
     备案号：123456789-1
 </div>
 <script>
+    window.onload=function () {
+        if (${empty cur_user}) {
+            return false
+        }
+        getCollection();
+    }
+
+    $(function () {
+        $("input[name='commentBox']").blur(function () {
+            $("label[name='forCommentBox']").html("这里写下评论");
+        })
+    })
+
+    function getCollection() {
+        var goods = {
+            goodsId:${goodsExtend.goods.goodsId}
+        }
+        $.ajax({
+            type: 'post',
+            url: '/collection/getCollection',
+            data: JSON.stringify(goods),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            async: true,
+            success: function (data) {
+                if (data) {
+                    $("#yesCollection").css("display", "block");
+                    $("#noCollection").css("display", "none");
+                } else {
+                    $("#noCollection").css("display", "block");
+                    $("#yesCollection").css("display", "none");
+                }
+            },
+            error: function () {
+                alert('服务端异常');
+            }
+        })
+    }
+
+    function addCollection() {
+        if (${empty cur_user}) {
+            alert("请先登录哦！！！")
+            return false
+        }
+        var goods = {
+            goodsId:${goodsExtend.goods.goodsId}
+        }
+        $.ajax({
+            type: 'post',
+            url: '/collection/addCollection',
+            data: JSON.stringify(goods),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            async: true,
+            success: function (data) {
+                if (data) {
+                    $("#yesCollection").css("display", "block");
+                    $("#noCollection").css("display", "none");
+                } else {
+                    $("#noCollection").css("display", "block");
+                    $("#yesCollection").css("display", "none");
+                }
+            },
+            error: function () {
+                alert('服务端异常');
+            }
+        })
+    }
+
+    function cancelCollection() {
+        if (${empty cur_user}) {
+            alert("请先登录哦！！！")
+            return false
+        }
+        var goods = {
+            goodsId:${goodsExtend.goods.goodsId}
+        }
+        $.ajax({
+            type: 'post',
+            url: '/collection/cancelCollection',
+            data: JSON.stringify(goods),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            async: true,
+            success: function (data) {
+                if (data) {
+                    $("#yesCollection").css("display", "none");
+                    $("#noCollection").css("display", "block");
+                } else {
+                    $("#noCollection").css("display", "none");
+                    $("#yesCollection").css("display", "block");
+                }
+            },
+            error: function () {
+                alert('服务端异常');
+            }
+        })
+    }
+
     $(function () {
         //进页面先不让评论警告框显示
         $("#commentWarning").css("display", "none");
@@ -373,32 +506,6 @@
             $("#commentError").css("display", "none");
         })
     })
-
-    function freshComments() {
-        var comments={
-            goodsId:${goodsExtend.goods.goodsId},
-        }
-        $.ajax({
-            type: 'post',
-            url: '/comments/getComments',
-            //params:{goodsId:${goodsExtend.goods.goodsId},
-            data:comments,
-            dataType: 'json',
-            contentType: 'application/json;charset=UTF-8',
-            async: true,
-            success: function (data) {
-                console.log(data);
-                if (data) {
-
-                } else {
-
-                }
-            },
-            error: function () {
-                alert('服务端异常');
-            }
-        })
-    }
 
     function submitComments() {
         console.log($('#commentBox').val());
@@ -431,7 +538,7 @@
                     $(function () {
                         setTimeout(function () {
                             location.reload();
-                        }, 1500)
+                        }, 1000)
                     });
                 } else {
                     $("#commentError").css("display", "block");
@@ -441,6 +548,10 @@
                 alert('服务端异常');
             }
         })
+    }
+    function willReply(commentId) {
+        $("label[name='forCommentBox']").html("回复@${commentsList.get(commentId).username}");
+        $("input[name='commentBox']").focus();
     }
 </script>
 </body>
