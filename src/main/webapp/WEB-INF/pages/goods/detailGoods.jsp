@@ -340,6 +340,7 @@
             <hr class="hr1"/>
             <hr class="hr2"/>
             <div class="comment-collection">
+                <%--<c:if test="${commentsList}.size()"></c:if>--%>
                 <c:forEach var="item" items="${commentsList}" varStatus="status">
                     <em></em>
                     <div class="comment-item ng-scope">
@@ -353,7 +354,7 @@
                             <em class="time ng-binding">${item.createAt}</em>
                             <a class="reply-or-delete" onclick="willReport(${status.index})">举报</a>
                             <a class="reply-or-delete" onclick="willDelete(${status.index})">删除</a>
-                            <a class="reply-or-delete" onclick="willReply(${status.index})">回复</a>
+                            <a class="reply-or-delete" onclick="willReply('${item.username}')">回复</a>
                         </div>
                     </div>
                 </c:forEach>
@@ -365,17 +366,17 @@
                         <input id="commentBox" type="text" name="commentBox"
                                class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
                         <label for="commentBox" name="forCommentBox">这里写下评论</label>
-                        <div class="alert alert-success" id="commentSuccess">
+                        <div class="alert alert-success" id="commentSuccess" style="display: none">
                             <a href="#" class="alert-link">评论成功！</a>
                         </div>
-                        <div class="alert alert-warning alert-dismissable" id="commentWarning">
+                        <div class="alert alert-warning alert-dismissable" id="commentWarning" style="display: none">
                             <button type="button" class="close" data-dismiss="alert"
                                     aria-hidden="true">
                                 &times;
                             </button>
                             评论不能为空！
                         </div>
-                        <div class="alert alert-danger alert-dismissable" id="commentError">
+                        <div class="alert alert-danger alert-dismissable" id="commentError" style="display: none">
                             <button type="button" class="close" data-dismiss="alert"
                                     aria-hidden="true">
                                 &times;
@@ -497,10 +498,6 @@
     }
 
     $(function () {
-        //进页面先不让评论警告框显示
-        $("#commentWarning").css("display", "none");
-        $("#commentSuccess").css("display", "none");
-        $("#commentError").css("display", "none");
         $("#commentBox").focus(function () {
             $("#commentWarning").css("display", "none");
             $("#commentSuccess").css("display", "none");
@@ -545,12 +542,12 @@
             }
         })
     }
-    function willReply(commentId) {
+    function willReply(commentName) {
         if (${empty cur_user}) {
             alert("请先登录哦！！！")
             return false
         }
-        $("label[name='forCommentBox']").html("回复@${commentsList.get(commentId).username}");
+        $("label[name='forCommentBox']").html("回复@"+commentName);
         $("input[name='commentBox']").focus();
     }
     function willReport(commentId) {

@@ -7,7 +7,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b29518e-9a77-4a0f-9d4a-486692f7031c" name="Default" comment="修改了入口">
+    <list default="true" id="2b29518e-9a77-4a0f-9d4a-486692f7031c" name="Default" comment="注册样式修改，最新发布sql语句优化">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/img/commodity3.png" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_0_25.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_3_0.xml" afterPath="" />
@@ -34,26 +35,162 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_0_4_RELEASE.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_0_4_RELEASE.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_0_4_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/controller/AdminController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/controller/CatelogController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/controller/GoodsController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/controller/MainController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/controller/UserController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/CatelogMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/CommentsMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/GoodsMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/ImageMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/NoticeMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/ReplyMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/dao/UserMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Catelog.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Comments.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Goods.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/GoodsExtend.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Image.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Notice.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/Reply.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/pojo/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/CatelogService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/GoodsService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/ImageService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/impl/CatelogServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/impl/GoodsServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/impl/ImageServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/service/impl/UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/CellRegion.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/DateUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/MD5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/ReadExcel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/UserGrid.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/com/ldu/util/WriteExcel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/CatelogMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/aspectjweaver-1.7.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/commons-io-2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/commons-lang3-3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/commons-logging-1.1.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/druid-1.0.25.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/jackson-annotations-2.3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/jackson-core-2.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/jackson-databind-2.3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/log4j-1.2.16.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/mybatis-3.2.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/mybatis-spring-1.3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/mysql-connector-java-5.1.30.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/slf4j-api-1.7.7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-aop-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-beans-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-context-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-context-support-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-core-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-expression-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-jdbc-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-orm-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-tx-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-web-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/lib/spring-webmvc-4.0.4.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/catelogGoods.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/img/digital.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/01974fb4-da95-4191-8c80-e89db4a4e7a3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/0742ec19-ab85-4219-a829-fa833b0d1d39.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/0a281a3b-f4e1-445b-b7a0-3f7a829849bc.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/20afe4b7-b64b-4434-8c6d-3263985e1bfa.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/24e34c65-1ff9-4eba-b97a-7cd8d8b4ecb1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/26c2c89b-9312-4759-88a0-7f73f86c549d.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/27c63995-9ff9-453d-b24f-d9aa95dcc138.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/2952fe1e-0633-4f9d-9249-f999603235f5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/2f3fc053-090d-49de-a184-39e78cb4fc7e.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/370298f4-e81c-46b6-9dbd-83118922bb22.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/3c95fa0d-d5e3-40f7-826f-cafe6e6af740.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/4859432c-5955-411b-bdaa-d65275a9a61a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/4b85e359-6fc8-4c12-93b9-edec64320f67.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/4e976d24-a4de-4690-94f7-971507c622e6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/4ff2f2e2-5b3e-4ce6-9161-fb09cffea277.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/58a655a4-3bb1-4d63-87c1-257865393741.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/5aceed48-21f6-4aa8-9cfa-6bb831694c3a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/5f54d5d7-876a-4ee9-b8a6-9dd94239b58b.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/68bac661-f69f-4ec5-8f21-f92ec1970547.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/6c8a2d88-ab90-488e-a468-d379c730bd46.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/709c748b-f28c-4a85-8b3a-88f0783c5a7a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/717a89d2-244a-414a-aeb3-134ab8afcc19.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/75131adc-b3a8-495b-94a5-c7b144c41a0e.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/75599f16-ef35-4013-8c71-9f8c1682ad64.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/786c6d89-b27a-4a41-8f96-352aed2a9e6c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/80c2975d-e5d6-41b9-9866-19e46865dddb.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/813bd976-ad66-4fd5-ae5d-eb83e8f6e4ed.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/816c281c-3c37-4e93-beb9-074276838bb5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/8222a2f2-6287-4530-a399-da7696b73fdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/83e6a0be-cf28-4d74-8db6-ed1e3bafdec0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/85d132d0-bb61-4519-a08e-ec29937e4426.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/98fb927e-639f-4e02-ae37-44b0f1faf541.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/9d0782df-277f-45e6-b3b4-c424d688e312.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/9efb1d9a-072e-42af-b10b-e7abefa815e6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/a90f891e-9b74-4f92-a800-03ef83c0a69c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/ae2bdee2-0abb-428d-961f-eadf9905bf4c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/ba4d7cc8-639a-4f31-af46-7a1174fbb924.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/bec28d84-7d5e-4d50-8bb2-91409de00859.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/c378a8bb-0561-42bb-b77e-c89ed375efca.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/d01acfd0-3b87-4983-b46d-d2864e722437.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/d8ca0740-bdf3-416b-8557-8384e7299924.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/dee36400-df6a-46ac-96df-d71a7c42f328.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/e26183d0-244c-4da4-86dd-387d0ef8dfeb.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/e5d4b13a-61a1-438d-9c2b-d5f7c4e2a402.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/e80e60a1-859c-4277-9a6a-c6bfe95dcf7a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/ec95d24f-9d52-413f-b711-3ed3886b054c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f2857094-1642-4d22-88b8-d06c290944fe.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f34e49f8-bbef-4e1d-8138-e57aa97e408a.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f4ccf238-e458-4dda-9ed8-88bca2d42309.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f6e6a94d-e001-4fac-b8d3-2f99a9689a61.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f80708c6-e242-465d-9f0e-18f79f0d0b00.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f845fd90-db8a-4701-aa22-0968b2694fb0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f897a3fe-c08d-46f3-b6f4-5e35b2ecbc3c.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/f91335d4-784b-443a-bb68-34645ec164f8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/squirrel/upload/fcf6b8f5-8c3a-4b19-83f3-1c3d19903fbd.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/img/commodity.png" afterPath="$PROJECT_DIR$/target/squirrel/img/commodity.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/img/findfun.png" afterPath="$PROJECT_DIR$/target/squirrel/img/findfun.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/img/p_logo.jpg" afterPath="$PROJECT_DIR$/target/squirrel/img/p_logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/img/title.png" afterPath="$PROJECT_DIR$/target/squirrel/img/title.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/squirrel_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/squirrel_war.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/squirrel_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/squirrel_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/goodsList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/goodsList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/userList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/userList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/categoryGoods.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/categoryGoods.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/generatorConfig.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/generatorConfig.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/detailGoods.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/detailGoods.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/homeGoods.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/homeGoods.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/searchGoods.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/searchGoods.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/conf/generatorConfig.xml" afterPath="$PROJECT_DIR$/target/classes/conf/generatorConfig.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/conf/jdbc.properties" afterPath="$PROJECT_DIR$/target/classes/conf/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/conf/log4j.properties" afterPath="$PROJECT_DIR$/target/classes/conf/log4j.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/conf/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/classes/conf/spring-mvc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/CommentsMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/CommentsMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/GoodsMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/GoodsMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/generatorConfig.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/generatorConfig.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/jdbc.properties" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/log4j.properties" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/log4j.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/spring-mvc.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/conf/spring-mvc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/CommentsMapper.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/CommentsMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/GoodsMapper.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/GoodsMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/classes/mapper/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/admin/userList.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/admin/userList.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/error/404.html" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/error/404.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/detailGoods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/detailGoods.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/editGoods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/editGoods.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/homeGoods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/homeGoods.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/pubGoods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/pubGoods.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/searchGoods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/goods/searchGoods.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/basic.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/basic.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/goods.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/goods.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/home.jsp" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/pages/user/home.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/squirrel/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/css/detail.css" afterPath="$PROJECT_DIR$/target/squirrel/css/detail.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/css/index.css" afterPath="$PROJECT_DIR$/target/squirrel/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/css/user.css" afterPath="$PROJECT_DIR$/target/squirrel/css/user.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/squirrel/css/userhome.css" afterPath="$PROJECT_DIR$/target/squirrel/css/userhome.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,33 +205,119 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
     <option name="GROUP_CONTENTS" value="false" />
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="squirrel" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="detailGoods.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detailGoods.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/detailGoods.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
-              <caret line="395" column="9" lean-forward="true" selection-start-line="395" selection-start-column="9" selection-end-line="395" selection-end-column="9" />
+            <state relative-caret-position="275">
+              <caret line="354" column="59" lean-forward="false" selection-start-line="354" selection-start-column="59" selection-end-line="354" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goods.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/goods.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2612">
+              <caret line="226" column="5" lean-forward="false" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java">
+      <file leaf-file-name="GoodsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="-1177">
+              <caret line="145" column="55" lean-forward="true" selection-start-line="145" selection-start-column="55" selection-end-line="145" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commodity3.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/img/commodity3.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoodsServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/GoodsServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="75" column="52" lean-forward="false" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+              <folding>
+                <element signature="e#2295#2296#0" expanded="true" />
+                <element signature="e#2362#2363#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoodsMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1300">
+              <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+              <folding>
+                <marker date="1527588288840" expanded="true" signature="2079:2237" ph="select goods... goods" />
+                <marker date="1527588288840" expanded="true" signature="2385:2697" ph="select goods... goods" />
+                <marker date="1527588288840" expanded="true" signature="2853:3178" ph="select goods... goods" />
+                <marker date="1527588288840" expanded="true" signature="3296:3315" ph="select * fro... goods" />
+                <marker date="1527588288840" expanded="true" signature="3420:3592" ph="select goods... goods" />
+                <marker date="1527588288840" expanded="true" signature="3673:3975" ph="select * fro... goods" />
+                <marker date="1527588288840" expanded="true" signature="3673:3995" ph="select * fro... goods" />
+                <marker date="1527588288840" expanded="true" signature="3673:4000" ph="select * fro... goods" />
+                <marker date="1527588288840" expanded="true" signature="4093:4225" ph="select * fro... goods" />
+                <marker date="1527588288840" expanded="true" signature="4313:4379" ph="delete from " />
+                <marker date="1527588288840" expanded="true" signature="4502:5080" ph="insert into goods... " />
+                <marker date="1527588288840" expanded="true" signature="7438:8717" ph="update goods... " />
+                <marker date="1527588288840" expanded="true" signature="8815:9210" ph="update goods... " />
+                <marker date="1527588288840" expanded="true" signature="9299:9951" ph="update goods... " />
+                <marker date="1527588288840" expanded="true" signature="10075:10307" ph="select goods... goods" />
+                <marker date="1527588288840" expanded="true" signature="10424:10450" ph="select count... goods" />
+                <marker date="1527588288840" expanded="true" signature="10527:10602" ph="UPDATE goods... " />
+                <marker date="1527588288840" expanded="true" signature="10678:10880" ph="select goods... goods" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoodsMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/dao/GoodsMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -114,36 +337,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>luda</find>
-      <find>鲁达</find>
-      <find>da</find>
-      <find>鲁</find>
-      <find>鲁da</find>
-      <find>鲁大</find>
-      <find>i</find>
-      <find>l</find>
-      <find>ludong</find>
-      <find>鲁东</find>
-      <find>鲁东da</find>
-      <find>鲁东daxue</find>
-      <find>鲁东大学</find>
-      <find>二手工坊</find>
-      <find>临近</find>
-      <find>ldu</find>
-      <find>signup-show</find>
-      <find>checkTelIsShow</find>
-      <find>goodId</find>
-      <find>goodsId</find>
-      <find>&lt;%=basePath%&gt;</find>
-      <find>name</find>
-      <find>id</find>
-      <find>goods_ame</find>
       <find>myfile</find>
-      <find>400</find>
       <find>active</find>
       <find>Gmle7</find>
       <find>Squirrel</find>
+      <find>模糊</find>
+      <find>ng-empty</find>
+      <find>400</find>
+      <find>email</find>
+      <find>ti</find>
+      <find>Brudce</find>
+      <find>Graham</find>
+      <find>策马奔腾hly</find>
+      <find>Danger-XFH</find>
+      <find>Keithw</find>
+      <find>http://findfun.oss-cn-shanghai.aliyuncs.com/images/facebg_1.png</find>
+      <find>logo</find>
+      <find>关注列表</find>
+      <find>fri</find>
+      <find>contact</find>
+      <find>item-contact</find>
+      <find>itemRealPrice</find>
       <find>iconfont</find>
+      <find>我的收藏</find>
+      <find>class=&quot;publish-btn&quot;</find>
+      <find>urser</find>
+      <find>fa-trash</find>
+      <find>fa-heart</find>
+      <find>fa-trash-o</find>
+      <find>更改用户名</find>
+      <find>changeMoreVertShow</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -157,6 +380,14 @@
       <replace>goodsId</replace>
       <replace>myFile</replace>
       <replace>Gmle7</replace>
+      <replace>格物楼楼主</replace>
+      <replace>XDF厨师长</replace>
+      <replace>石岚舟</replace>
+      <replace>赤沙岘</replace>
+      <replace>Kevin</replace>
+      <replace>我的收藏</replace>
+      <replace>我的关注</replace>
+      <replace>修改昵称</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -175,57 +406,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/userList.jsp" />
-        <option value="$PROJECT_DIR$/squirrel.sql" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/catelogGoods.jsp" />
-        <option value="$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.0.RELEASE/spring-web-4.3.0.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/controller/CatelogController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/controller/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/service/CatelogService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/service/ImageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/util/CellRegion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/util/ReadExcel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/util/WriteExcel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ldu/service/impl/CatelogServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/user.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/basic.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/home.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/common.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/goodsList.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/editGoods.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/Goods.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ImageMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/dao/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/dao/CategoryMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/CategoryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/service/CategoryService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/goods.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/index.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/dao/GoodsMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/GoodsService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/GoodsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/user.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/pubGoods.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/Reply.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/Image.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/index.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/user.css" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/conf/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/conf/log4j.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/upload/123.txt" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/zh.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/resources/conf/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/user.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/detail.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/CollectionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/dao/CollectionMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/CollectionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/CollectionController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/categoryGoods.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/searchGoods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/userList.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/Collection.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/CollectionMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/pojo/Goods.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/error/404.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/userhome.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/homeGoods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/basic.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/collection.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/goods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/pubGoods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/editGoods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/GoodsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/service/impl/GoodsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/detail.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/detailGoods.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java" />
       </list>
     </option>
   </component>
@@ -245,8 +476,8 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
@@ -263,48 +494,24 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="squirrel Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="squirrel Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="squirrel Maven Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="mybatis-generator" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
-        </PATH_ELEMENT>
-      </PATH>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="squirrel Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="squirrel Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="squirrel Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
+      <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -327,9 +534,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -446,7 +650,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
@@ -464,6 +668,16 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="error" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
@@ -485,10 +699,31 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="squirrel" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -499,26 +734,26 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="D:\SoftWare\Nodejs\node.exe" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="SearchEverywhereHistoryKey" value=".share_content .story .name&#9;null&#9;null&#10;#user_content .share .publish .button .checkbox&#9;null&#9;null&#10;.button .checkbox&#9;null&#9;null&#10;title.png&#9;FILE&#9;file://E:/IntelliJ_Project/squirrel/src/main/webapp/img/title.png&#10;.more-vert&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IdeaProject\squirrel\src\main\webapp\img" />
-      <recent name="D:\IdeaProject\squirrel\target\squirrel\upload" />
-      <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\WEB-INF\pages\admin" />
-      <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\WEB-INF\pages\goods" />
-      <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProject\squirrel\src\main\webapp\img" />
       <recent name="D:\IdeaProject\squirrel\target\squirrel\img" />
       <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\css" />
       <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\js" />
       <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProject\squirrel\src\main\webapp\img" />
+      <recent name="D:\IdeaProject\squirrel\src\main\webapp\WEB-INF\pages\user" />
+      <recent name="D:\IdeaProject\squirrel\src\main\webapp" />
+      <recent name="D:\IdeaProject\squirrel\target\squirrel\upload" />
+      <recent name="E:\IntelliJ_Project\squirrel\src\main\webapp\WEB-INF\pages\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1094,6 +1329,38 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <configuration name="squirrel [mybatis-generator:generate]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat7.0.85" />
+      <item index="1" class="java.lang.String" itemvalue="Maven.squirrel [mybatis-generator:generate]" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Maven.squirrel [mybatis-generator:generate]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1155,7 +1422,23 @@
       <workItem from="1524582603971" duration="362000" />
       <workItem from="1524798790073" duration="24237000" />
       <workItem from="1524880241269" duration="18577000" />
-      <workItem from="1525231317821" duration="5989000" />
+      <workItem from="1525231317821" duration="6150000" />
+      <workItem from="1525355979893" duration="694000" />
+      <workItem from="1525507978557" duration="6141000" />
+      <workItem from="1525571681409" duration="14392000" />
+      <workItem from="1525623392488" duration="228000" />
+      <workItem from="1525771189572" duration="7506000" />
+      <workItem from="1525834754730" duration="10168000" />
+      <workItem from="1526178176245" duration="14115000" />
+      <workItem from="1526260579741" duration="10827000" />
+      <workItem from="1526289064391" duration="2982000" />
+      <workItem from="1526311198253" duration="1160000" />
+      <workItem from="1527042257723" duration="10273000" />
+      <workItem from="1527071426344" duration="6898000" />
+      <workItem from="1527152600904" duration="20983000" />
+      <workItem from="1527295209208" duration="26350000" />
+      <workItem from="1527402973362" duration="10860000" />
+      <workItem from="1527565305260" duration="23949000" />
     </task>
     <task id="LOCAL-00001" summary="增加页面背景">
       <created>1524070850577</created>
@@ -1185,11 +1468,67 @@
       <option name="project" value="LOCAL" />
       <updated>1524903689836</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="评论功能进一步完善">
+      <created>1525268813181</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525268813181</updated>
+    </task>
+    <task id="LOCAL-00006" summary="注册样式修改，最新发布sql语句优化">
+      <created>1525605625601</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1525605625602</updated>
+    </task>
+    <task id="LOCAL-00007" summary="为项目增加了日志，使用log4j。优化用户体验">
+      <created>1527048816894</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1527048816894</updated>
+    </task>
+    <task id="LOCAL-00008" summary="readme">
+      <created>1527048888169</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527048888169</updated>
+    </task>
+    <task id="LOCAL-00009" summary="分类查询数据优化">
+      <created>1527053824424</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1527053824424</updated>
+    </task>
+    <task id="LOCAL-00010" summary="增加商品收藏的功能，优化商品评论和回复">
+      <created>1527336375589</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1527336375589</updated>
+    </task>
+    <task id="LOCAL-00011" summary="修改样式，增加头像功能">
+      <created>1527565695576</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1527565695576</updated>
+    </task>
+    <task id="LOCAL-00012" summary="解决编辑商品的BUG">
+      <created>1527591684041</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1527591684041</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308790000" />
+    <option name="totallyTimeSpent" value="476477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1197,25 +1536,25 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3934066" sideWeight="0.5109409" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.108208954" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3569097" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47878128" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3101197" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3923077" sideWeight="0.4890591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5005441" sideWeight="0.4890591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15555556" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21375267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15085287" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1237,16 +1576,16 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3934066" sideWeight="0.5109409" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4978678" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.108208954" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43956044" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40369967" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3101197" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1254,11 +1593,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3923077" sideWeight="0.4890591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50109893" sideWeight="0.4890591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15555556" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3369803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38621444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1269,6 +1608,42 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -1278,7 +1653,15 @@
     <MESSAGE value="主页图片修改" />
     <MESSAGE value="图片整理" />
     <MESSAGE value="最新发布功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="最新发布功能" />
+    <MESSAGE value="评论功能进一步完善" />
+    <MESSAGE value="注册样式修改，最新发布sql语句优化" />
+    <MESSAGE value="为项目增加了日志，使用log4j。优化用户体验" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="分类查询数据优化" />
+    <MESSAGE value="增加商品收藏的功能，优化商品评论和回复" />
+    <MESSAGE value="修改样式，增加头像功能" />
+    <MESSAGE value="解决编辑商品的BUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决编辑商品的BUG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1295,17 +1678,11 @@
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java</url>
-          <line>228</line>
-          <properties />
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="19" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1314,463 +1691,368 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/findfun.png">
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/report1 (2).jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/findfun.png">
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/report1 (3).jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/pet.png">
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/report1 (4).jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/ride.png">
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/ride.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/ride2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/title.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/sport.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/smallthing.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/title2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/pet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/makeup.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/loading.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/index.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/heart2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/heart1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/findfun.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/digital2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/digital.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/commodity.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/squirrel/img/4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/error/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="78" column="6" lean-forward="false" selection-start-line="78" selection-start-column="6" selection-end-line="78" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/photo1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/photo.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/photo14.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="3846" lean-forward="false" selection-start-line="3" selection-start-column="3846" selection-end-line="3" selection-end-column="3846" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/userhome.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/fileinput-rtl.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/fileinput.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2970">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="295">
+          <caret line="973" column="25" lean-forward="false" selection-start-line="973" selection-start-column="4" selection-end-line="973" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="150" column="6" lean-forward="false" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/ImageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/dao/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/ImageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/CategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="42" column="48" lean-forward="false" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
-          <folding>
-            <element signature="e#1088#1089#0" expanded="false" />
-            <element signature="e#1153#1154#0" expanded="false" />
-            <element signature="e#1203#1204#0" expanded="false" />
-            <element signature="e#1260#1261#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-            <element signature="e#1374#1375#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#1158#1159#0" expanded="false" />
-            <element signature="e#1226#1227#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/dao/CategoryMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Goods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="9639" column="10" lean-forward="false" selection-start-line="9639" selection-start-column="10" selection-end-line="9639" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ImageMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <marker date="1524838772033" expanded="true" signature="798:953" ph="select , fro... " />
-            <marker date="1524838772033" expanded="true" signature="1040:1102" ph="delete from " />
-            <marker date="1524838772033" expanded="true" signature="1179:1324" ph="insert into image... " />
-            <marker date="1524838772033" expanded="true" signature="1445:1509" ph="select * fro... image" />
-            <marker date="1524838772033" expanded="true" signature="1605:1671" ph="delete from " />
-            <marker date="1524838772033" expanded="true" signature="2450:2720" ph="update image... " />
-            <marker date="1524838772033" expanded="true" signature="2818:2970" ph="update image... " />
-            <marker date="1524838772033" expanded="true" signature="3059:3163" ph="update image... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CategoryMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="86" column="71" lean-forward="false" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
-          <folding>
-            <marker date="1524885884991" expanded="true" signature="781:902" ph="select from category" />
-            <marker date="1524885884991" expanded="true" signature="976:1091" ph="select from category" />
-            <marker date="1524885884991" expanded="true" signature="1178:1253" ph="delete from " />
-            <marker date="1524885884991" expanded="true" signature="1333:1554" ph="insert into category... " />
-            <marker date="1524885884991" expanded="true" signature="2554:2963" ph="update categ... " />
-            <marker date="1524885884991" expanded="true" signature="3055:3270" ph="update categ... " />
-            <marker date="1524885884991" expanded="true" signature="3346:3452" ph="update categ... " />
-            <marker date="1524885884991" expanded="true" signature="3541:3629" ph="update categ... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="169" column="68" lean-forward="false" selection-start-line="169" selection-start-column="68" selection-end-line="169" selection-end-column="68" />
-          <folding>
-            <marker date="1524885899558" expanded="true" signature="1195:1304" ph="select from user" />
-            <marker date="1524885899558" expanded="true" signature="1398:1461" ph="select from user" />
-            <marker date="1524885899558" expanded="true" signature="1754:1856" ph="select from user" />
-            <marker date="1524885899558" expanded="true" signature="1943:2006" ph="delete from " />
-            <marker date="1524885899558" expanded="true" signature="2082:2523" ph="insert into user... " />
-            <marker date="1524885899558" expanded="true" signature="4330:5250" ph="update user " />
-            <marker date="1524885899558" expanded="true" signature="5338:5797" ph="update user " />
-            <marker date="1524885899558" expanded="true" signature="5870:5969" ph="update user " />
-            <marker date="1524885899558" expanded="true" signature="6055:6137" ph="update user " />
-            <marker date="1524885899558" expanded="true" signature="6217:6242" ph="select count... user" />
-            <marker date="1524885899558" expanded="true" signature="6326:6435" ph="update user " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/goods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="116" column="97" lean-forward="false" selection-start-line="116" selection-start-column="97" selection-end-line="116" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="53" column="17" lean-forward="false" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
-          <folding>
-            <marker date="1524278060667" expanded="true" signature="2750:2928" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Comments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/GoodsExtend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/MailSender.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Reply.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Notice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/pojo/Image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/conf/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/categoryGoods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="279" column="20" lean-forward="false" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/searchGoods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="291" column="24" lean-forward="true" selection-start-line="291" selection-start-column="24" selection-end-line="291" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/pubGoods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5632">
-          <caret line="256" column="10" lean-forward="false" selection-start-line="256" selection-start-column="10" selection-end-line="256" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/editGoods.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4102">
-          <caret line="20" column="46" lean-forward="false" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/homeGoods.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state relative-caret-position="-2492">
+          <caret line="211" column="38" lean-forward="false" selection-start-line="211" selection-start-column="38" selection-end-line="211" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/basic.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="277" column="5" lean-forward="false" selection-start-line="277" selection-start-column="5" selection-end-line="277" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#ul#1;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/collection.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="212" column="5" lean-forward="false" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#ul#1;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="213" column="5" lean-forward="false" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
+          <folding>
+            <element signature="n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#1;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/pubGoods.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="156" column="26" lean-forward="false" selection-start-line="152" selection-start-column="20" selection-end-line="156" selection-end-column="26" />
+          <folding>
+            <element signature="n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#1;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/editGoods.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="110" column="114" lean-forward="false" selection-start-line="110" selection-start-column="114" selection-end-line="110" selection-end-column="114" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#1;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/GoodsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+        <state relative-caret-position="160">
+          <caret line="31" column="42" lean-forward="false" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/GoodsServiceImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.0.RELEASE/spring-aop-4.3.0.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="84" column="35" lean-forward="true" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="35" />
-          <folding>
-            <element signature="e#3206#3207#0" expanded="false" />
-            <element signature="e#3254#3255#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/dao/GoodsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="92" column="16" lean-forward="false" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="56" column="86" lean-forward="true" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
-          <folding>
-            <marker date="1525234417807" expanded="true" signature="2002:2160" ph="select goods... goods" />
-            <marker date="1525234417807" expanded="true" signature="2308:2620" ph="select goods... goods" />
-            <marker date="1525234417807" expanded="true" signature="2776:3014" ph="select goods... goods" />
-            <marker date="1525234417807" expanded="true" signature="3132:3151" ph="select * fro... goods" />
-            <marker date="1525234417807" expanded="true" signature="3256:3428" ph="select goods... goods" />
-            <marker date="1525234417807" expanded="true" signature="3509:3571" ph="select * fro... goods" />
-            <marker date="1525234417807" expanded="true" signature="3509:3591" ph="select * fro... goods" />
-            <marker date="1525234417807" expanded="true" signature="3684:3816" ph="select * fro... goods" />
-            <marker date="1525234417807" expanded="true" signature="3904:3970" ph="delete from " />
-            <marker date="1525234417807" expanded="true" signature="4093:4671" ph="insert into goods... " />
-            <marker date="1525234417807" expanded="true" signature="7029:8307" ph="update goods... " />
-            <marker date="1525234417807" expanded="true" signature="8405:9055" ph="update goods... " />
-            <marker date="1525234417807" expanded="true" signature="9144:9794" ph="update goods... " />
-            <marker date="1525234417807" expanded="true" signature="9918:10150" ph="select goods... goods" />
-            <marker date="1525234417807" expanded="true" signature="10267:10293" ph="select count... goods" />
-            <marker date="1525234417807" expanded="true" signature="10370:10445" ph="UPDATE goods... " />
-            <marker date="1525234417807" expanded="true" signature="10521:10637" ph="select goods... goods" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
-          <folding>
-            <marker date="1524900619225" expanded="true" signature="5646:5739" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="183" column="34" lean-forward="false" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/util/GoodsExtendAndImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="176">
-            <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/detail.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="1" column="1421" lean-forward="true" selection-start-line="1" selection-start-column="1421" selection-end-line="1" selection-end-column="1421" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/user.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3454">
-          <caret line="157" column="29" lean-forward="false" selection-start-line="157" selection-start-column="29" selection-end-line="157" selection-end-column="29" />
+        <state relative-caret-position="182">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.0.RELEASE/spring-web-4.3.0.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        <state relative-caret-position="160">
+          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/CommentController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.0.RELEASE/spring-webmvc-4.3.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="160">
+          <caret line="534" column="0" lean-forward="false" selection-start-line="534" selection-start-column="0" selection-end-line="534" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.0.RELEASE/spring-webmvc-4.3.0.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="404" column="0" lean-forward="false" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.0.RELEASE/spring-webmvc-4.3.0.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="475" column="0" lean-forward="false" selection-start-line="475" selection-start-column="0" selection-end-line="475" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/dao/GoodsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/GoodsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+          <folding>
+            <marker date="1527588288840" expanded="true" signature="2079:2237" ph="select goods... goods" />
+            <marker date="1527588288840" expanded="true" signature="2385:2697" ph="select goods... goods" />
+            <marker date="1527588288840" expanded="true" signature="2853:3178" ph="select goods... goods" />
+            <marker date="1527588288840" expanded="true" signature="3296:3315" ph="select * fro... goods" />
+            <marker date="1527588288840" expanded="true" signature="3420:3592" ph="select goods... goods" />
+            <marker date="1527588288840" expanded="true" signature="3673:3975" ph="select * fro... goods" />
+            <marker date="1527588288840" expanded="true" signature="3673:3995" ph="select * fro... goods" />
+            <marker date="1527588288840" expanded="true" signature="3673:4000" ph="select * fro... goods" />
+            <marker date="1527588288840" expanded="true" signature="4093:4225" ph="select * fro... goods" />
+            <marker date="1527588288840" expanded="true" signature="4313:4379" ph="delete from " />
+            <marker date="1527588288840" expanded="true" signature="4502:5080" ph="insert into goods... " />
+            <marker date="1527588288840" expanded="true" signature="7438:8717" ph="update goods... " />
+            <marker date="1527588288840" expanded="true" signature="8815:9210" ph="update goods... " />
+            <marker date="1527588288840" expanded="true" signature="9299:9951" ph="update goods... " />
+            <marker date="1527588288840" expanded="true" signature="10075:10307" ph="select goods... goods" />
+            <marker date="1527588288840" expanded="true" signature="10424:10450" ph="select count... goods" />
+            <marker date="1527588288840" expanded="true" signature="10527:10602" ph="UPDATE goods... " />
+            <marker date="1527588288840" expanded="true" signature="10678:10880" ph="select goods... goods" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/service/impl/GoodsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="75" column="52" lean-forward="false" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+          <folding>
+            <element signature="e#2295#2296#0" expanded="true" />
+            <element signature="e#2362#2363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/goods/detailGoods.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="395" column="9" lean-forward="true" selection-start-line="395" selection-start-column="9" selection-end-line="395" selection-end-column="9" />
+        <state relative-caret-position="275">
+          <caret line="354" column="59" lean-forward="false" selection-start-line="354" selection-start-column="59" selection-end-line="354" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/goods.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2612">
+          <caret line="226" column="5" lean-forward="false" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/idle/controller/GoodsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1177">
+          <caret line="145" column="55" lean-forward="true" selection-start-line="145" selection-start-column="55" selection-end-line="145" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/commodity3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
@@ -1779,7 +2061,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>squirrel:war exploded</last-edited>
+          <last-edited>squirrel:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
