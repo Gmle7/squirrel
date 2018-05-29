@@ -41,10 +41,10 @@
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
-                    <img src="<%=basePath%>img/photo.jpg">
+                    <img src="<%=basePath%>img/${cur_user.userAvatar}">
                 </div>
                 <div class="big_headimg">
-                    <img src="<%=basePath%>img/findfun.png">
+                    <img src="">
                 </div>
                 <span class="name">${cur_user.username}</span>
                 <span class="school">湖南信息学院</span>

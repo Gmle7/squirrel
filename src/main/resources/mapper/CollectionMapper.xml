@@ -17,6 +17,7 @@
     <result column="goods_status" property="goodsStatus" jdbcType="VARCHAR" />
     <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="polish_time" property="polishTime" jdbcType="VARCHAR" />
+    <result column="user_avatar" property="userAvatar" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.idle.pojo.Collection" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -31,8 +32,9 @@
     LEFT JOIN image on image.goods_id= goods.goods_id where collection.user_id= #{userId,jdbcType=INTEGER};
   </select>
   <select id="getCollectionsByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    SELECT goods.*,image.img_url from collection
+    SELECT goods.*,user.user_avatar,image.img_url from collection
     INNER JOIN goods on goods.goods_id=collection.goods_id
+    LEFT JOIN user on `user`.user_id=goods.user_id
     LEFT JOIN image on image.goods_id= goods.goods_id where image.img_id=(select img_id from image where goods_id = goods.goods_id limit 1)
     and collection.user_id= #{userId,jdbcType=INTEGER};
   </select>

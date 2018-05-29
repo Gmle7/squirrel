@@ -34,12 +34,12 @@
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
-                    <img src="<%=basePath%>img/photo.jpg">
+                    <img src="<%=basePath%>img/${cur_user.userAvatar}">
                 </div>
                 <div class="big_headimg">
                     <img src="">
                 </div>
-                <span class="name">${cur_urser.username}</span>
+                <span class="name">${cur_user.username}</span>
                 <span class="school">湖南信息学院</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}件</span>
                 <span class="fa fa-share-alt">"快去分享一下"</span>

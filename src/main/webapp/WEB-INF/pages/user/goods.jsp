@@ -34,7 +34,7 @@
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
-                    <img src="<%=basePath%>img/photo.jpg">
+                    <img src="<%=basePath%>img/${cur_user.userAvatar}">
                 </div>
                 <div class="big_headimg">
                     <img src="">
@@ -89,38 +89,36 @@
             <div class="share">
                 <!--描述：闲置商品展示-->
                 <div class="share_content">
-                    <c:if test="${empty goodsAndImage}">
+                    <c:if test="${empty goodsList}">
                         <div class="no_share">
                             <span>没有任何内容，去逛逛其它的吧！</span>
                         </div>
                     </c:if>
-                    <c:if test="${!empty goodsAndImage}">
-                        <c:forEach var="item" items="${goodsAndImage}">
+                    <c:if test="${!empty goodsList}">
+                        <c:forEach var="item" items="${goodsList}">
                             <div class="story">
-                                <a href="<%=basePath%>goods/goodsId/${item.goods.goodsId}" class="head_img">
-                                    <img src="../upload/${item.images[0].imgUrl}">
+                                <a href="<%=basePath%>goods/goodsId/${item.goodsId}" class="head_img">
+                                    <img src="../img/${item.userAvatar}">
                                 </a>
-                                <span class="name">${item.goods.goodsName}</span>
-                                <span class="text" style="overflow: hidden; outline: none;">${item.goods.description}</span>
+                                <span class="name">${item.goodsName}</span>
+                                <span class="text" style="overflow: hidden; outline: none;">${item.description}</span>
                                 <div class="box">
                                     <div class="box_content">
-                                        <div class="left_shadow"></div>
-                                        <div class="left" index="1" style="display: none;"><</div>
-                                        <div class="right_shadow"></div>
-                                        <div class="left" index="3" style="display: none;">></div>
-                                        <img src="../upload/${item.images[0].imgUrl}" index="2">
+                                        <a href="<%=basePath%>goods/goodsId/${item.goodsId}">
+                                            <img src="../upload/${item.imgUrl}" index="2" >
+                                        </a>
                                         <span class="com" style="display: none;left: 396.733px;"></span>
                                     </div>
                                     <div class="interact">
-                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goods.goodsId}">编辑</a></span>
+                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goodsId}">编辑</a></span>
                                         <span class="fa fa-share"><a href="">擦亮</a></span>
-                                        <span class="fa fa-commenting"><a>${item.goods.commentNum}0</a></span>
-                                        <span class="time">${items.goods.startTime}</span>
-                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goods.goodsId}">删除</a></span>
+                                        <span class="fa fa-commenting"><a>${item.commentNum}条</a></span>
+                                        <span class="time"><a>${items.startTime}</a></span>
+                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goodsId}">删除</a></span>
                                     </div>
                                     <div class="like_detail">
                                         <div class="like_content">
-                                            <span>下架时间：${items.goods.endTime}</span>
+                                            <span>下架时间：${items.endTime}</span>
                                         </div>
                                     </div>
                                 </div>

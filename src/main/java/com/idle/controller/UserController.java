@@ -185,10 +185,8 @@ public class UserController {
         User cur_user = (User) request.getSession().getAttribute("cur_user");
         Integer userId = cur_user.getUserId();
         List<Goods> goodsList = goodsService.getGoodsByUserId(userId);
-        List<GoodsExtend> goodsExtendList = new ArrayList<>();
-        goodsExtendAndImage.goodsExtend(goodsList, goodsExtendList);
         ModelAndView mv = new ModelAndView();
-        mv.addObject("goodsAndImage", goodsExtendList);
+        mv.addObject("goodsList", goodsList);
         mv.setViewName("/user/goods");
         return mv;
     }

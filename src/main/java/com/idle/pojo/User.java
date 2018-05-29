@@ -23,6 +23,8 @@ public class User {
 
     private Byte status;
 
+    private String userAvatar;
+
     public Integer getUserId() {
         return userId;
     }
@@ -109,5 +111,13 @@ public class User {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 }

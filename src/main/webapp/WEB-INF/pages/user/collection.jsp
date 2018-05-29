@@ -34,7 +34,7 @@
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
-                    <img src="<%=basePath%>img/photo.jpg">
+                    <img src="<%=basePath%>img/${cur_user.userAvatar}">
                 </div>
                 <div class="big_headimg">
                     <img src="">
@@ -98,7 +98,7 @@
                         <c:forEach var="item" items="${collectionList}">
                             <div class="story">
                                 <a href="<%=basePath%>goods/goodsId/${item.goodsId}" class="head_img">
-                                    <img src="../upload/${item.imgUrl}">
+                                    <img src="../img/${item.userAvatar}">
                                 </a>
                                 <span class="name">${item.goodsName}</span>
                                 <span class="text" style="overflow: hidden; outline: none;">${item.description}</span>

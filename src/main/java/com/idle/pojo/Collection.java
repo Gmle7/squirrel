@@ -31,6 +31,8 @@ public class Collection {
 
     private String imgUrl;
 
+    private String userAvatar;
+
     public Integer getCollectionId() {
         return collectionId;
     }
@@ -149,5 +151,13 @@ public class Collection {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 }

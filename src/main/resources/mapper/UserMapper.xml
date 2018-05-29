@@ -13,9 +13,10 @@
     <result column="power" property="power" jdbcType="TINYINT" />
     <result column="last_login" property="lastLogin" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="user_avatar" property="userAvatar" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, phone, username, password, weixin, email, create_at, goods_num, power, last_login, status
+    user_id, phone, username, password, weixin, email, create_at, goods_num, power, last_login, status ,user_avatar
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -45,11 +46,11 @@
   <insert id="insert" parameterType="com.idle.pojo.User" >
     insert into user (user_id, phone, username,
       password, weixin, email, create_at,
-      goods_num, power, last_login, status)
+      goods_num, power, last_login, status ,user_avatar)
     values (#{userId,jdbcType=INTEGER}, #{phone,jdbcType=CHAR}, #{username,jdbcType=VARCHAR},
       #{password,jdbcType=CHAR}, #{weixin,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createAt,jdbcType=VARCHAR},
       #{goodsNum,jdbcType=INTEGER}, #{power,jdbcType=TINYINT}, #{lastLogin,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT})
+      #{status,jdbcType=TINYINT}, #{userAvatar,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.idle.pojo.User" >
     insert into user
@@ -87,6 +88,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="userAvatar != null" >
+        user_avatar,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -121,6 +125,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
+      </if>
+      <if test="userAvatar != null" >
+        #{userAvatar,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -157,6 +164,9 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
+      <if test="userAvatar != null" >
+        user_avatar = #{userAvatar,jdbcType=TINYINT},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
@@ -171,7 +181,8 @@
       goods_num = #{goodsNum,jdbcType=INTEGER},
       power = #{power,jdbcType=TINYINT},
       last_login = #{lastLogin,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT}
+      status = #{status,jdbcType=TINYINT},
+      user_avatar = #{userAvatar,jdbcType=TINYINT}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateGoodsNum" parameterType="Integer" >

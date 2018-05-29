@@ -16,6 +16,7 @@
     <result column="goods_status" property="goodsStatus" jdbcType="VARCHAR" />
     <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="polish_time" property="polishTime" jdbcType="VARCHAR" />
+    <result column="user_avatar" property="userAvatar" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.idle.pojo.Goods" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
@@ -42,8 +43,9 @@
   </select>
   <select id="selectByCategoryId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
     select goods.*,image.img_url,category.category_name from goods
-    LEFT JOIN image on goods.goods_id= image.goods_id LEFT JOIN category on goods.category_id=category.category_id
-    where goods.category_id = #{categoryId,jdbcType=INTEGER}
+    LEFT JOIN category on goods.category_id=category.category_id
+    LEFT JOIN image on image.goods_id= goods.goods_id where image.img_id=(select img_id from image where goods_id = goods.goods_id limit 1)
+    and goods.category_id= #{categoryId,jdbcType=INTEGER}
     <include refid="Factor"></include>
   </select>
   <select id="selectAllGoods" resultMap="ResultMapWithBLOBs">
@@ -54,7 +56,11 @@
     LEFT JOIN category on goods.category_id=category.category_id LEFT JOIN user on goods.user_id=user.user_id
   </select>
   <select id="getGoodsByUserId" resultMap="ResultMapWithBLOBs">
-    select * from goods where user_id = #{userId,jdbcType=INTEGER} ORDER BY start_time DESC
+    select goods.*,user.user_avatar,image.img_url from goods
+    LEFT JOIN user on `user`.user_id=goods.user_id
+    LEFT JOIN image on image.goods_id= goods.goods_id
+    where image.img_id=(select img_id from image where goods_id = goods.goods_id limit 1)
+    and goods.user_id = #{userId,jdbcType=INTEGER} ORDER BY start_time DESC
   </select>
 
   <select id="selectByCategoryOrderByDate" resultMap="ResultMapWithBLOBs">

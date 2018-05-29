@@ -50,7 +50,7 @@
         <div id="user_nav">
             <div class="user_info">
                 <div class="head_img">
-                    <img src="<%=basePath%>img/photo.jpg">
+                    <img src="<%=basePath%>img/${cur_user.userAvatar}">
                 </div>
                 <div class="big_headimg">
                     <img src="">
@@ -61,14 +61,14 @@
             </div>
             <div class="home_nav">
                 <ul>
-                    <a href="">
+                    <a href="/user/home">
                         <li class="notice">
                             <div></div>
                             <span>我的消息</span>
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="">
+                    <a href="/user/allCollection">
                         <li class="fri">
                             <div></div>
                             <span>我的关注</span>
@@ -338,10 +338,5 @@
         })
     })
 </script>
-<div class="copyright-bottom">
-    Copyright &copy; @2018 110XB工作室 <strong><a href="//www.cschenchao.com/" target="_blank">闲置平台</a></strong>&nbsp;
-    <strong><a href="//www.cschenchao.com/" target="_blank">cschenchao.com</a></strong> All Rights Reserved.
-    备案号：123456789-1
-</div>
 </body>
 </html>
