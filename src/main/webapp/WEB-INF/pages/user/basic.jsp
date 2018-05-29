@@ -146,10 +146,10 @@
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
-                    <span class="change">换一组</span>
+                    <span class="change" onclick="return changeGroup()">换一组</span>
                     <span class="underline"></span>
                 </div>
-                <ul>
+                <ul id="group1">
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
@@ -186,6 +186,43 @@
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>
+                <ul id="group2" style="display: none">
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo6.jpg">
+                        </a>
+                        <span>21栋栋长</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo7.jpg">
+                        </a>
+                        <span>师范校草</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo8.jpg">
+                        </a>
+                        <span>第五食堂堂主</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo9.jpg">
+                        </a>
+                        <span>第六号跑道</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo10.jpg">
+                        </a>
+                        <span>二营长的意大利炮</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -206,17 +243,12 @@
         }
         //创建异步对象
         $.ajax({
-            // 请求发送方式
             type: 'post',
-            // 验证文件
             url: '/user/updateInfo',
-            // 用户输入的帐号密码
             data: JSON.stringify(userInfo),
             dataType: 'json',
             contentType: 'application/json;charset=UTF-8',
-            // 异步，不写默认为True
             async: true,
-            //请求成功后的回调
             success: function (data) {
                 console.log(data)
                 if (data) {
@@ -234,6 +266,15 @@
                 alert('服务端异常');
             }
         })
+    }
+    function changeGroup() {
+        if($("#group1").css("display")==='block'){
+            $("#group1").css("display", "none");
+            $("#group2").css("display", "block");
+        }else {
+            $("#group1").css("display", "block");
+            $("#group2").css("display", "none");
+        }
     }
 </script>
 </body>

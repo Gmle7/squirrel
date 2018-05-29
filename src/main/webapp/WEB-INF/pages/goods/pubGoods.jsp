@@ -175,16 +175,14 @@
                     width: 200px;" onclick="return checkPublish(this.form)"/>
                 </form:form>
             </div>
-            <!--
-                描述：最右侧，可能认识的人
-            -->
+            <!--描述：最右侧，可能认识的人-->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
-                    <span class="change">换一组</span>
+                    <span class="change" onclick="return changeGroup()">换一组</span>
                     <span class="underline"></span>
                 </div>
-                <ul>
+                <ul id="group1">
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
@@ -218,6 +216,43 @@
                             <img src="<%=basePath%>img/photo5.jpg">
                         </a>
                         <span>Kevin</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                </ul>
+                <ul id="group2" style="display: none">
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo6.jpg">
+                        </a>
+                        <span>21栋栋长</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo7.jpg">
+                        </a>
+                        <span>师范校草</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo8.jpg">
+                        </a>
+                        <span>第五食堂堂主</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo9.jpg">
+                        </a>
+                        <span>第六号跑道</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo10.jpg">
+                        </a>
+                        <span>二营长的意大利炮</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>
@@ -337,6 +372,16 @@
             $("#pubBadMsg").html("");
         })
     })
+
+    function changeGroup() {
+        if($("#group1").css("display")==='block'){
+            $("#group1").css("display", "none");
+            $("#group2").css("display", "block");
+        }else {
+            $("#group1").css("display", "block");
+            $("#group2").css("display", "none");
+        }
+    }
 </script>
 </body>
 </html>

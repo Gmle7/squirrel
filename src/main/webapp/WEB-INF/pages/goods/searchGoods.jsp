@@ -90,7 +90,7 @@
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
                                 <li><a>我的消息</a></li>
-                                <li><a onclick="ChangeName()">更改用户名</a></li>
+                                <li><a onclick="ChangeName()">修改昵称</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
                         </div>
@@ -183,7 +183,7 @@
         </div>
     </div>
 </div>
-<!--更改用户名-->
+<!--修改昵称-->
 <div ng-controller="changeNameController" class="ng-scope">
     <div id="changeName" class="change-name stark-components">
         <div class="publish-box z-depth-4">

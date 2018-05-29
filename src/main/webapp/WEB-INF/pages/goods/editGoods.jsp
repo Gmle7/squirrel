@@ -104,11 +104,12 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="/goods/editGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
+                <form:form action="/goods/editGoodsSubmit" method="post" role="form" enctype="multipart/form-data" id="editFrom">
                     <h1 style="margin-left: 210px;">修改物品信息</h1><hr />
                     <div class="changeinfo">
                         <span>物品名：</span>
-                        <input class="in_info" type="text" name="name" placeholder="请输入物品名" value="${goodsExtend.goods.goodsName}"/>
+                        <input style="display: none" type="text" name="goodsId" value="${goodsExtend.goods.goodsId}"/>
+                        <input class="in_info" type="text" name="goodsName" placeholder="请输入物品名" value="${goodsExtend.goods.goodsName}"/>
                         <span>(*必填)</span>
                     </div>
                     <div class="changeinfo">
@@ -141,7 +142,7 @@
                             <div class="publ">
                                 <div class="pub_con">
                                     <div class="text_pu">
-                                        <input type="text" name="describle" class="emoji-wysiwyg-editor" value="${goodsExtend.goods.description}"/>
+                                        <input type="text" name="description" class="emoji-wysiwyg-editor" value="${goodsExtend.goods.description}"/>
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +150,11 @@
                     </div>
                     <br />
                     <hr />
+                    <div class="changeinfo">
+                        <span>可否讲价：</span>
+                        <label class="in_info"><input type="radio" name="isBargain" value="1">拒绝</label>
+                        <label class="in_info"><input type="radio" name="isBargain" value="0">接受</label>
+                    </div>
                     <div class="changeinfo">
                         <span>图片：</span>
                         <div class="container">
@@ -173,19 +179,17 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" class="setting-save" value="提交修改" style="margin-top: 20px;background-color: blue;"/>
+                    <input type="button" class="setting-save" value="提交修改" style="margin-top: 20px;background-color: blue;" onclick="checkPublish(form)"/>
                 </form:form>
             </div>
-            <!--
-                描述：最右侧，可能认识的人
-            -->
+            <!--描述：最右侧，可能认识的人-->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
-                    <span class="change">换一组</span>
+                    <span class="change" onclick="return changeGroup()">换一组</span>
                     <span class="underline"></span>
                 </div>
-                <ul>
+                <ul id="group1">
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
@@ -218,7 +222,44 @@
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo5.jpg">
                         </a>
-                        <span>Kevin老师</span>
+                        <span>Kevin</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                </ul>
+                <ul id="group2" style="display: none">
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo6.jpg">
+                        </a>
+                        <span>21栋栋长</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo7.jpg">
+                        </a>
+                        <span>师范校草</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo8.jpg">
+                        </a>
+                        <span>第五食堂堂主</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo9.jpg">
+                        </a>
+                        <span>第六号跑道</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo10.jpg">
+                        </a>
+                        <span>二营长的意大利炮</span>
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>
@@ -282,15 +323,16 @@
     $('.myFile').on('filepreupload', function(event, data, previewId, index) {
         console.log("filepreupload");
     });
-    //验证注册时手机号是否已经被用过
+
     function checkPublish(form) {
         var pubMsg={
+            goodsId:${goodsExtend.goods.goodsId},
             goodsName:form.goodsName.value,
             price:form.price.value,
             categoryId:form.categoryId.value,
             isBargain:form.isBargain.value,
             description:form.description.value,
-            imgUrl:form.imgUrl.value
+            //imgUrl:form.imgUrl.value
         }
         if (pubMsg.goodsName == ""||pubMsg.goodsName.replace(/(^s*)|(s*$)/g, "").length ==0) {
             $("#pubBadMsg").html("商品名称不能为空！");
@@ -311,11 +353,11 @@
             $("#pubBadMsg").html("商品描述不能超过255字！");
             return false;
         }
-        if (pubMsg.imgUrl == "") {
+        /*if (pubMsg.imgUrl == "") {
             $("#pubBadMsg").html("请上传至少一张商品图片");
             return false;
-        }
-        $("#pubForm").submit();
+        }*/
+        $("#editFrom").submit();
     }
     //验证消息显示在页面上
     $(function () {
@@ -338,6 +380,16 @@
             $("#pubBadMsg").html("");
         })
     })
+
+    function changeGroup() {
+        if($("#group1").css("display")==='block'){
+            $("#group1").css("display", "none");
+            $("#group2").css("display", "block");
+        }else {
+            $("#group1").css("display", "block");
+            $("#group2").css("display", "none");
+        }
+    }
 </script>
 </body>
 </html>

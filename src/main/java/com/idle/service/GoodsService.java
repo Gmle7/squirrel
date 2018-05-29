@@ -29,7 +29,7 @@ public interface GoodsService {
      * 更新商品信息
      * @param goods
      */
-    void updateGoodsByPrimaryKeyWithBLOBs(int goodsId ,Goods goods);
+    void updateGoodsByPrimaryKeyWithBLOBs(Goods goods);
 
     /**
      * 通过主键删除商品

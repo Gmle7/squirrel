@@ -157,11 +157,9 @@ public class GoodsController {
      * @throws Exception
      */
     @RequestMapping(value = "/editGoodsSubmit")
-    public String editGoodsSubmit(HttpServletRequest request,Goods goods) throws Exception {
-        User cur_user = (User)request.getSession().getAttribute("cur_user");
-        goods.setUserId(cur_user.getUserId());
+    public String editGoodsSubmit(Goods goods) throws Exception {
         goods.setPolishTime(DateUtil.getNowTime());
-        goodsService.updateGoodsByPrimaryKeyWithBLOBs(goods.getGoodsId(), goods);
+        goodsService.updateGoodsByPrimaryKeyWithBLOBs(goods);
         return "redirect:/user/allGoods";
     }
 

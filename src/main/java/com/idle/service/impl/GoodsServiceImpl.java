@@ -72,9 +72,8 @@ public class GoodsServiceImpl implements GoodsService {
         return userGrid;
     }
 
-    public void updateGoodsByPrimaryKeyWithBLOBs(int goodsId,Goods goods) {
-        goods.setGoodsId(goodsId);
-        this.goodsMapper.updateByPrimaryKeyWithBLOBs(goods);
+    public void updateGoodsByPrimaryKeyWithBLOBs(Goods goods) {
+        this.goodsMapper.updateByPrimaryKeySelective(goods);
     }
 
     public List<Goods> getGoodsByCategoryOrderByDate(Integer categoryId,Integer limit) {

@@ -193,7 +193,7 @@
         polish_time = #{polishTime,jdbcType=VARCHAR},
       </if>
       <if test="isBargain != null" >
-        is_bargain #{isBargain,jdbcType=VARCHAR},
+        is_bargain =#{isBargain,jdbcType=VARCHAR},
       </if>
       <if test="goodsStatus != null" >
         goods_status #{goodsStatus,jdbcType=VARCHAR},
@@ -210,17 +210,12 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.idle.pojo.Goods" >
     update goods
     set category_id = #{categoryId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      goods_name = #{goodsName,jdbcType=VARCHAR},
-      price = #{price,jdbcType=REAL},
-      real_price = #{realPrice,jdbcType=REAL},
-      start_time = #{startTime,jdbcType=VARCHAR},
-      end_time = #{endTime,jdbcType=VARCHAR},
-      polish_time = #{polishTime,jdbcType=VARCHAR},
-      is_bargain #{isBargain,jdbcType=VARCHAR},
-      goods_status #{goodsStatus,jdbcType=VARCHAR},
-      comment_num = #{commentNum,jdbcType=INTEGER},
-      description = #{description,jdbcType=LONGVARCHAR}
+    goods_name = #{goodsName,jdbcType=VARCHAR},
+    price = #{price,jdbcType=REAL},
+    real_price = #{realPrice,jdbcType=REAL},
+    polish_time = #{polishTime,jdbcType=VARCHAR},
+    is_bargain =#{isBargain,jdbcType=VARCHAR},
+    description = #{description,jdbcType=LONGVARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.idle.pojo.Goods" >
@@ -234,7 +229,7 @@
       end_time = #{endTime,jdbcType=VARCHAR},
       polish_time = #{polishTime,jdbcType=VARCHAR},
       comment_num = #{commentNum,jdbcType=INTEGER},
-      is_bargain #{isBargain,jdbcType=VARCHAR},
+      is_bargain = #{isBargain,jdbcType=VARCHAR},
       goods_status #{goodsStatus,jdbcType=VARCHAR},
       description = #{description,jdbcType=LONGVARCHAR}
     where goods_id = #{goodsId,jdbcType=INTEGER}

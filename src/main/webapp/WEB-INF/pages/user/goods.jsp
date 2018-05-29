@@ -10,7 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>个人中心</title>
-    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <%--<link rel="stylesheet" href="../css/font-awesome.min.css" />--%>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/emoji.css" />
     <link rel="stylesheet" href="../css/userhome.css" />
     <link rel="stylesheet" href="../css/user.css" />
@@ -110,15 +112,16 @@
                                         <span class="com" style="display: none;left: 396.733px;"></span>
                                     </div>
                                     <div class="interact">
-                                        <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${item.goodsId}">编辑</a></span>
-                                        <span class="fa fa-share"><a href="">擦亮</a></span>
+                                        <span class="fa fa-edit"><a href="<%=basePath%>goods/editGoods/${item.goodsId}">编辑</a></span>
+                                        <span class="fa fa-hand-paper-o"><a href="">擦亮</a></span>
                                         <span class="fa fa-commenting"><a>${item.commentNum}条</a></span>
-                                        <span class="time"><a>${items.startTime}</a></span>
-                                        <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${item.goodsId}">删除</a></span>
+                                        <span class="fa fa-trash-o"><a href="<%=basePath%>goods/deleteGoods/${item.goodsId}">删除</a></span>
+
                                     </div>
                                     <div class="like_detail">
                                         <div class="like_content">
-                                            <span>下架时间：${items.endTime}</span>
+                                            <span class="fa fa-clock-o">上架时间：${item.startTime}</span>
+                                            <span class="fa fa-clock-o">下架时间：${item.endTime}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -131,10 +134,10 @@
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
-                    <span class="change">换一组</span>
+                    <span class="change" onclick="return changeGroup()">换一组</span>
                     <span class="underline"></span>
                 </div>
-                <ul>
+                <ul id="group1">
                     <li>
                         <a href="" class="head_img">
                             <img src="<%=basePath%>img/photo1.jpg">
@@ -171,9 +174,57 @@
                         <div class="fa fa-plus-square"></div>
                     </li>
                 </ul>
+                <ul id="group2" style="display: none">
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo6.jpg">
+                        </a>
+                        <span>21栋栋长</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo7.jpg">
+                        </a>
+                        <span>师范校草</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo8.jpg">
+                        </a>
+                        <span>第五食堂堂主</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo9.jpg">
+                        </a>
+                        <span>第六号跑道</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                    <li>
+                        <a href="" class="head_img">
+                            <img src="<%=basePath%>img/photo10.jpg">
+                        </a>
+                        <span>二营长的意大利炮</span>
+                        <div class="fa fa-plus-square"></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function changeGroup() {
+        if($("#group1").css("display")==='block'){
+            $("#group1").css("display", "none");
+            $("#group2").css("display", "block");
+        }else {
+            $("#group1").css("display", "block");
+            $("#group2").css("display", "none");
+        }
+    }
+</script>
 </body>
 </html>

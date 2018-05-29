@@ -934,6 +934,20 @@ ul {
     cursor: pointer
 }
 
+#user_content .share .share_content .story .interact .fa-edit, #my_share .share .story .interact .fa-heart {
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: #939cac;
+    cursor: pointer
+}
+
+#user_content .share .share_content .story .interact .fa-hand-paper-o, #my_share .share .story .interact .fa-heart {
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: #939cac;
+    cursor: pointer
+}
+
 #user_content .share .share_content .story .interact .fa-heart.active, #my_share .share .story .interact .fa-heart.active {
     color: #f36c6c
 }
@@ -957,9 +971,8 @@ ul {
 }
 
 .share .story .interact .fa-trash-o {
-    position: absolute;
-    right: 10px;
-    top: 12px;
+    /*position: absolute;*/
+    margin-left: 10px;
     font-size: 1.5em;
     color: #939cac;
     cursor: pointer

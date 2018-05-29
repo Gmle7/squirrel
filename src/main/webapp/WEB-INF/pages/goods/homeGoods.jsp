@@ -103,7 +103,7 @@
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
                                 <li><a>我的消息</a></li>
-                                <li><a onclick="ChangeName()">更改用户名</a></li>
+                                <li><a onclick="ChangeName()">修改昵称</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
                         </div>
@@ -204,19 +204,21 @@
         </div>
     </div>
 </div>
-<!--更改用户名-->
+<!--修改昵称-->
 <div ng-controller="changeNameController" class="ng-scope">
     <div id="changeName" class="change-name stark-components">
         <div class="publish-box z-depth-4">
             <div class="row">
-                <div class="col s12 title">
-                    <h1>修改用户名</h1>
-                </div>
+                <a onclick="ChangeName()" data-tooltip="单击关闭注册框！">
+                    <div class="col s12 title">
+                        <h1>修改昵称</h1>
+                    </div>
+                </a>
                 <form:form action="/user/changeName" method="post" id="user3" role="form">
                     <div class="input-field col s12">
                         <input type="text" name="username" required="required"
                                class="validate ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-touched"/>
-                        <label>修改用户名</label>
+                        <label>修改昵称</label>
                     </div>
                     <div ng-show="checkTelIsShow" class="col s12">
                         <button class="waves-effect waves-light btn publish-btn red lighten-1">

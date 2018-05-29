@@ -103,7 +103,7 @@ public class UserController {
     }
 
     /**
-     * 更改用户名
+     * 修改昵称
      *
      * @param request
      * @param user

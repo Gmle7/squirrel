@@ -14,15 +14,15 @@
     <%--<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>--%>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/materialize/0.100.0/js/materialize.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>--%>
     <%--<script type="text/javascript" src="<%=basePath%>js/materialize.min.js"></script>--%>
     <%--<script type="text/javascript" src="<%=basePath%>js/index.bundle.js"></script>--%>
     <script type="text/javascript" src="<%=basePath%>/js/user.js"></script>
     <link rel="stylesheet" href="<%=basePath%>css/materialize-icon.css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">--%>
     <link rel="stylesheet" href="<%=basePath%>css/detail.css"/>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>/css/common.css"/>
 </head>
 <body ng-view="ng-view">
@@ -93,7 +93,7 @@
                             <ul class="dropdown-content">
                                 <li><a href="/user/home">个人中心</a></li>
                                 <li><a>我的消息</a></li>
-                                <li><a onclick="ChangeName()">更改用户名</a></li>
+                                <li><a onclick="ChangeName()">修改昵称</a></li>
                                 <li><a href="/user/logout">退出登录</a></li>
                             </ul>
                         </div>
@@ -186,7 +186,7 @@
         </div>
     </div>
 </div>
-<!--更改用户名-->
+<!--修改昵称-->
 <div ng-controller="changeNameController" class="ng-scope">
     <div id="changeName" class="change-name stark-components">
         <div class="publish-box z-depth-4">
@@ -239,7 +239,7 @@
         </div>
     </div>
     <div class="col s6" style="margin-left: 240px">
-        <h1 class="item-name" style="display: inherit">${goodsExtend.goods.goodsName}</h1>
+        <h1 class="item-name">${goodsExtend.goods.goodsName}</h1>
         <%--<a onclick="addCollection()"><i class="black material-icons">stars</i>关注一下</a>--%>
 
         <a onclick="addCollection()" id="noCollection"><img src="<%=basePath%>img/heart1.png"
@@ -277,7 +277,7 @@
                     <a onclick="showLogin()">登录</a>
                     <em>或</em>
                     <a onclick="showSignup()">注册</a>
-                    <em>后可查看联系信息和发表评论哦</em>
+                    <em>后可查看卖家信息和发表评论哦</em>
                 </p>
             </div>
         </c:if>
@@ -351,7 +351,8 @@
                         </div>
                         <div class="comment-function">
                             <em class="time ng-binding">${item.createAt}</em>
-                            <a class="reply-or-delete">删除</a>
+                            <a class="reply-or-delete" onclick="willReport(${status.index})">举报</a>
+                            <a class="reply-or-delete" onclick="willDelete(${status.index})">删除</a>
                             <a class="reply-or-delete" onclick="willReply(${status.index})">回复</a>
                         </div>
                     </div>
@@ -520,17 +521,12 @@
         }
         //创建异步对象
         $.ajax({
-            // 请求发送方式
             type: 'post',
-            // 验证文件
             url: '/comments/addComments',
-            // 用户输入的帐号密码
             data: JSON.stringify(comments),
             dataType: 'json',
             contentType: 'application/json;charset=UTF-8',
-            // 异步，不写默认为True
             async: true,
-            //请求成功后的回调
             success: function (data) {
                 console.log(data)
                 if (data) {
@@ -550,8 +546,26 @@
         })
     }
     function willReply(commentId) {
+        if (${empty cur_user}) {
+            alert("请先登录哦！！！")
+            return false
+        }
         $("label[name='forCommentBox']").html("回复@${commentsList.get(commentId).username}");
         $("input[name='commentBox']").focus();
+    }
+    function willReport(commentId) {
+        if (${empty cur_user}) {
+            alert("请先登录哦！！！")
+            return false
+        }
+        alert("系统已接受到您的举报信息，谢谢！")
+    }
+    function willDelete(commentId) {
+        if (${empty cur_user}) {
+            alert("请先登录哦！！！")
+            return false
+        }
+        alert("对不起，您没有权限！")
     }
 </script>
 </body>
